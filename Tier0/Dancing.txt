@@ -31,6 +31,24 @@ WorkShares - Custom share.
 Trying to directly access a share (ADMIN$) by doing this:
 smbclient \\\\(target ip)\\ADMIN$
 
+That didnt work either.
+
+We try this with C$, that also didnt work.
+
+Final chance, we try WorkShares, which is seems to be manly maid.
+
+Indeed, this worked as it didnt require password. We are now in the server and we can list the files using ls, change directories using cd and downloading files using get.
+
+We will see the flag.txt file if we changed directories to James.P and typed this get flag.txt.
+
+After downloading the file, we exit the server by typing exit.
+
+We can see the flag.txt that we downloaded in the root directory in our machine.
+
+flag: 5f61c10dffbc77a704d76016a22f1664
+
+//END
+
 
 
 
