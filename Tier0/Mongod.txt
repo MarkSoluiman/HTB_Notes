@@ -1,0 +1,23 @@
+We will begin our scan as follows: nmap -p- --min-rate=1000 -sV {target_IP}
+
+-p- : This flag scans for all TCP ports ranging from 0-65535
+-sV : Attempts to determine the version of the service running on a port
+--min-rate : This is used to specify the minimum number of packets that Nmap should
+send per second; it speeds up the scan as the number goes higher
+
+We need to connect to the MongoDB server that is running on the target.
+
+We needed to install MongoDB first.
+
+Then we use this command to connect to the MongoDB server :./mongo mongodb://{target_IP}:(open port). The open port being 27017 in our case.
+
+After connection, we can show the databases present by : show dbs
+
+Then we can shows the database by: use (database)
+
+We can view the collections by: show collections
+
+We can see that there exists a single collection named flag . We can dump the contents of the documents
+present in the flag collection by using the db.collection.find() command.
+Let's replace the collection
+name flag in the command and also use pretty() in order to receive the output in a beautified format.

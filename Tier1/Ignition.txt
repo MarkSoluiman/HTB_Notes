@@ -1,0 +1,88 @@
+We start with a scan:sudo nmap -sV -sC (target ip) 
+
+We get a nginx server open on port 80/tcp
+
+Also, we get something unique. a http title: Did not follow redirect to http://ignition.htb/ .
+
+If we try to access the target ip in url, we get this site cant be reached page with DNS_Probe_possible message. 
+
+We google this message.
+
+The dns_probe_possible is an error that can occur when a browser is unable to establish a connection to the DNS servers. It means that the browser is unable to translate the domain name of the website you’re trying to access into an IP address, which is required for establishing a connection.
+
+There are multiple reasons for this problem. Bad Internet connection, Router Problems, DNS Server issues, etc.. (Check https://www.wpoven.com/blog/dns_probe_possible/#:~:text=The%20dns_probe_possible%20is%20an%20error,required%20for%20establishing%20a%20connection. for more info)
+
+Another valid reason for this problem is we never entered any hostname such as ignition.htb into the search bar, but the website expects
+us to.
+
+Since we know for a fact that we never entered any hostname into the search bar, we will be exploring the
+second option only. This option refers to an issue with what is known as name-based VHosting (or Virtual
+Hosting).
+
+Multiple websites can share the same IP address, allowing users to access them separately by
+visiting the specific hostnames of each website instead of the hosting server's IP address. The webserver we
+are making requests to is throwing us an error because we haven't specified a certain hostname out of the
+ones that could be hosted on that same target IP address. From here, we'd think that simply inputting
+ignition.htb instead of the target IP address into the search bar would solve our issue, but unfortunately,
+this is not the case. When entering a hostname instead of an IP address as the request's destination, there is
+a middleman involved that you might not know about.
+
+Because DNS is involved when translating the hostnames to the one IP address available on the server's
+side, this will prove to be an issue once the target is isolated, such as in our case. In order to solve this, we
+can edit our own local hosts file which includes correlations between hostnames and IP addresses to
+accomodate for the lack of a DNS server doing it on our behalf.
+Until then, we must first confirm that we are correct. In order to get a better view of the exact requests and
+responses being made and to confirm our suspicion, we will need to make use of a popular and easy to use
+tool called cURL . This tool will allow us to manipulate HTTP requests made to a server and receive the
+responses directly in the terminal, without the latter being interpreted by our browser as generic error
+messages such as in the example above.
+
+We use curl as the following : curl -v http://(target ip)/
+
+-v: to have the output more detailed 
+
+As observed from our curl output, our request contains a Host field which is home to the target's IP
+address instead of the hostname. The 302 Found response, together with the Location header, indicates
+that the resource we requested ( / ) has been (temporarily) moved to http://ignition.htb/ . This means
+that our assumptions were true.
+
+To solve the issue we are currently facing here, we will modify our local DNS file named hosts located in
+the /etc directory.
+
+We have done this before in a previouse machine.
+
+ echo"(target ip) ignition.htb | sudo tee -a /etc/hosts "
+
+ or we can do it by: sudo mousepad /etc/hosts
+
+
+If we reloaded the webpage of our target, we will see that we are redirected to a home page. 
+
+We use gobuster tool to bruteforce the directories of this website 
+
+gobuster dir --url http://ignition.htb/ --wordlist (wordlist directroy)
+
+We get a http response of 200 (OK) with admin.
+
+We try that and we are faced with admin login page with password that is managed by Magento.
+
+The Magento Admin is protected by multiple layers of security measures to prevent
+unauthorized access to your store, order, and customer data. The first time you sign in
+to the Admin, you are required to enter your username and password and to set up twofactor authentication (2FA).
+Depending on the configuration of your store, you might also be required to resolve a
+CAPTCHA challenge such as entering a series of keyboard characters, solving a puzzle,
+or clicking a series of images with a common theme. These tests are designed to
+identify you has human, rather than an automated bot.
+For additional security, you can determine which parts of the Admin each user has
+permission to access, and also limit the number of login attempts. By default, after
+six attempts the account is locked, and the user must wait a few minutes before trying
+again. Locked accounts can also be reset from the Admin.
+An Admin password must be seven or more characters long and include both letters and
+numbers.
+
+By some google searching for the most common passwords of 2021, we find out that the right credentials are admin:qwerty123
+
+Flag: 797d6c988d9dc5865e010b9410f247e0
+
+
+

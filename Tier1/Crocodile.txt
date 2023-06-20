@@ -1,0 +1,45 @@
+As usual we start with scanning the target:
+
+sudo nmap -sC -sV (target ip)
+
+We can connect to this ftp server anonymosly which doesnt required any credintials 
+
+we connect to the server like so: ftp (target ip)
+
+We need to provide the user name of anonymous to have an access.
+
+To list the files inside, we use the command dir 
+
+We find very interesting files: alloweduserlist and alloweduserlist.passwd.
+
+We download them both by: get alloweduserlist and, get alloweduserlist.passwd
+
+We get a list of usernames and passwords.
+
+We try to login again to the ftp server by using one of these usernames. However, we cant since it is anonymous login only.
+
+Back when we did our scan on the target, we noticed another open port that has an Apache server running on it.
+
+If we searched our target ip, we will be greeted with a website.
+
+We can use a handy plug-in called Wappalyzer that gives us the technology used on the website 
+
+The plug-in shows us that this website uses php and Apache http server.
+
+We can use gobuster tool to go through the directories.
+
+  gobuster dir --url http://10.129.170.20/ --wordlist /home/kali/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt -x php,html
+
+  -x : File extension(s) to search for.
+
+  We used the -x switch to only search for php and html files
+
+  Soon enough, We can see that we get some good results. index.html and login.php gave us an http response of 200 (OK)
+
+  We can try to access these directories in the website
+
+  upon accessing the login.php directory, we are faced with a login form. We can try to login as admin using the 2 files from earlier 
+
+  Flag: c7110277ac44d78b6a9fff2232434d16
+
+  //END

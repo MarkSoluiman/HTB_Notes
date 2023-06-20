@@ -1,0 +1,36 @@
+SMB protocol: Server Message Block (TCP 445)
+
+This allows an application (or the user of an application) can access files at a remote server,
+along with other resources such as printers. Thus, a client application can read, create, and update files on
+the remote server. It can also communicate with any server program that is set up to receive an SMB client
+request.
+
+An SMB-enabled storage on the network is called a share which can be accessed by clients with address of the server and proper credentials
+
+We can communicate with a server that uses the SMB protocol by smbclient command
+
+To get the shares available on a remote SMB server. We can do the command : smbclient -L (target ip)
+
+A list of what we would see after the previous command : 
+
+ADMIN$ - Administrative shares are hidden network shares created by the Windows NT family of
+operating systems that allow system administrators to have remote access to every disk volume on a
+network-connected system. These shares may not be permanently deleted but may be disabled.
+
+C$ - Administrative share for the C:\ disk volume. This is where the operating system is hosted.
+
+IPC$ - The inter-process communication share. Used for inter-process communication via named
+pipes and is not part of the file system.
+
+WorkShares - Custom share.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Hacking:
+
+Trying to directly access a share (ADMIN$) by doing this:
+smbclient \\\\(target ip)\\ADMIN$
+
+
+
+

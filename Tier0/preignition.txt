@@ -1,0 +1,27 @@
+We always start by scanning: sudo nmap -sV (target ip)
+
+We find a server nginx running on port 80/tcp
+
+Since it was showed that the server is a http one. It might be hosting a webapp on the internet, so we search the target ip.
+
+We indeed find a webpage. We can exploit this webpage by using gobuster tool to brute force directories of this web app.
+
+We first need to install go lang by : sudo apt install golang-go
+
+Then, we we install gobuster tool by : go install github.com/OJ/gobuster/v3@latest 
+
+We try to exploit the website using gobuster by: sudo gobuster dir -w /usr/share/wordlists/dirb/common.txt -u (target ip)
+
+dir : specify we are using the directory busting mode of the tool
+-w : specify a wordlist, a collection of common directory names that are typically used
+for sites
+-u : specify the target's IP address
+
+Gobuster gives us a 200 http response (OK) with admin.php.
+
+Upon entering this next to the target ip with a / next to it in the url, we will be redirected to a login page. We try to enter the username and password as admin. And what do you know? it worked!!
+
+flag: 6483bee07c1c1d57f14e5b0717503c73
+
+//END
+

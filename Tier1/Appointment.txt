@@ -1,0 +1,95 @@
+SQL Injection
+
+
+
+We scan the target like this: nmap -sV -sC (target ip).
+
+The -sC switch allows nmap to run its default script scan using NSE (Nmap Scripting Engine)
+
+Apache HTTP Server is a free and open-source application that runs web pages on either physical or virtual
+web servers. It is one of the most popular HTTP servers, and it usually runs on standard HTTP ports such as
+ports 80 TCP, 443 TCP, and alternatively on HTTP ports such as 8080 TCP or 8000 TCP. HTTP stands for
+Hypertext Transfer Protocol, and it is an application-layer protocol used for transmitting hypermedia
+documents, such as HTML
+
+It is a good idea to search the website ip and play with it a little bit. For example, in our case, our target website has the ip of 10.129.104.45.
+
+We can search this in a search engine and we can add /home, /admin,/contact to the end of it to see if that going to give us any results and reveal to us any exploits in the website.
+
+Note: some directories might be nested in others: 10.129.104.45/login/forgot
+
+What actually happens when we try to access a directory using the method above?
+
+The user or the browser send a GET request to the HTTP server with the URL of the resource we requested
+
+The HTTP server will look up the resource in the specified location (the given URL)
+If the resource or directory exists, we will receive the HTTP Server response containing the data we
+HTTP1/1 200 OK : Page/resource exists, proceeds with sending you the data.
+HTTP1/1 404 Not Found : Page/resource does not exist.
+HTTP1/1 302 Found : Page/resource found, but by redirection to another directory (moved
+temporarily). This is an invitation to the user-agent (the web browser) to make a
+second, identical request to the new URL specified in the location field. You will
+perceive the whole process as a seamless redirection to the new URL of the specified
+resource.
+requested (be it a webpage, an image, an audio file, a script, etc.) and response code 200 OK , because
+the resource was found and the request was fulfilled with success.
+If the resource or directory cannot be found at the specified address, and there is no redirection
+implemented for it by the server administrator, the HTTP Server response will contain the typical 404
+Page with the response code 404 Not Found attached
+
+We will be using gobuster to automate our brute force attack. The brute force attack in this case is trying to find the right directory combinations for our target website
+
+We use the most famouse wordlist to use in our brute force attack which is  the SecLists collection, which we can download like so:
+git clone https://github.com/danielmiessler/SecLists.git
+
+We will use gobuster with our wordlist like so:
+
+gobuster dir --url http://(target ip)/ --wordlist (wordlist location)/directory-list-2.3-small.txt
+
+dir : Specify that we wish to do web directory enumeration.
+--url : Specify the web address of the target machine that runs the HTTP server.
+--wordlist : Specify the wordlist that we want to use.
+
+The word-list location is Discovery/Web-Content/
+
+At the end, our dir brute force attack didtn work.
+
+We can try to login by ourselves by trying the most combinations of username and passwords such as :
+
+admin:admin
+guest:guest
+user:user
+root:root
+administrator:password
+
+Sadly, that didtn work as well
+
+Now, we try SQL Injection which is the topic of this room.
+
+SQL Injection is a common way of exploiting web pages that use `SQL Statements` that
+retrieve and store user input data. If configured incorrectly, one can use this attack
+to exploit the well-known `SQL Injection` vulnerability, which is very dangerous. There
+are many different techniques of protecting from SQL injections, some of them being
+input validation, parameterized queries, stored procedures, and implementing a WAF (Web
+Application Firewall) on the perimeter of the server's network. However, instances can
+be found where none of these fixes are in place, hence why this type of attack is
+prevalent, according to the [OWASP Top 10](https://owasp.org/www-project-top-ten/) list
+of web vulnerabilities.
+
+We can try to input the username as :admin'@#
+
+We will close the query with that single quote, allowing the script to search for the admin username. By
+adding the hashtag, we will comment out the rest of the query, which will make searching for a matching
+password for the specified username obsolete. If we look further down in the PHP code above, we will see
+that the code will only approve the log-in once there is precisely one result of our username and password
+combination. However, since we have skipped the password search part of our query, the script will now
+only search if any entry exists with the username admin .
+
+So, by providing the # at the end, the sql query will look like this:
+select * from users where username='admin'#' And password='a'
+
+What ever the password is, the sql query will sussefully get a result back because the sql is only searching the users table if there is a username called admin or not and it will ignore the AND condition.
+
+We get he flag as :e3d0796d002a446c0e622226f42e9672
+
+//END

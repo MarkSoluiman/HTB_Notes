@@ -1,0 +1,22 @@
+We scan our target ip with: sudo nmap -sV (target ip).
+
+We find that a telnet server is open on port 23/tcp.
+
+Telnet is an old service
+used for remote management of other hosts on the network.
+
+Usually, Telnet requires username and password for additional security. We can check by telnet (target ip).
+
+Sometimes, some servers are badly configured and we can easily login with one of these usernames :root,admin,administrator... 
+
+Using root as a username, we succesfully managed to login without a password.
+
+We can interact with this server using linux commands since this server is running on linux. 
+
+We list the files and directories using ls. Upon using ls, we found flag.txt. We get the content of this file by using cat flag.txt
+
+flag: b40abdfe23665f766f9c61ecba8a4c19
+
+//END
+
+ 

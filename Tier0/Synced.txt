@@ -1,0 +1,39 @@
+FTP(File Transfer Protocol) is old and slow protocol. It only allows copying entire files over the network from a remote server. 
+
+ In many cases there is a need to
+transfer only some changes made to a few files and not to transfer every file every single time. For these
+scenarios, the rsync protocol is generally preferred.
+
+Rsync is a fast and extraordinarily versatile file copying tool. It can copy locally,
+to/from another host over any remote shell, or to/from a remote rsync daemon. It offers
+a large number of options that control every aspect of its behavior and permit very
+flexible specification of the set of files to be copied. It is famous for its deltatransfer algorithm, which reduces the amount of data sent over the network by sending
+only the differences between the source files and the existing files in the
+destination. Rsync is widely used for backups and mirroring and as an improved copy
+command for everyday use.
+
+The main stages of an rsync transfer are the following:
+1. rsync establishes a connection to the remote host and spawns another rsync receiver process.
+2. The sender and receiver processes compare what files have changed.
+3. What has changed gets updated on the remote host.
+
+We can use rsync like so: rsync [OPTION] … [USER@]HOST::SRC [DEST]
+
+where SRC is the file or directory (or a list of multiple files and directories) to copy from, DEST is the file or
+directory to copy to.
+
+The [OPTION] portion of the syntax, refers to the available options in rsync .
+
+The [USER@] optional parameter is used when we want to access the the remote machine in an
+authenticated way.
+
+ In our first attempt, we will try to list all the available directroeis using : rsync --list-only (target ip)::
+
+We can get the list of directories inside the public like so: rsync --list-only (target ip)::public
+
+We notice a file called flag.txt inside the public share. Our last step is to copy/sync this file to our local
+machine. To do that, we simply follow the general syntax by specifying the SRC as public/flag.txt and
+the DEST as flag.txt to transfer the file to our local machine.
+
+We can copy the flat.txt file to our computer by doing : rsync (target ip)::public/flag.txt flag.txt
+

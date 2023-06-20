@@ -1,0 +1,44 @@
+We start by a scan: nmap -sC -sV -v (target ip)
+
+-v: To increase the verbosity level (more details)
+
+We see that two ports are open port 22 which is an SSH, and port 80 which is running an HTTP Node.js server and
+making use of the Express framework.
+
+Upon visiting port 80, we are presented with a webpage that is currently under construction and the option
+to subscribe to updates about the page using an email address. An email subscription in web pages is
+usually an option that allows web visitors to receive updates via email, regarding the status of the website or
+the company or individual that owns it.
+Let's provide a test email to verify we have a working application. When given an application to test, use it as
+if you are using it intendedly. Sometimes, developers put in poor code as a quick solution, leading to
+vulnerabilities. Let's input the email pwninx@hackthebox.eu and click submit.
+
+The email that we have provided is being showed back to us in the website.
+
+Using Wappalyzer, we can see that this website uses node.js and express
+
+With this information in mind we can start identifying potential exploitation paths. Various attempts at
+verifying an XSS vulnerability with default payloads, such as <script>alert(1)</script> , have been
+unsuccessful. For this reason we must look for a different vulnerability.
+Node.js and Python web backend servers often make use of a software called "Template Engines"
+
+What is a Template Engine?
+Template Engines are used to display dynamically generated content on a web page. They replace the
+variables inside a template file with actual values and display these values to the client (i.e. a user opening a
+page through their browser).
+For instance, if a developer needs to create a user profile page, which will contain Usernames, Emails,
+Birthdays and various other content, that is very hard if not impossible to achieve for multiple different
+users with a static HTML page. The template engine would be used here, along a static "template" that
+contains the basic structure of the profile page, which would then manually fill in the user information and
+display it to the user.
+Template Engines, like all software, are prone to vulnerabilities. The vulnerability that we will be focusing on
+today is called Server Side Template Injection (SSTI).
+
+What is an SSTI?
+Server-side template injection is a vulnerability where the attacker injects malicious input into a template in order
+to execute commands on the server.
+To put it plainly an SSTI is an exploitation technique where the attacker injects native (to the Template
+Engine) code into a web page. The code is then run via the Template Engine and the attacker gains code
+execution on the affected server.
+This attack is very common on Node.js websites and there is a good possibility that a Template Engine is
+being used to reflect the email that the user inputs in the contact field.
