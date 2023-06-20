@@ -1,13 +1,10 @@
 Since Telnet was developed before the internet, it lacks any encryption and thus it lacks security and it is prone to attacks.
 
 An alternative option to the telnet is SSH (Secure Shell Protocol) as it uses public-key encryption to verify the remote host's identity.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//Hacking
 
 
 We can first try to form an RDP(Remote Desktop Protocol) session with the target by not providing any additional information for any
-switches other than the target IP address. This will make the script use your own username as the login
+switches other than the target IP address. This will make the script use your own username as the loginc
 username for the RDP session, thus testing guest login capabilities.
 
 xfreerdp /v:(target ip)
@@ -21,4 +18,12 @@ ignored.
 /u:Administrator : Specifies the login username to be "Administrator".
 
 In this case, no password is required
+
+We are going to see that a window popped up with a windows machine running on it with a flag file visible on the desktop.
+
+
+flag: 951fa96d7830c451b536be5a6be008a0
+
+//END
+
 
