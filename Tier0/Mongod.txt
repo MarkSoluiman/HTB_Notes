@@ -11,9 +11,15 @@ We needed to install MongoDB first.
 
 Then we use this command to connect to the MongoDB server :./mongo mongodb://{target_IP}:(open port). The open port being 27017 in our case.
 
+But first we need to change directory to usr/bin to be able to use mongodbd
+
 After connection, we can show the databases present by : show dbs
 
 Then we can shows the database by: use (database)
+
+We see something that catches our eyes, a database called sensitive_information.
+
+We select it by : use sensitive_information
 
 We can view the collections by: show collections
 
@@ -21,3 +27,7 @@ We can see that there exists a single collection named flag . We can dump the co
 present in the flag collection by using the db.collection.find() command.
 Let's replace the collection
 name flag in the command and also use pretty() in order to receive the output in a beautified format.
+
+flag:1b6e6fb359e7c40241b6d431427ba6ea
+
+//END
