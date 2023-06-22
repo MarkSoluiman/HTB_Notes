@@ -1,6 +1,8 @@
 In-memory database like Redis, retrives data very fast from the RAM, making it ideal with websites that has lots of traffic. However, the data is stored for a short amount of time (max of hours).
 
 This time we used nmap -p- -sV 10.129.60.61 to scan all 65,535 ports. This took long time so I made it faster to only scan the first 10000 ports by doing nmap -p1-10000 -sV 10.129.60.61.
+If we want the scan to be even faster, we can add --min-rate=1000, the bigger the number, the faster it gets.
+
 
 We use redi-cli in this lab. To get the host, we do redis-cli -h (target ip)
 
@@ -21,7 +23,11 @@ This will give us the following list:
 
 We can access each key by doing: get "key"
 
-for example, get flag
+for example, get flag.
+
+Flag: 03e1d2b376c37ab3f5319922053953eb
+
+//END
 
 
 

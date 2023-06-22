@@ -35,5 +35,15 @@ We notice a file called flag.txt inside the public share. Our last step is to co
 machine. To do that, we simply follow the general syntax by specifying the SRC as public/flag.txt and
 the DEST as flag.txt to transfer the file to our local machine.
 
-We can copy the flat.txt file to our computer by doing : rsync (target ip)::public/flag.txt flag.txt
+We can copy the flat.txt file to our computer by doing : rsync (target ip)::public/flag.txt flag.txt.
+
+This will download the file to our local machine directory.
+
+If we did : ls, indeed we see a new file called flag.txt in our local directory.
+
+cat falg.txt
+
+flag:72eaf5344ebb84908ae543a719830519
+
+//END
 
