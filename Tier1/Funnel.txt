@@ -1,0 +1,136 @@
+We always start with a scan: nmap -sV -sC (target ip)
+
+We have two tcp ports open,21 and 22.
+
+We will be using tunneling in SSH in this Machine.
+
+Since port tcp/21 is a ftp server, and it allows anonymous login, we can simply login into this server using: ftp (target ip). We enter the name as anonymouse and the password we leave it blanck.
+
+We indeed login into the server with these credintials.
+
+We can now use ls to list all of the files.
+
+We see the directory mail_backup.
+
+We go to that folder by: cd mail_backup.
+
+We use ls again.
+
+We see two files: password_policy.pdf, and welcome
+
+We download both files by using: get (file name)
+
+Opening the pdf file, we can see that the deafult password is "funnel123#!#"
+
+Overall, our enumeration yielded a handful of potential usernames, as well as a default password. We also
+know that SSH is running on the target machine, meaning we could attempt to bruteforce a usernamepassword combination, using the credentials we gathered. This type of attack is also referred to as password
+spraying, and can be automated using a tool such as Hydra .
+The password spraying technique involves circumventing common countermeasures against brute-force
+attacks, such as the locking of the account due to too many attempts, as the same password is sprayed
+across many users before another password is attempted.
+
+We can put all of the names that appeared in the email file in a text file called usernames.txt
+
+Finally, we can now task Hydra with executing the attack on the target machine. Using the -L option, we
+specify which file contains the list of usernames we will use for the attack. The -p option specifies that we
+only want to use one password, instead of a password list. After the target IP address, we specify the
+protocol for the attack, which in this case is SSH .
+
+hydra -L usernames.txt -p 'funnel123#!#' {target_IP} ssh
+
+Note that we use '' instead of "" in the password.
+
+Hydra finds that christine didnt change her password from the default one.
+
+We can use her username and the default password to login.
+
+We use : ssh christine@(target ip)
+
+We use the default password to login.
+
+A crucial command at this point in
+time is the ss command, which stands for socket statistics , and can be used to check which ports are
+listening locally on a given machine.
+
+We do: ss -tln
+
+-l: Display only listening sockets.
+-t: Display TCP sockets.
+-n: Do not try to resolve service names.
+
+The output reveals a handful of information; we will analyse it bit-by-bit. The first column indicates the state
+that the socket is in; since we specified the -l flag, we will only see sockets that are actively listening for a
+connection. Moving along horizontally, the Recv-Q column is not of much concern at this point, it simply
+displays the number of queued received packets for that given port; Send-Q does the same but for the
+amount of sent packets. The crucial column is the fourth, which displays the local address on which a service
+listens, as well as its port. 127.0.0.1 is synonymous with localhost , and essentially means that the
+specified port is only listening locally on the machine and cannot be accessed externally. This also explains
+why we did not discover such ports in our initial Nmap scan. On the other hand, the addresses 0.0.0.0 , * ,
+and [::] indicate that a port is listening on all intefaces, meaning that it is accessible externally, as well as
+locally, which is why we were able to detect both the FTP service on port 21 , as well as the SSH service on
+port 22 .
+
+We run the previouse command again without the -n switch : ss -tl
+
+We find that postgresql is running on one of the ports.
+
+We can interact with this sql server with psql.However, it is not installed on this machine we are controlling. Since we dont have admin privilage, we cant install it.
+
+Now, we must use tunneling.
+
+In the scenario we are currently facing, we want to forward traffic from any given local port, for instance
+1234 , to the port on which PostgreSQL is listening, namely 5432 , on the remote server. We therefore
+specify port 1234 to the left of localhost , and 5432 to the right, indicating the target port.
+
+-L:  is used for local port forwarding.
+
+We run this command while we are still connected to chrisine's machine
+
+After entering christine 's password, we can see that we have a shell on the target system once more,
+however, under its hood, SSH has opened up a socket on our local machine on port 1234 , to which we can
+now direct traffic that we want forwarded to port 5432 on the target machine. We can see this new socket
+by running ss again, but this time on our local machine, using a different shell than the one we used to
+establish the tunnel: ss -tlpn 
+
+-p: Shows the process or program associated with each socket.
+
+Now, wee need to install psql on our local machine: sudo apt update && sudo apt install psql 
+
+Then, we do the following on our local machine: psql -U christine -h localhost -p 1234
+
+We make sure to specify localhost using the -h option, as we are targeting the tunnel we
+created earlier with SSH , as well as port 1234 with the -p option, which is the port the tunnel is listening
+on.
+
+We need to enter christine's password.
+
+We are in!!
+
+In order to list the existing databases, we can execute the \l command, short for \list .
+
+Five rows are returned, including a database with the ominous name secrets . Using the \c command,
+short for \connect , we can select a database and proceed to interact with its tables.
+
+Finally, we can list the database's tables using the \dt command, and dump its contents using the
+conventional SQL SELECT query.
+
+select * from flag; Note: dont forget ; at the end.
+
+flag: cf277664b1771217d7006acdea006db1
+
+//END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
