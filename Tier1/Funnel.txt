@@ -1,4 +1,4 @@
-We always start with a scan: nmap -sV -sC (target ip)
+We always start with a scan: sudo nmap -sV -sC (target ip)
 
 We have two tcp ports open,21 and 22.
 

