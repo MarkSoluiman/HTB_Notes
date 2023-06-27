@@ -1,0 +1,73 @@
+This time we will use a new switch in our nmap scanning, which is -Pn. In the real world, we expect firewalls to be present and preventing suspesious traffic, which our nmap is one of these suspesious traffic. . During a typical nmap scan,
+the nmap script will perform a form of complex ping scan, which most Firewalls are set to deny
+automatically, without question. Repeated denials will raise suspicion, and during a typical scan, a lot of the
+same requests will get denied. The -Pn flag will skip the host discovery phase and move on straight to
+other probe types, silencing our active scanning to a degree.
+
+So we do our scan: sudo nmap -sC -Pn (target ip)
+
+We find three tcp ports open: 135/tcp,139/tcp,and 445/tcp.
+
+Reading about each port, We know that the 445/tcp port is the SMB port. We found our target.
+
+To interact with the SMB protocol, we need to use the smbclient tool. We need to install it first by :sudo apt install smbclient.
+
+We will use : smbclient -L (target ip) -U Administrator.
+
+-L : List available shares on the target.
+-U : Login identity to use.
+
+We used Administrator because it is the high privilege standard
+account for Windows operating systems.
+
+Because it is a misconfigured server, we didnt need to put any password. We can now see that there are multiple shares on the server. Admin$ and C$ for example.
+
+We now how two options to exploit the server. One is loud and one is not.
+
+Option 1  (Loud): SMB Unprotected C$ Share:
+
+Instead of accessing the ADMIN$ share, we can access the C$ share, which is the file system of the Windows
+machine: smbclient \\\\10.129.194.135\\c$ -U Administrator
+
+We can now change directory to Users/Administrator/Desktop where we can find the flag.txt there.
+
+However, this is a naive and loud way to do it.
+
+Second option (quite) Impacket:
+
+We managed to get the SMB command-line interactive interface. However, since we can access this ADMIN$
+share, we will try to use a tool called psexec.py to exploit this misconfiguration & get the interactive
+system shell. The psexec.py is part of the Impacket framework.
+
+PsExec is a portable tool from Microsoft that lets you run processes remotely using any user's
+credentials. It’s a bit like a remote access program but instead of controlling the computer with a mouse,
+commands are sent via Command Prompt, without having to manually install client software.
+Like any tool, it’s important to understand how the Impacket's psexec works.
+Impacket creates a remote service by uploading a randomly-named executable on the ADMIN$ share on the
+remote system and then register it as a Windows service.This will result in having an interactive shell
+available on the remote Windows system via TCP port 445 .
+Psexec requires credentials for a user with local administrator privileges or higher since reading/writing to
+the ADMIN$ share is required. Once you successfully authenticate, it will drop you into a NT
+AUTHORITY\SYSTEM shell.
+
+We need to install the tool first: git clone https://github.com/SecureAuthCorp/impacket.git
+cd impacket
+pip3 install .
+
+The pkexec utility can be found at /impacket/examples/pkexec.py
+
+The syntax for simply getting an interactive shell from a target :
+python psexec.py username:password@hostIP.
+
+Since we dont have a password, we do: python3 psexec.py Administrator@(target ip)
+
+We change the directory to Users\Administrator\Desktop where we can find the flag.txt file there. We do touch flag.txt
+
+Flag: f751c19eda8f61ce81827e6930a1f40c
+
+//END
+
+
+
+
+
