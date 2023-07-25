@@ -1,0 +1,81 @@
+Date: 25/07/2023
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+We start with our nmap scan: sudo nmap -p- --min-rate 5000 -sC -sV (ip target)
+
+Three tcp ports are open: 21 which is ftp, 23 which is telnet, and 80 which is http.
+
+We notice that ftp is allowing anonymous login. This means that we can login under the username anonymous and we are not required to provide a password. We login as follows: ftp (target ip). Then we provide the username as: "anonymous", and password as: "(space or anything that you want to enter)".
+
+This will give us access to the server.
+
+We get the files that are in directories Engineer and backup
+
+Note: sometime we will face problems downloading files from ftp if we are in ASCII mode, so to avoid such difficulties, we switch to binary mode by typing binary.
+
+
+We open the backup.mdb file which is a database file with mdb-sql tool. Install it if it wasnt on your machine.
+
+We run this to open the file with the tool: mdb-sql backup.mdb
+
+We list thee tables by: list tables. We see a lot of tables listed but one table catches our attention: user_auth table.
+
+We can show what kind of data that it has by: describe table user_auth. We can see multiple Columns like username and password. We do: select username,password from user_auth.
+
+We retrieve three raws, admin:admin, engineer:access4u@security,backup_admin:admin
+
+Now, we try to open Access Control.pst file. The .pst file extention means that this is an outlook email and we need to use the readpst tool to read it without using outlook. We install the tool and we run the following: readpst Access_Control.pst . (I have changed the name of the file).
+
+This will create another file under the name of Access Control.mbox, which we can open with a text editor.
+
+We can see another password that has been mentioned in the email: 4Cc3ssC0ntr0ller, and we also know that it is for the security account.
+
+Now, we try to access the target machine using telnet: telnet (target ip). We will try to login as "security" with the password that we got from the email. 
+
+We are in as security. As usual, we can find the user flag in Desktop of the current user.
+
+user flag: a9ec0caee1b2daf80e26e933f31a964c
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation:
+
+We can show what users Windows is saving passwords for by cmdkey/list . This will show us that the admin user indeed has its password stored.
+
+We will use the runas command to directly access the admin flag like so:
+
+C:\Windows\System32\runas.exe /user:ACCESS\Administrator /savecred "C:\Windows\System32\cmd.exe /c TYPE C:\Users\Administrator\Desktop\root.txt > C:\Users\security\root.txt"
+
+
+
+Using Chat-GPT to explain the previous command: 
+
+C:\Windows\System32\runas.exe: This is the path to the runas.exe tool, which is used to run a program with different credentials (i.e., as a different user). When executed, it will prompt you to enter the password for the specified user.
+
+/user:ACCESS\Administrator: This is an argument for runas.exe, which specifies the username and domain of the user account under which the subsequent command will be executed. In this case, it specifies the user "Administrator" in the domain "ACCESS." The ACCESS part is the name of the domain (also known as the Active Directory domain).
+
+/savecred: This argument is also for runas.exe and instructs it to save the credentials (username and password) entered during the first execution, so you won't be prompted for the password again the next time you use runas.exe with the same user.
+
+"C:\Windows\System32\cmd.exe /c TYPE C:\Users\Administrator\Desktop\root.txt > C:\Users\security\root.txt": This part is the command that will be executed with the specified user credentials.
+
+C:\Windows\System32\cmd.exe: This is the path to the cmd.exe tool, the Windows Command Prompt.
+/c: This is an argument for cmd.exe that tells it to run the command specified next and then exit.
+TYPE C:\Users\Administrator\Desktop\root.txt: This command uses the TYPE command to read the contents of the file "root.txt" located on the desktop of the "Administrator" user.
+> C:\Users\security\root.txt: This part redirects the output of the TYPE command (i.e., the content of "root.txt") to a new file named "root.txt" in the "security" folder under the "Users" directory.
+
+
+
+We will find the root.txt file in C:\users\security
+
+
+admin flag: 5c3069e1821746776c8dd0c08dff9dbd
+
+
+
+
+
+
+
+
