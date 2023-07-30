@@ -1,0 +1,74 @@
+TryHackMe machine:https://tryhackme.com/room/easyctf
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+First,we start with Nmap scan: sudo nmap -sC -sV -p- --min-rate 5000 (target ip)
+
+We find three tcp ports open: 21,80,2222
+
+21/tcp is interesting as it is a FTP server and it allows anonymous login, so we try to login: ftp (target ip) with credentials: anonymous:(any random text as password).
+
+We login and we see only one directory we can go to with only one file. We read the file and it is a message to someone called mitch. 
+
+We know from the message that Mitch has set up a weak password for the system user and for something else, maybe for admin.
+
+Now, lets focous on the port 80 which we know it is a website. We search the target ip and we see apache2 default page.
+
+This is not very useful so we try dirbuster on this URL. We open dirbuster and we use a word list from /usr/share/wordlists/dirbuster . 
+
+After running for few minutes, dirbuster comes up with a directory called simple, so we search (target ip)/simple .
+
+We are welcomed by a webpage for CMS made simple which is an open-source content management system (CMS) that allows users to build and manage websites without requiring extensive technical knowledge.
+
+Also, dirbuster came up with another directory called admin/login.php . If we searched that, we will see a login form. a SQLi attack may be the way to go.
+
+We try SQLi manually but with nothing in return. We search for the technology name in the exploit database: searchsploit CMS Made Simple. 
+
+Indeed we find multiple exploits but one is about SQLi. We search this exploit and it is a python file that uses a wordlist like rockyou.txt find the password and the username
+
+We download the python file into our machine(https://github.com/e-renna/CVE-2019-9053/blob/master/exploit.py) .
+
+However, this program works with a wordfile that is in UTF-8 and rockyou.txt is in latine-1. To fix this problem,we need to convert rockyou.txt to UTF-8 file and we can easily do that by: iconv -f ISO-8859-1 -t UTF-8 rockyou.txt > rockyou_utf8.txt .
+
+We will use the explit like this: python3 (python file name) -u (target ip/simple) -w (rockyou_uft8.txt) -c . This will take time to finish.
+
+The tool only got me the hash of the password, so I googled the hash code that I got and the password is secret.
+
+The username is mitch and the password is secret. 
+
+If we try that, we will be let in.
+
+As we knew from that message that we obtained earlier, we know that the same credentials will work if we tried to optain a secure shell using ssh, so we try that: ssh mitch@(target ip) -p 2222.
+
+We are in.
+
+We optian the user flag: G00d j0b, keep up!
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation:
+
+We see what stuff we can run without being root: sudo -l.
+
+We only can run vim. This is perfect.
+
+We will use the shell escaping techinque to be root. All what we have to do is to run this command: sudo vim -c ':!/bin/sh'.
+
+We are root. Now we can obtain the root flag. To find it: find / -name root.txt . 
+
+root flag: W3ll d0n3. You made it!
+
+//END
+
+
+
+
+
+
+
+
+
+
+
