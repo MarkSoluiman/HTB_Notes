@@ -1,0 +1,35 @@
+TryHackMe machine: https://tryhackme.com/room/sudovulnsbof
+
+The aim of the machine is to introduce us to CVE-2019-18634 exploit so we already have the username and password for this machine : tryhackme:tryhackme
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+First we login to the machien: ssh tryhackme@(target ip) -p 4444 .
+
+If we try to do the following: sudo su root, when it asks us to enter the root password, we notice that we have a feedback as (*) and we useually dont get any feedback when typing passwords.
+
+We can take advantage of this and use a buffer overflow exploit.
+
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation via CVE-2019-18634 exploit:
+
+We can prove that the exploit can be done by:perl -e 'print(("A" x 100 . "\x{00}") x 50)' | sudo -S id . 
+
+We will see:  Password: Segmentation fault, and this means that we've tried to access some memory that we weren't supposed to be able to access. 
+
+We can use this cC file: https://github.com/saleemrashid/sudo-cve-2019-18634/blob/master/exploit.c to escalate our privilages to root .
+
+Lucky us, the file is already there in the target machine all what we need to do is run it. 
+
+We are root after running the compiled C file . 
+
+We can get the root flag from : /root/root.txt
+
+root flag: THM{buff3r_0v3rfl0w_rul3s}
+
+//END
+

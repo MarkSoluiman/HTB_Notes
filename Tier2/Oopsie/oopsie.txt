@@ -1,0 +1,138 @@
+We start with a nmap scan: sudo nmap -sC -sV --min-rate 5000 (target ip)
+
+We see two tcp ports open: 22 and 80 and as usual, once we see port 80, we know there is a website that there is a website to visit.
+
+We will try to run dirbuster on this website to see any hidden directories.
+
+Dirbuster comes up with a login page:cdn-cgi/login/index.php which is a login form page .
+
+We try Sqli but it doesnt work. 
+
+We try to press on the login as guest and we are in the website.
+
+If we pressed the Account tab on the website, we see a table of info about the account owner. We notice something interesting on the URL bar. We try to change the id to 1 instead of 2.
+
+We now see the info of the admin user, but we are not logged in as admin.
+
+However, we can make the website to think that we are on the admin account to be able to upload malicious files by manipulating the cookie.
+
+If we opened cookies using dev tools. We can change the value of the user to 34322 which is the access ID, and change the role to admin. 
+
+Now if we clicked on uploads tab, we see that we can upload files.
+
+The file that we are going to upload is a php revers shell what would work on websites. With the help of Google, we find such file:https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php.
+
+We download this file to our machine and change the ip address to our ip address.
+
+After uploading the reverse shell file to the web. We know need to know where this file has been uploaded as in what directory. We can use dirbuster for that.
+
+We notice that dirbuster found a directory called uploads, even though it gave back 403 response, we still going to try it. 
+
+First, we need to start netcat listener on the port that was specified in the php file: nc -nvlp (port number).
+
+Now, we simply search : (target ip)/uploads/(php file name).
+
+Now, we should have a reverse shell to the target machine.
+
+What we got is a dumb shell which is not fully interactive. To upgrade to a more interactive shell, we can use python to do that: python3 -c 'import pty;pty.spawn("/bin/bash")' . Now we get a more interactive shell
+
+
+We can find the user flag in: /home/robert/user.txt
+
+user flag:f2c74ee8db7983851ab2a96a44eb7981 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation:
+
+Now, let us try to find a password that is hidden inside the machine. If we searched for password hunting Linux github, we will find this repository:https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md#looting-for-passwords .
+
+This has very useful commands to hunt for passwords . We use this one: grep --color=auto -rnw '/' -ie "PASSWORD" --color=always 2> /dev/null .
+
+This will highlight the word password in red. 
+
+At the end of the output, we notice something interesting, a hash for a password: $1$gLhU0/$aW78kHK1QfV3P2b2znUoe/.
+
+We can use hashcat to crack it, but first we need to know what kind of hash is being used and it is easy to do so by going to this website and compare the hash that we have with the exampels: https://hashcat.net/wiki/doku.php?id=example_hashes .
+
+We find out that the code of the hash is being used is 500.
+
+Now, we save the hash that we have in a text file and use hashcat tool as the following: hashcat -m 500 (hash text file name) (wordlist name) -O.
+
+We find that the password topsecret in plain text, now we can try to use this to login to the ssh in port 22 with username admin.
+
+
+This didnt work.
+
+Since it's a website hosted on this machine, we can try to find a folder that is named www: find / -type d -name "www" 2>/dev/null . 
+
+We see a directory called www within the directory of /var .
+
+We see multiple php files under : /var/www/html/cdn-cgi/login .
+
+We try to investigate further by showing what each file contains.
+
+In the db.php file, we see the username:robert and password:M3g4C0rpUs3r! .
+
+Now, we try to login as robert: su robert . If we provided the password that we got, we will login as robert.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation:
+
+We check what privilges this user has by: sudo -l . Unfortunatily, this user can't run sudo.
+
+We can check what group that user is in by: id . This reveals that robert is part of a group called bugtracker.
+
+Let's try to see if there is any binary within that group: find / -group bugtracker 2>/dev/null .
+
+We find a file named bugtracker. We check what privileges does it have: ls -la bugtracker && file bugtracker.
+
+We notice that is has setuid, which is a promising exploitation path.
+
+Commonly noted as SUID (Set owner User ID), the special permission for the user access
+level has a single function: A file with SUID always executes as the user who owns the
+file, regardless of the user passing the command. If the file owner doesn't have
+execute permissions, then use an uppercase S here.
+In our case, the binary 'bugtracker' is owned by root & we can execute it as root since
+it has SUID set.
+
+We try to run this file: ./bugtracker . If we provide a bug number that doesnt exist, we will get this message: cat: /root/reports/444: No such file or directory .
+
+The tool is accepting user input as a name of the file that will be read using the cat command, however, it
+does not specifies the whole path to file cat and thus we might be able to exploit this.
+We will navigate to /tmp directory and create a file named cat with the following content: /bin/sh .
+
+Then, we will change the execute privileges: chmod +x cat .
+
+In order to exploit this we can add the /tmp directory to the PATH environmental variable.
+
+PATH is an environment variable on Unix-like operating systems, DOS, OS/2, and
+Microsoft Windows, specifying a set of directories where executable programs are
+located.
+
+We can do that by: export PATH=/tmp:$PATH
+
+Finally, we execute the bugtracker from /tmp directory: bugtracker.
+
+Now, we are root.
+
+However, since we over wrote cat, we cant use it anymore, we instead use vim to show us the file: vim /root/root.txt .
+
+root flag: af13b0bee69f8a877c3faf667f7beacf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
