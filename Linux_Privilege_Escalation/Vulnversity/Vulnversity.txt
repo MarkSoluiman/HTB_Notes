@@ -1,0 +1,74 @@
+https://tryhackme.com/room/vulnversity
+
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+
+We start with nmap scan: nmap -sC -sV -p- --min-rate 5000 (target ip).
+
+We see multiple ports are open: 21,22,139.445,3128,3333. We see that port 3333 is running http, so we search the target ip on a search engine and we are on a website for a university.
+
+It seems like XSS attacks are useless on this website, so we try the dirbuster approach.
+
+For some reason, dirbuster pauses itself after a while, so we try gobuster: gobuster --url (target url:3333) -w (word list file).
+
+ Gobuster comes up with much bettter results, as it came up with a directory called internal, if we searched (target ip:3333/internal) we can see that we can upload files. We can use that to upload a reverse php shell file because this website was running by php as a programming language.
+
+ We upload a reverse shell php file.
+
+ However, it says that the extension is not allowed, so we further investigate that with BurbSuite.
+
+ If we intersept the request that is a result of uploading the php file, we can send  that to the intruder tool and change the .php extension to other extenstions like php5,php6,php7 and phtml.
+
+ We try these extesnions. In the results window of BurbSuite, we notice that a file that has an extension of phtml has a different length, so we change the reverse shell file extension to phtml. This will work. 
+
+ Now, we need to know where this file was uploaded to run it. We can run gobuster or dirbuster again against the upload page. 
+
+ After running dirbuster, we get a directory called uploads. This seems promising, so we go to this directory using the URL bar.
+
+ We indeed can see the reverse shell file there. We search: (target ip):3333/internal/uploads/(reverse shell file name).
+
+ While netcat is listening to a port, we gain a shell.
+
+ However, if we want to have a more functional shell, we do: python3 -c 'import pty;pty.spawn("/bin/bash")'.
+
+ We can get the user flag from: /home/bill/user.txt 
+
+ user flag:8bd7992fbe8a6ad22a63361004cfcedb
+
+ ---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation:
+
+We will look for a file that has SUID set: find / -perm -u=s -type f 2>/dev/null
+
+Now, we can compare the results with the list in this website:https://gtfobins.github.io .
+
+Under SUID, we see that we have systemctl, so we are going to use that for our exploit.
+
+We will run the following commands, line by line:
+
+TF=$(mktemp).service
+echo '[Service]
+ExecStart=/bin/sh -c "cat /root/root.txt > /home/bill/root.txt"
+[Install]
+WantedBy=multi-user.target' > $TF
+/bin/systemctl link $TF
+/bin/systemctl enable --now $TF
+
+Now, we can access the root flag file where we specified it.
+
+flag root:a58ff8579f0a9270368d33a9966c7fd5
+
+//END
+
+
+
+
+
+
+
+
