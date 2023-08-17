@@ -121,7 +121,7 @@ We will try and login using ssh. In a new terminal: ssh root@(target ip), then w
 
 We will find the root flag under: /root/root.txt
 
-root flat:e50bc93c75b634e4b272d2f771c33681
+root flag:e50bc93c75b634e4b272d2f771c33681
 
 //END
 
