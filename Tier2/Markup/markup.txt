@@ -8,7 +8,7 @@ Dirbuster doesnt come up with very useful info. However, we notice that this log
 
 sqlmap -u 'http://(target ip)/' --data="username=admin&password=sdafsd" --cookie="PHPSESSID=(cookie)" --level 5 --risk 3 --ignore-code 401 -f --banner --dbms='mysql'
 
-However, the solution is simpler than we expected and by trying differnet default credentials, we can login using admin:passowrd.
+However, the solution is simpler than we expected and by trying differnet default credentials, we can login using admin:password.
 
 We will use BurbSuite for this part. In the order tab, we will put some text in the quantity and address and we will capture the traffic of this page after clicking submit.
 
