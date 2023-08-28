@@ -1,0 +1,53 @@
+We download the zip file and we unzip it using the password provided.
+
+After unzipping the file, we will get a file called chase.pcapng which we can open using Wireshark.
+
+We will use the filter bar tool by typing: http.
+
+This will give us only traffic that happened using http protocol.
+
+The first result we get is a GET request from 22.22.22.7 and going to 22.22.22.5 .
+
+We need to investigate this more. We right click on that request and we choose follow, then TCP stream.
+
+We will be provided with a page of more info about this traffic. Client highlited in red and server highlited in blue.
+
+From what we see, the client (in this case the attacker), accessed the upload page (upload.aspx).  
+
+The attacker had admin privileges. This can be known from these two pieces of info:
+
+-----------------------------240279915540934710361858528148
+Content-Disposition: form-data; name="authKey"
+
+admin
+-----------------------------240279915540934710361858528148
+Content-Disposition: form-data; name="file"; filename="cmd.aspx"
+Content-Type: application/octet-stream
+
+This also shows that the filename that the attcker wanted to upload a file called cmd.aspx.
+
+Using the cmd.aspx file, the attacker tried to upload nc64.exe file to the machine that is hosting the webserver. This is a netcat file which can be used by the attacker to start a reverse shell to the machine.
+
+After successfully uploading the netcat file, once again, the attacker used the cmd.aspx file to run the netcat file to listen on the attacker ip address using the port 4444. 
+
+The attacker has successfully accessed the machine. 
+
+Now, we know the port that the attacker used to connect to the machine. We will use this info to continue investigating.
+
+On the filter bar, we type: tcp.port==4444. This will give us the traffic that happened in that port.
+
+We investigate the first stream as we did earlier. We find the commands that the attacker was typing on his/her target machien highlited in blue, and the victime machine in red.
+
+The attacker wanted to know what user he/she is logged in as in the victime machine by typing whoami, the machine responded: iis apppool\defaultapppool, which is the user name. 
+
+The attacker then typed the following: ipconfig, maybe to enumeratet the machine using network. 
+
+The attacker then changed directory to C. Then, the attacker tried twice to upload a file from his/her machine to the C:\users\public directory under the name of file.txt, once using powershell command and the once with cmd command. However, both tries failed.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Getting flag:
+
+The file name is :JBKEE62NIFXF6ODMOUZV6NZTMFGV6URQMNMH2IBA.txt which is base 32 . We decode it and we get: HTB{MAn_8lu3_73aM_R0cX 
+
+//END
