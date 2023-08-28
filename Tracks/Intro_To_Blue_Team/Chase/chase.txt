@@ -48,6 +48,6 @@ The attacker then changed directory to C. Then, the attacker tried twice to uplo
 
 Getting flag:
 
-The file name is :JBKEE62NIFXF6ODMOUZV6NZTMFGV6URQMNMH2IBA.txt which is base 32 . We decode it and we get: HTB{MAn_8lu3_73aM_R0cX 
+The file name is :JBKEE62NIFXF6ODMOUZV6NZTMFGV6URQMNMH2IBA.txt which is base 32 . We decode it and we get: HTB{MAn_8lu3_73aM_R0cX} 
 
 //END
