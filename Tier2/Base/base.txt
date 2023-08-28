@@ -1,0 +1,109 @@
+We start with nmap scan: nmap -sC -sV -p- --min-rate 9000 (target ip) .
+
+We only find two open tcp ports: 22 and 80. By now, we know the drill, if we see the number 80, we know for sure that there is a website.
+
+Running dirbuster against this website came up with useful info. There is a directory under login.
+
+If we searched (target ip)/login. We will see a directory with three files: login.php,config.php,and login.php.swp. 
+
+If searched what .php.swp files are, we get the following answer: An SWP file is a swap file created by the Vi text editor or one of its variants, such as Vim (Vi iMproved) and gVim. It stores the recovery version of a file being edited in the program. SWP files also serve as lock files, so no other Vi editing session can concurrently write to the currently-open file.
+
+We will download the .php.swp file. We can read the file with vim: vim -r (file name). 
+
+
+This file checks the username/password combination that the user submits against the variables that are
+stored in the config file (which is potentially communicating with a database) to see if they match.
+Now, here's the issue:
+
+if (strcmp($username , $_POST['username']) == 0) {
+ if (strcmp($password, $_POST['password']) == 0) {
+
+ The developer is using the strcmp function to check the username and password combination. This
+function is used for string comparison and returns 0 when the two inputted values are identical, however,
+it is insecure and the authentication process can potentially be bypassed without having a valid username
+and password.
+This is due to the fact that if strcmp is given an empty array to compare against the stored password, it will
+return NULL . In PHP the == operator only checks the value of a variable for equality, and the value of NULL
+is equal to 0 . The correct way to write this would be with the === operator which checks both value and
+type. These are prominently known as "Type Juggling bugs".
+
+In PHP, variables can be easily converted into arrays if we add [] in front of them. For example:
+Adding [] changes the variable $username to an array, which means that strcmp() will compare the
+array instead of a string.
+
+In the previous code we see that if the comparison succeeds and returns 0 , the login is successful. If we
+convert those variables into empty arrays ( $username[] & $password[] ), the comparison will return
+NULL , and NULL == 0 will return true, causing the login to be successful.
+
+In order to exploit this vulnerability, we will need to intercept the login request in BurpSuite. To do so fire up
+BurpSuite and configure the browser to use it as a proxy, either with the FoxyProxy plugin or the Browser
+configuration page. Then send a login request with a random set of credentials and catch the request in
+Burp.
+
+We will send the request that we captured to the Repeater.
+
+We will change the POST request data to:username[]=admin&password[]=pass .
+
+We will click send and after that we will click follow redirection.
+
+In the Response tab, we will see that we have successfully accessed a webpage. To view it, we will right click on the mouse on the Response page and choose show response in browser. We will copy the URL and paste it on our browser.
+
+Note: Foxyproxy must be on while doing the previouse step.
+
+We will see an uploading page. We will upload a reverse shell file using written in php. As usual, we need to change the ip address to ours in the php file that we are going to upload.
+
+After uploading the shell file, we need to know where it has been uploaded so we can execute it. We will try dirbuster.
+
+Dirbuster couldnt find the directory that uploaded files are stored at, so we will use gobuster instead.
+
+We will do the following: gobuster dir -u http://(target ip)/ --wordlist /usr/share/wordlists/dirb/big.txt 
+
+We will see that there is a dicrectory called /_uploaded .
+
+If we copied the url that Gobuster gave us and we searched it, we will indeed find the reverse shell php file that we uploaded.
+
+To have a reverse shell, we need to run netcat to listen on the port that we specified in the php file : nc -nvlp (port number).
+
+We go back to our search engine and we click on the php file. This will run the reverse shell code and if we go back to where we ran netcat, we will find that we now have a shell on the target machine.
+
+To have a more functional shell we do: python -c 'import pty;pty.spawn("/bin/bash")'.
+
+if we ran ls while we are in the home directory, we will find a user called John.
+
+Since we know that the website is running on this Linux machine, we will try to go to the following directory: /var/www/html.
+
+We will find the directories that are related to the website. We will go to login directory and open the config.php file.
+
+We will find the following credentials: admin:thisisagoodpassword.
+
+If we listed the files in the home directroy, we will find a user called john. If we took a look at that directory, we will see the user.txt file, but if we tried to view it we will see that we dont have permission.
+
+Since there is an ssh server running on the target ip, we will try to login using the username john and the password that we found: ssh john@(target ip).
+
+We are in.
+
+We will find the user flag under: /home/john/user.txt
+
+user flag:f54846c258f3b4612f78a819573d158e
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Privilege Escalation:
+
+We will list the commands that the current user can run with sudo: sudo -l. We find that john can run find with sudo.
+
+This is very critical as we can easily login as root using this exploit from https://gtfobins.github.io/.
+
+Under sudo, we will find the following command that we can run if we have permission to run find with the current user: sudo find . -exec /bin/sh \; -quit.
+
+If we ran that, we will find that we are now root.
+
+root flag:51709519ea18ab37dd6fc58096bea949
+
+//END
+
+
+
+
+
+
