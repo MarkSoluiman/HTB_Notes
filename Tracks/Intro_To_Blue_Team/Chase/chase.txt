@@ -1,3 +1,10 @@
+Description:One of our web servers triggered an AV alert, but none of the sysadmins say they were logged onto it. We've taken a network capture before shutting the server down to take a clone of the disk. Can you take a look at the PCAP and see if anything is up?
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 We download the zip file and we unzip it using the password provided.
 
 After unzipping the file, we will get a file called chase.pcapng which we can open using Wireshark.
