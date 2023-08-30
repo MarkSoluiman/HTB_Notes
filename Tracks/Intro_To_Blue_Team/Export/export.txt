@@ -1,0 +1,31 @@
+Description:We spotted a suspicious connection to one of our servers, and immediately took a memory dump. Can you figure out what the attackers were up to?
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+
+The file that we get is a .raw file. We can read this file by the volatility tool, which we can get from:https://www.volatilityfoundation.org/releases, and we will download Download the Volatility 2.6 Linux Standalone Executables (x64)
+
+
+
+After downloading and unzipping the Volatility zip file, we will copy the .raw file that we got to the unzipped Volatility file. 
+
+List for volatility commands:https://github.com/volatilityfoundation/volatility/wiki/Command-Reference#filescan.
+
+
+We will do the following: ./volatility_2.6_lin64_standalone -f WIN-LQS146OE2S1-20201027-142607.raw imageinfo. 
+
+This will give us info about the machine that was attacked, and it seems like this machine is Windows7 machine.
+
+To see what cmd commands have been ran on this machine, we will do: ./volatility_2.6_lin64_standalone -f WIN-LQS146OE2S1-20201027-142607.raw --profile=Win7SP1x64 cmdscan.
+
+We will notice a Powershell command is entered. Also, it seems that this command is URL encoded, so we will decode it using this website:https://gchq.github.io/CyberChef.
+
+After decoding the command from URL, we will notice that some of the output is encoded in Base64, so we will decode the whole output using Base64. This will reveal the flag.
+
+flag: HTB{W1Nd0ws_f0r3Ns1CS_3H?}.
+
+//END
+
+
+
+
+

@@ -1,3 +1,10 @@
+Description:One of our web servers triggered an AV alert, but none of the sysadmins say they were logged onto it. We've taken a network capture before shutting the server down to take a clone of the disk. Can you take a look at the PCAP and see if anything is up?
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 We download the zip file and we unzip it using the password provided.
 
 After unzipping the file, we will get a file called chase.pcapng which we can open using Wireshark.
@@ -48,6 +55,6 @@ The attacker then changed directory to C. Then, the attacker tried twice to uplo
 
 Getting flag:
 
-The file name is :JBKEE62NIFXF6ODMOUZV6NZTMFGV6URQMNMH2IBA.txt which is base 32 . We decode it and we get: HTB{MAn_8lu3_73aM_R0cX 
+The file name is :JBKEE62NIFXF6ODMOUZV6NZTMFGV6URQMNMH2IBA.txt which is base 32 . We decode it and we get: HTB{MAn_8lu3_73aM_R0cX} 
 
 //END

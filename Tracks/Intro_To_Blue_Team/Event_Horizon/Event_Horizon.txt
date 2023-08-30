@@ -1,0 +1,25 @@
+Description: Our CEO's computer was compromised in a phishing attack. The attackers took care to clear the PowerShell logs, so we don't know what they executed. Can you help us?
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Since the zip file contains .evtx files which are Windows Event Log files, viewing these files on Linux is very challenging, so we will view them on a Windows machine.
+
+We will sort the files by size, and we will notice that only three files have different sizes:Microsoft-Windows-SystemDataArchiver%4Diagnostic, Microsoft-Windows-PowerShell%4Operational, and Security. 
+
+Since it was mentioned in the description that the attacker cleared the Powershell logs, we will check the Microsoft-Windows-PowerShell%4Operational file which has the Powershell logs. 
+
+If we scrolled throught the events, we will see two differnet level of events, information and warning. We are more interested in the warning events.
+
+If we clicked on one of the warning events, we will notice the event ID which is 4104, we can use that to filter the events. 
+
+On the right side in the action panel, we will click on filter current log. Then, we will enter the event id, or we can simply choose to only view the warning events.
+
+Now, we can only see events that have a warning level. We will sort the events by date, since we want to track what happened from the very beginning.
+
+We are lucky, the first event that has a warning level has the flag.
+
+flag:HTB{8Lu3_734m_F0r3v3R}.
+
+//END 
