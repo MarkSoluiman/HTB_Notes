@@ -1,0 +1,21 @@
+Description:A potential insider threat has been reported, and we need to find out what they accessed. Can you help?
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Unzipping the zip file will give us a folder called Mozilla. Inside it will have three folders: Firefox, Extensions, and SystemExtensionDev. Firefox is the one that we are going to look at.
+
+Inside Firfox, we will find also three folders: Crash Reports, Pending Pings, and Profiles. We are going to look at Profiles.
+
+Inside Profiles, we will see two profile folders: 2542z9mo.default-release, and yodxf5e0.default. 
+
+We will be using a tool called firefox decrypt to solve this challange. We will clone the repository from:https://github.com/unode/firefox_decrypt.
+
+We will change our directory to the firefox_decrypt tool that we just got and we will use firefox_decrypt.py to decrypt both profiles.
+
+We will do: python3 firefox_decrypt.py (full path to the profile folder).
+
+We will get the password for the 2542z9mo.default-release profile which is also the flag.
+
+flag:HTB{ur_8RoW53R_H157Ory}
+
+//END
