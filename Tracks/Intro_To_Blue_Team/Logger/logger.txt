@@ -1,0 +1,27 @@
+Description:A client reported that a PC might have been infected, as it's running slow. We've collected all the evidence from the suspect workstation, and found a suspicious trace of USB traffic. Can you identify the compromised data?
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+After unzipping the file, we see that we have a Wireshark file that we can investigate.
+
+After investigating the Wireshark file we see that the traffic was captured is USB protocol. 
+
+We will only investigate the URB_INTERRUPT in packets by highlighting these packets and export selected packets to a spereate file. These packets are keyboard strokes.
+
+Note: make sure to check selected packets only when exporting the packets.
+
+We will use the following tool to read the keyboard strokes: https://github.com/carlospolop-forks/ctf-usb-keyboard-parser.
+
+We will use the tool as the following: tshark -r (the filtered packets file name) -Y 'usb.capdata && usb.data_len == 8' -T fields -e usb.capdata | sed 's/../:&/g2' > output.txt
+
+Then, python3 usbkeyboard.py output.txt 
+
+
+
+We will get the following output:⇪htb{⇪i_⇪c4n_533_⇪y⇪ou⇪r_⇪k3y2⇪}. However, this is not an acceptable flag. 
+
+To get the flag, we will deal with the up arrows as caps lock on or off. So, 'htb' becomes 'HTB' and 'i' is still i as every second apperance of the up arrow is caps lock off.
+
+flag: HTB{i_C4N_533_yOUr_K3Y2}
+
+//END
