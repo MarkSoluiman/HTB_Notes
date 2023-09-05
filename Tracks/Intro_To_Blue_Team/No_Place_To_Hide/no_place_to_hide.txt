@@ -1,0 +1,12 @@
+Description:We found evidence of a password spray attack against the Domain Controller, and identified a suspicious RDP session. We'll provide you with our RDP logs and other files. Can you see what they were up to?
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+After unzipping the zip file, we find two files:bcache24.bmc, and Cache0000.bin .If we investigated the files by: file *, we see that bcache24.bmc is empty while Cache0000.bin is not. We will use this tool to analyze the .bin file: https://github.com/ANSSI-FR/bmc-tools.
+
+After downloading the tool, we will do the following: sudo python ./bmc-tools.py -s Cache0000.bin -d ./ -v -o -b -w 100.
+
+This will result in extracting 1161 images that we can view. These images has evidence of what happened and we can also get the flag from them.
+
+Flag: HTB{w47ch_y0Ur_c0Nn3C71}.
+
+//END
