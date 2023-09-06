@@ -1,0 +1,18 @@
+Description:We're noticing some strange connections from a critical PC that can't be replaced. We've run an AV scan to delete the malicious files and rebooted the box, but the connections get re-established. We've taken a backup of some critical system files, can you help us figure out what's going on?
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+
+After unzipping the zip file, we get a file called query. To know what kind of files we are dealing with, we will do: file query. This will reveal that this file is a Windows registry file.
+
+To analyize such files, we will use registry-tools. After installing them, we will use the regshell tool like so: sudo regshell -F query. This will give us a simple like shell to use inside the registry to be able to go through keys and view files within them.
+
+To get the flag, we will go to this directory:\Software\Microsoft\Windows\CurrentVersion\Run. After that, we will list the files: ls. We see that a .exe file that has an interesting name.
+
+Note: We investigated this specific directory as it contains programs that run automatically on boot.
+
+If we decoded the name of the file using base64, we get the flag.
+
+flag:HTB{1_C4n_kw3ry_4LR19h7}.
+
+//END
