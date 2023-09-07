@@ -57,7 +57,7 @@ The exploit that we are going to use is called dirty cow.
 
 It is already installed on the machine but we can download the file from here: https://github.com/firefart/dirtycow/blob/master/dirty.c
 
-we change the directory where the dirtry cow tool is installed and we run it like so: gcc -pthread c0w.c -o cow
+we change the directory where the dirty cow tool is installed and we run it like so: gcc -pthread c0w.c -o cow
 
 Then, we run the exploit: ./cow
 
@@ -73,7 +73,7 @@ Escalation via stored passwords:
 
 In the home directory, if we listed the hidden files: ls -la, we will see the file that contains the bash history. We can see its content by: cat .bash_history . We can easily get the bash history by just typing history
 
-If we scrolled up a little bit, we can see a password: password123 .  We can try and login as root: sudo root, and we provide the password that we found. Indeed we are now root.
+If we scroll up a little bit, we can see a password: password123 .  We can try and login as root: sudo root, and we provide the password that we found. Indeed we are now root.
 
 Also, we tried this command : find . -type f -exec grep -i -I "PASSWORD" {} /dev/null \; , We can find the password at the end of the output
 
@@ -83,7 +83,7 @@ If we see the content of this file, we will see a user and their password. Howev
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Escalaion via weak flies permisions:
+Escalation via weak flies permissions:
 
 As we have mentioned before, if we tried to read the file /etc/shadow , we will notice that we can indeed read the file. However, this shouldnt be the case as this file includes the hashes of the passwords. 
 
