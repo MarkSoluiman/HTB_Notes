@@ -1,0 +1,58 @@
+Description:We received an email from Microsoft Support recommending that we apply a critical patch to our Windows servers. A system administrator downloaded the attachment from the email and ran it, and now all our company data is encrypted. Can you help us decrypt our files?
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------
+
+We have two files, windows_update.exe, and login.xlsx.enc. It seems like that windows_update.exe was used to encrypt the content of the .enc file. We will need to analyize the .exe file using Ghidra. Ghidra will allow us to see the code that is used in the .exe file so we can reverse engineer the encryption algorithm.
+
+After installing and opening Ghidra, we will create a new project and we will import the .exe file into it.
+
+Now, we can open the .exe file within the project that we created. 
+
+Once we are able to see the code, we will start analyzing the code that is written which looks like it was written in Assembly which is hard to read.
+
+On the left hand side, we will see a panel called Symbol Tree and beneath it a filter. We will search for the function tha was used in encrypt the file, so we will try to write encrypt or encryption. 
+
+Indeed, there is a function called encrypt.
+
+If we clicked on it, a much easer to read code will appear on the right hand side. There, we can see that a while loop was used to encrypt the file using multiple hexadecimal vaues, which they can be decoded to SUPERSECURE.
+
+Our aim now that we write a python code that would decode the file, since we now know the ecnryption algorithm.
+
+We will need to install a library called pwn tools. See this Github repository to install it:https://github.com/Gallopsled/pwntools.
+
+After installing the pwn tool, we can write our script to get the flag:
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+from pwn import *
+
+key=list(b"SUPERSECURE")
+flag=[]
+
+encrypt=read("login.xlsx.enc")
+
+#print (encrypt)
+
+count=0
+
+for byte in encrypt :
+	flag.append(byte-key[count%len(key)])
+	count+=1
+
+
+print(flag).
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+The main idea is to go through each byte in the file and to subtract it from one character of the key which is SUPERSECURE. The program will go around the key multiple times to decrypt each byte in the .enc file.
+
+After running the code, we will get an array of numbers.
+
+We will copy and paste these numbers (without the []) to cyberchef, and we will decode them with decimal.
+
+Finally, we will save the output to a .xls or .xlsx file. If we opened the Excel file that we saved, we will see the flag.
+
+flag:HTB{M4lW4R3_4n4LY5I5_IN73r357iN9_57uFF}
+
+//END
