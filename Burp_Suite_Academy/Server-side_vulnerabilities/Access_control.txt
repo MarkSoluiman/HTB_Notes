@@ -102,8 +102,38 @@ By modifying the id paramater, we can have the privileges of other users.
 
 
 Note:It is called Horizontal privilege escalation because we get the privileges of another regular user and not the admin privileges.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Lab: User ID controlled by request parameter, with unpredictable user IDs
+
+To solve this lab, we need to get carlos user id first.
+
+To do this, we need to find a blog that was published by carlos. Using Burp Suit, we can capther the http history after clicking the publisher of the blog name which is carlso. This will give us the user id of carlos.
+
+Now, we need to login with wiener/peter. Then, we change the id in the url with carlos id.
+
+We submit the solution.
+
+Solution:bmCOB2YdhO6noZCQJwadYAWemmSJ3Hky
+
+//Lab Done
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+Lab: User ID controlled by request parameter with password disclosure
 
+To solve this lab, we need to login using the given credentials of wiener.
 
+Then, we simply change the username from wiener to administrator in the url. 
+
+We can easily get the password as it is already typed out for us in the password input for updating the password. 
+
+We use the credentials for admin: administrator:h255qlbpnkiz8cbe8629.
+
+We delete the user carlos.
+
+//Lab Done
+
+//END
 
