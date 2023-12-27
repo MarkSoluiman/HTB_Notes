@@ -1,0 +1,109 @@
+What is Access control?
+
+It is the application of limitations on who or what is authorized to perform actions or access resources within a website or applicaion.
+
+Access conrtol relies on authentication and session management.
+
+Authentication confirms that the user is who they say they are.
+
+Session management identifies which subsequent HTTP requests are being made by that same user.
+
+Access control determines whether the user is allowed to carry out the action that they are attempting to perform.
+
+This means if a website has broken access control as a vulenrability, an attacker who doesn't have the admin credentials can indeed perform actions or access resources that only an admin can perfomr or access.
+
+Unprotected functionality:
+
+For example, a website might host sensitive functionality at the following URL:https://insecure-website.com/admin
+
+This might be accessible by any user, not only administrative users who have a link to the functionality in their user interface. In some cases, the administrative URL might be disclosed in other locations, such as the robots.txt file:https://insecure-website.com/robots.txt
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Lab: Unprotected admin functionality
+
+This website has an unprotected administration panel. 
+
+To find the info that we need, we will add /robots.txt to the end of url of the website.
+
+This will give us the content of the robots.txt file. We now know that the administration panel name which is: administrator-panel.
+
+If we added this name to the end of the original url of the website, we will see two users we can delete as we are now admin. We delete carlos.
+
+//Lab Done.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Sometimes, the url that contains sensitive data might not be so easy to guess. For example, this url has the admin functions: https://insecure-website.com/administrator-panel-yb556.
+
+Attackers can still find the url by different ways other than guessing.
+
+The application might still leak the url by including it in its JS code. For example,
+ <script>
+	var isAdmin = false;
+	if (isAdmin) {
+		...
+		var adminPanelTag = document.createElement('a');
+		adminPanelTag.setAttribute('https://insecure-website.com/administrator-panel-yb556');
+		adminPanelTag.innerText = 'Admin panel';
+		...
+	}
+</script>
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Lab:Unprotected admin functionality with unpredictable URL
+
+To solve this lab, all we have to do is to go to the login page and inspect the page. We go to the Sources tab where we will find the code of the login page. 
+
+We read through the code and we will find the JS code responsoble for generating the admin url if we login as admin. We see that the admin functionality is at: /admin-ifbi4x.
+
+If we put this instead of login in the url, we will see the users that we can delete. We delete carlos.
+
+//Lab Done.
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Parameter-based access control methods:
+
+Applications make access control decisions based on a submitted value. For example, these urls:https://insecure-website.com/login/home.jsp?admin=true, and 
+https://insecure-website.com/login/home.jsp?role=1
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Lab: User role controlled by request parameter
+
+To solve this lab, we first need to login using a normal user credentials: wiener:peter.
+
+We will inspect the page after we login. 
+
+We will go to the Application tab. We can see that the value of the cookie named Admin is false. 
+
+We will change it to true and refresh the page. 
+
+We will notice that we now have the option to click on the Admin panel in the website. 
+
+We delete the user carlos.
+
+//Lab Done.
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Horizontal privilege escalation
+Horizontal privilege escalation occurs if a user is able to gain access to resources belonging to another user, instead of their own resources of that type. For example, if an employee can access the records of other employees as well as their own, then this is horizontal privilege escalation.
+
+Horizontal privilege escalation attacks may use similar types of exploit methods to vertical privilege escalation. For example, a user might access their own account page using the following URL: https://insecure-website.com/myaccount?id=123
+
+By modifying the id paramater, we can have the privileges of other users.
+
+
+Note:It is called Horizontal privilege escalation because we get the privileges of another regular user and not the admin privileges.
+
+
+
+
+
