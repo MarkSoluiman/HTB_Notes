@@ -1,0 +1,17 @@
+If a website has a path traversal vulnerability, we can easily access hidden files that might have info that we shouldn't access as end users like password files.
+
+For example, if we have the following url while we are surfing a website: https://insecure-website.com/loadImage?filename=218.png". We can easily change the url to become https://insecure-website.com loadImage?filename=../../../etc/passwd. This will reveal to us the passwords file within the server that is hosting the website. This example works for Linux based servers. The same can be done with Windows based servers: https://insecure-website.com/loadImage?filename=..\..\..\windows\win.ini
+
+/////////////////////////////////////////////////////////
+
+Lab: File path traversal, simple case:
+
+For this lab, all we have to do is to inspect a picture that is in the website and will copy the image path to the url and instead of the image name, we will change it to: ../../../etc/passwd. If we copy and pased this to the url search bar, we will see the content of the passwords file.
+
+//END
+
+
+
+
+
+
