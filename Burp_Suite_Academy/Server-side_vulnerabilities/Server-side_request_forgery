@@ -1,0 +1,88 @@
+What is SSRF?
+Server-side request forgery is a web security vulnerability that allows an attacker to cause the server-side application to make requests to an unintended location.
+
+In a typical SSRF attack, the attacker might cause the server to make a connection to internal-only services within the organization's infrastructure. In other cases, they may be able to force the server to connect to arbitrary external systems. This could leak sensitive data, such as authorization credentials.
+
+IN SSRF attack, the attacker can modify the HTTP request that the front-end sends it to the back-end API to retrieve data.
+
+For example, in a shopping application, for the user to be able to see the available stock, the website will send this http request to the API in the background:  POST /product/stock HTTP/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 118
+
+stockApi=http://stock.weliketoshop.net:8080/product/stock/check%3FproductId%3D6%26storeId%3D1.
+
+The attacker can modify the request to the following: POST /product/stock HTTP/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 118
+
+stockApi=http://localhost/admin 
+
+This will allow the attacker to access the /admin url if and only if the the request comes from the local machine because in this case the request appears to originate from a trusted location.
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Lab: Basic SSRF against the local server
+
+This lab tells us that we can perform SSRF attack against the website via the check stock request the website has.
+
+Using Burp Suite, we captuer the request of checking the stock, we find that the API sent is:https://0a6600a9046c6a6b83991f31002b00cb.web-security-academy.net/product?productId=1. We change it to: http://localhost/admin using repeater. 
+
+We see that we can see the code for the admin panel.
+
+If we invistigated the code, we can see that if we wanted to delete the user carlos, the request should be:admin/delete?username=carlos.
+
+We add this to the end of the API request: http://localhost/admin/delete?username=carlos.
+
+We send this request and the user carlos is deleted.
+
+//Lab Done.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SSRF attacks against other back-end systems
+In some cases, the application server is able to interact with back-end systems that are not directly reachable by users. These systems often have non-routable private IP addresses. The back-end systems are normally protected by the network topology, so they often have a weaker security posture.
+
+In many cases, internal back-end systems contain sensitive functionality that can be accessed without authentication by anyone who is able to interact with the systems.
+
+In the previous example, imagine there is an administrative interface at the back-end URL https://192.168.0.68/admin. An attacker can submit the following request to exploit the SSRF vulnerability, and access the administrative interface:
+
+POST /product/stock HTTP/1.0
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 118
+
+stockApi=http://192.168.0.68/admin
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Lab: Basic SSRF against another back-end system
+
+The same scenario as the last lab but this time the website is using another back-end system that we dont know the full ip address of, all we know it is in that form: 192.168.0.X at port 8080.
+
+Using Burb Suite, we capture the API request of checking the stock of one of the products.
+
+We get this API request:http%3A%2F%2F192.168.0.1%3A8080%2Fproduct%2Fstock%2Fcheck%3FproductId%3D2%26storeId%3D1
+
+We send it to intruder.
+
+We notice the 192.168.0.1 ip address. 
+
+Now we need to change the request to:http://192.168.0.1:8080/admin/
+
+We will high light the last number in the ip address and click Add.
+
+In the payloads, we change the payload type to numbers and set the numbers from 0 to 255. We start the attack.
+
+Eventually, we will get a valid ip address.
+
+We send the modified traffic to Repeater with the right ip address.
+
+We will get the admin panel page and we can delete carlos using the same method from the previous lab.
+
+
+
+//Lab Done.
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//End
