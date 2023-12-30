@@ -1,0 +1,25 @@
+Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data 
+
+The wording in this lab is currently misleading. What we need to do is to show every product including not released products.
+
+We can launch a SQLi attack using the url.
+
+If we click on a category to be filtered, in the url we will see something like this: category=Lifestyle.
+
+What we need to do is: category=Lifestyle' or 1=1 --
+
+This will give us every product availabe because it will us every item in table products where category is Lifestyle. However, by adding or 1=1 --, it will ignore the first requirement and also it will ignore any thing after the 1=1 since we added -- which marks whatever comes after it as a comment.
+
+//Lab Done.
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Lab: SQL injection vulnerability allowing login bypass 
+
+Simply, to pass this lab, we need to type the following in the username: administrator' -- 
+
+It doesn't matter what we are going to type in the password field. This will allow us to login as administrator.
+
+//Lab Done.
+
+//END

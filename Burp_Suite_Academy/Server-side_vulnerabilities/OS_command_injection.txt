@@ -1,0 +1,11 @@
+Lab: OS command injection, simple case
+
+This lab is very simple.
+
+First, we capture the traffic of checking the stock and send what we caught to the Repeater.
+
+What we need to do is to type whoami in a new line at the very bottom.
+
+//Lab Done
+
+//END 
