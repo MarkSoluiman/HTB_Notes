@@ -1,0 +1,58 @@
+What are file upload vulnerabilities?
+File upload vulnerabilities are when a web server allows users to upload files to its filesystem without sufficiently validating things like their name, type, contents, or size. Failing to properly enforce restrictions on these could mean that even a basic image upload function can be used to upload arbitrary and potentially dangerous files instead. This could even include server-side script files that enable remote code execution.
+
+In some cases, the act of uploading the file is in itself enough to cause damage. Other attacks may involve a follow-up HTTP request for the file, typically to trigger its execution by the server.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Lab: Remote code execution via web shell upload
+
+The website has a vulnerability that allows us to upload malicious files.
+
+Our aim is to upload a php file that will get the content of the file: /home/carlos/secret.
+
+The code will look like this: <?php echo file_get_contents('/home/carlos/secret'); ?>
+
+We will add this to a .php file and upload it after we login using our credentials.
+
+fter that, we notice we have the option to upload our own avatar image. We upload the malicious php file.
+
+We go back to our account page.
+
+We inspect it. We notice that the file is located at:/files/avatars/ourfile.php
+
+We replace the end of the url with the location of the php file: web-security-academy.net/files/avatars/ourfile.php.
+
+We will get the content of the file
+
+//Lab Done
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Sometimes, websites can restric the type of files that we can upload. For example, if the website is expectig an image to be uploaded, the Content-Type header might be to only accept image/jpeg. 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Lab: Web shell upload via Content-Type restriction bypass
+
+We will login using our credentials.
+
+Next, we will try to upload the same php code.
+
+However, we are unsuccessful and we get this message:Sorry, file type application/x-php is not allowed Only image/jpeg and image/png are allowed Sorry, there was an error uploading your file.
+
+We try again but we caputure the request of us trying to upload the php file.
+
+We send the request to the Repeater.
+
+We notice that in the Content-Type it says application/x-php. We change that to image/jpeg and we send the request again.
+
+If we render the responce, we see that our file was uploaded.
+
+We access the file like the last lab.
+
+//Lab Done
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//END
