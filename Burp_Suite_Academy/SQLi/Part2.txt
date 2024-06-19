@@ -1,0 +1,16 @@
+Subverting application logic:
+
+Imagine an application that uses SQL queries for its login logic. The user can put their username and password resulting in the following: SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'.
+
+If the query returns the details of the user, the user will be logged in. Otherwise, they will be rejected.
+
+An attacker can login as any user without the need of a password using the -- as a comment. For example, if the attacker entered this to the username field: administrator'--, the SQL query will be: SELECT * FROM users WHERE username = 'administrator'--' AND password = ''. The attacker will login as administrator without the need of a password. 
+------------------------------------------------------------------------------------------------------------------
+
+Lab: SQL injection vulnerability allowing login bypass:
+
+To solve this lab, we need to login as administrator. To do this, we will put the following in the username field: administrator' --.
+
+
+
+

