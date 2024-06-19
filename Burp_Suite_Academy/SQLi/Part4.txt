@@ -1,0 +1,34 @@
+Database-specific syntax:
+
+On Oracle, every SELECT query must use the FROM keyword and specify a valid table. There is a built-in table on Oracle called dual which can be used for this purpose. So the injected queries on Oracle would need to look like: ' UNION SELECT NULL FROM DUAL--
+
+The payloads described use the double-dash comment sequence -- to comment out the remainder of the original query following the injection point. On MySQL, the double-dash sequence must be followed by a space. Alternatively, the hash character # can be used to identify a comment.
+
+Finding columns with a useful data type:
+
+A SQLi UNION attack enables us to retrieve results from an injected query. The interesting data that we want to retrieve is usually in string form. That means we need to find one or more column that its data type is or is compatible with string data. 
+
+After we determine the number of columns, we can test for the type of values that each column has. We do this by submitting a series of UNION queries where we swap the NULL with 'a' for each column we are testing for: 
+
+' UNION SELECT 'a',NULL,NULL,NULL--
+' UNION SELECT NULL,'a',NULL,NULL--
+' UNION SELECT NULL,NULL,'a',NULL--
+' UNION SELECT NULL,NULL,NULL,'a'--
+
+If the column data type is not compatible with string data, the injected query will cause a database error, such as:Conversion failed when converting the varchar value 'a' to data type int.
+
+------------------------------------------------------------------------------------------------------------------
+
+Lab: SQL injection UNION attack, finding a column containing text:
+
+This lab contains a SQL injection vulnerability in the product category filter. The results from the query are returned in the application's response, so you can use a UNION attack to retrieve data from other tables. To construct such an attack, you first need to determine the number of columns returned by the query. You can do this using a technique you learned in a previous lab. The next step is to identify a column that is compatible with string data.
+
+The lab will provide a random value that you need to make appear within the query results. To solve the lab, perform a SQL injection UNION attack that returns an additional row containing the value provided. This technique helps you determine which columns are compatible with string data.
+
+To solve this lab, we need first to know how many columns we are dealing with. We use the Order By attack.
+
+We are dealing with 3 columns. In this particular lab, we are asked to return the string :"YNe1e4", but first we need to find out which of these three columns can handle String data.
+
+We use Burp Suite for this lab. We will send this query in category: Gifts'+Union+Select+NULL,'a',NULL+--.
+This will give us a result back and the website will display the letter a. That means the second column is our target. We just need to replace the letter 'a' with the string provided for us.
+
