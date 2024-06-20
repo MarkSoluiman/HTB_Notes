@@ -1,0 +1,87 @@
+What is blind SQL injection?
+
+Blind SQLi happens when an application is vulnerable to SQLi, but its HTTP response doesn't contain the results of the relevant SQL query or any details of database errors.
+
+Many techniques such as UNION attacks are not effective with blind SQLi attacks. This is because we can't see the response of the application upon attacking with SQLi. It is still possible to exploit blind SQL injection to access unauthorized data, but different techniques must be used.
+
+Exploiting blind SQL injection by triggering conditional responses:
+
+Consider an application that uses tracking cookies to gather analytics about usage. The application would use requests that includes a Cookie header like this: Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4.
+
+When a request containing a TrackingId cookie is processed, the application uses a SQL query to determine whether this is a known user: SELECT TrackingId FROM TrackedUsers WHERE TrackingId = 'u5YD3PapBcR4lN3e7Tj4'
+
+This query is vulnerable to SQLi attack. However, the results of the query can't be seen by the user. Luckily, the application will act differently depending on the returned data from the query. For example, if we submitted a valid TrackingId, the query will return data, and we will get a Welcome back message as the user that this tracking id belongs to. 
+
+To fully understand how this exploit works, suppose that two requests are sent containing the following TrackingId cookie values in turn:
+…xyz' AND '1'='1
+…xyz' AND '1'='2
+
+The first of these values causes the query to return results, because the injected AND '1'='1 condition is true. As a result, the "Welcome back" message is displayed.
+
+The second value causes the query to not return any results, because the injected condition is false. The "Welcome back" message is not displayed.
+This allows us to determine the answer to any single injected condition, and extract data one piece at a time.
+
+For example, suppose there is a table called Users with columns Username and Password, and a user called Administrator. You can determine the password for this user by sending a series of inputs to test the password one character at a time:xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 'm.
+
+Note: the first 1 indicates the index of the letter and the second 1 indicates the length of the substring and since we only want the first letter, we provide (1,1).
+
+This will return a Welcome back message, meaning that the condition that we provided is true. We now know that the first character of the Administrator account password is greater than m. 
+
+Now, we can try to narrow our guess down and try another letter like t: xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't.
+
+If we didn't get a Welcome back message, that means the first character is less than t, so the first character is between m and t. 
+
+Eventually, we send the following input, which returns the "Welcome back" message, thereby confirming that the first character of the password is s:
+
+We can continue this process to systematically determine the full password for the Administrator user.
+
+------------------------------------------------------------------------------------------------------------------
+
+Lab: Blind SQL injection with conditional responses
+
+This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs a SQL query containing the value of the submitted cookie.
+
+The results of the SQL query are not returned, and no error messages are displayed. But the application includes a "Welcome back" message in the page if the query returns any rows.
+
+The database contains a different table called users, with columns called username and password. You need to exploit the blind SQL injection vulnerability to find out the password of the administrator user.
+
+To solve the lab, log in as the administrator user.
+
+We will use Burb Suite for this lab.
+
+If we go to Home and capture the Get request, we will notice the Cookie header with the tracking Id. If we refreshed the page, we will notice that we get a Welcome back message indicating that the application is checking for the tracking id of the cookie to see if we have visited the website before or no. Now, we take a note of the tracking id that we are provided with:OMtjejO3h2joVY9d
+
+We send the request that we captured to Repeater to start the analyses.
+
+We can only imagine how the backend of the application work. For example, we can assume the application is checking if a user has visited the website before by checking for the tracking id like this: select trackingId from trackingIdTable where trackingId='RandomText'.
+
+Now, we will start to test if the application is indeed vulnerable to Blind SQLi. 
+
+Since we know that if the SQL query is true, the website will return a Welcome back message, we can use this to get more info. 
+
+We will try the following: xyz'OR+1=1+--. If we put our tracking id with a messing character before the 'OR and we still manage to get a Welcome back message, that means the website is indeed vulnerable to SQLi attack since the whole query is true.
+
+Since we know that a blind SQLi attack is possible, we will exploit this to further analyzing the database the website is using. 
+
+We will put the actual tracking id but we will change the query after it.
+
+We will try the following: 'and+(select 'x'+from users Limit+1)='x'--. This query will return true if a table called users exist. What this query will actually do is showing one char that is x if a table called users exist and will compare the x with a char of x, so this query should return true if a table called users exist.     
+
+Indeed, we get a Welcome back message. Now we know that a table called users exist. 
+
+To check if there is a user called administrator exist in this table, we will do the following: 'and+(select+username+from+users+where+username='administrator')='administrator'--
+
+We get a Welcome back message, meaning that there is a username called administrator in the users table. 
+
+Now, it is time to enumerate the password itself. The first thing that we need to know about the password it's its length. In order to do this, we will do the following: 'and(select+username+from+users+where+username='administrator'+ and+Length(password)>1)='administrator'--. This query will return true if the length of the password of user administrator is greater than 1. We will trial and error by changing the value of 1 to something else that is bigger until we find out that the length of the password is 20 characters. 
+
+Since we now know the length of the password used by administrator, we can enumerate the password further to know its characters. To do this we will use the substring function. This will allow us to know which part of the password is which character. We will do the following: 'and(select+username+from+users+where+username='administrator'+and+substring(password,1,1)='a')='administrator'--. This query will return true if the first character of the password that belongs to administrator is equals to a. Indeed, we see a Welcome back message. 
+
+We will send this to Intruder and we will use the Cluster bomb attack. We will put two payloads, the first one will be numerical which will be the second input in the function substring, and the second one will be the character that we are examining the password with. 
+
+The result is that there are 720 different combinations that are possible and trying them all with community edition will take time. 
+
+Eventually, we will get the password and we will be able to login as administrator.
+
+
+
