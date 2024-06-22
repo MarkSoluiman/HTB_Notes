@@ -1,0 +1,68 @@
+Error-based SQL injection:
+
+Error-based SQLi refers to cases where are able to extract sensitive info by using error messages from the database we are dealing with. The possibilities depend on the configuration of the database and the types of errors we are able to trigger:
+
+1- We may be able to cause the application to return a specific error message based on the result of a boolean expression. We can exploit this the same way we exploited Blind SQLi vulnerabilities.
+
+2- We may also be able to trigger error messages that output data returned by the query. This effectively turns otherwise blind SQL injection vulnerabilities into visible ones.
+
+
+Some applications carry out SQL queries but their behavior doesn't change, regardless of whether the query returns any data. The Blind SQLi techniques would not work, because injecting different boolean conditions makes no difference to the application's responses.
+
+We possibly can induce the application to return a different response depending on whether a SQL error occurs. We can modify the query so it only returns an error if the condition is true. Very often, an unhandled error thrown by the database causes some difference in the application's response, such as an error message. 
+
+For example, suppose that two requests are send containing the following TrackingId cookie values:
+
+xyz' AND (SELECT CASE WHEN (1=2) THEN 1/0 ELSE 'a' END)='a
+
+xyz' AND (SELECT CASE WHEN (1=1) THEN 1/0 ELSE 'a' END)='a
+
+These inputs use the keyword CASE  to test a condition and return a different expression depending on whether the expression is true.
+
+The first statement is equivalent to this python code:
+
+if (1=2):
+	print(1/0)
+else:
+	print('a')
+
+The first statement will evaluate to 'a' because it will be always False, which will not cause any error.
+
+The second statement is equivalent to this python code:
+if(1=1):
+	print(1/0)
+else:
+	print('a')
+
+The second statement will evaluate to 1/0 because it will be always True, which will cause an error.
+
+If the error causes a difference in the application's HTTP response, we can use this to determine whether the injected condition is true.
+
+Using this technique, we can retrieve data by testing one character at a time:
+
+xyz' AND (SELECT CASE WHEN (Username = 'Administrator' AND SUBSTRING(Password, 1, 1) > 'm') THEN 1/0 ELSE 'a' END FROM Users)='a
+
+------------------------------------------------------------------------------------------------------------------
+Lab: Blind SQL injection with conditional errors
+
+This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs a SQL query containing the value of the submitted cookie.
+
+The results of the SQL query are not returned, and the application does not respond any differently based on whether the query returns any rows. If the SQL query causes an error, then the application returns a custom error message.
+
+The database contains a different table called users, with columns called username and password. You need to exploit the blind SQL injection vulnerability to find out the password of the administrator user.
+
+To solve the lab, log in as the administrator user.
+
+First, We will need to capture a request from the website that contains the TrackingId. Then, we will modify the TrackingId part like so: TrackingId:xyz'. We will get an error if we send this using Repeater. However, if we closed the quotation marks like so: xyz'', we will not receive an error. That means that this part is vulnerable to error based SQLi attack. 
+
+We now need to confirm that the server is interpreting the injection as a SQL query i.e. that the error is a SQL syntax error as opposed to any other kind of error. To do this, you first need to construct a subquery using valid SQL syntax.  We will try this: xyz'||(select '')||'. However, we are going to get an error. Let us try to modify this syntax like this:  xyz'||(select '' from dual)||'. This time we don't get an error. Meaning that we are dealing with Oracle db, since in Oracle we need to include the keyword FROM and to also include a name of a table. If we try to change the table name to a table that doesn't exist in the db, we know for sure that our syntax is being dealt with as an error in the backend. As long as we are inputting a valid syntax, we will be able to get info about the structure of the db being used and also its content. 
+
+Now, we need to know if a table called users exist or no: xyz'||(select '' from users)||'. This will result in an error. However, we need to make sure that we are only returning one result at a time. To do this we will use the ROWNUM constraint: xyz'||(select '' from users where rownum=1)||'. This will return one result. If we ran this we don't get an error, meaning there is indeed a table called users. 
+
+Now, we are going to use the CASE condition to further exploit this vulnerability. We might think that this syntax will work xyz'||(select '' from users where username='administrator')||', which we will expect to not give us an error and indeed it doesn't. However, if we put a username that doesn't exist, we will still not get an error, so we can't actually verify if an administrator user exist or no. 
+
+In this case we will add this: xyz'||(select Case when(1=1) then to_char (1/0) else'' end from users where username='administrator')||' . Let us break this syntax. The first thing that we need to is that the from clause will run first, meaning the Case condition will only run if there is a username in users tabled called administrator. If we indeed found such a user then the Case condition will run. The Case condition will check if 1=1 (which is going to be always true) then it will run to_char(1/0) which will always cause a syntax error else it will return '' which it will not return an error. We might start wondering what if the user doesn't exist? The answer is simple, if the user doesn't exist, then the case condition will not run, so we will never get an error. In other words, as long as we are getting an error, we know for sure that our where condition is True, in this case the username='administrator'. 
+
+Now, we will check if the length of the administrator password is longer than 1: xyz'||(select Case when Length(password)>1 then to_char(1/0) else '' end from users where username='administrator')||' . As long as we are getting an error, we know that the our condition is true. We will trial and error until we find that the length of the password is 20 characters.
+
+Now we will exploit the content of the password as we did from the Blind based SQLi section: ||(select Case when substr(password,1,1)='a' then to_char(1/0) else '' end from users where username='administrator')||'. This will return an error if the substr condition is true. We know know what to do from the previous section, we will send this to Intruder to use ClusterBomb attack and to add two payloads:  substr(password,§1§,1)='§a§'. We will make the first payload as numerical from 1 to 20 which is the length of the password and the second payload is Brute force which will contain possible password characters. 
