@@ -1,0 +1,48 @@
+Exploiting blind SQL injection by triggering time delays:
+
+
+If the application catches errors and deal with them in the right way, there will not be any difference in the application's response. This means the previous technique for inducing conditional errors will not work.
+
+In such situations, it is possible to exploit the Blind SQLi vulnerability by triggering time delays depending on whether the injected condition is true or false. As SQL queries are normally processed synchronously by the application, delaying the execution of a SQL query also delays the HTTP response. 
+
+The techniques for triggering a time delay depend on the type of db used. For example, on MS SQL server, we can use the following to test a condition and trigger a delay depending on whether the expression is true:
+'; IF (1=2) WAITFOR DELAY '0:0:10'--
+'; IF (1=1) WAITFOR DELAY '0:0:10'--
+
+The first input will not trigger a delay since 1 doesn't equal to two while the second input will trigger a delay.
+
+By using this technique, we can get useful info by testing one character at a time: '; IF (SELECT COUNT(Username) FROM Users WHERE Username = 'Administrator' AND SUBSTRING(Password, 1, 1) > 'm') = 1 WAITFOR DELAY '0:0:{delay}'--
+----------------------------------------------------------------------------------------------------------------------------
+
+Lab: Blind SQL injection with time delays and information retrieval
+
+This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs a SQL query containing the value of the submitted cookie.
+
+The results of the SQL query are not returned, and the application does not respond any differently based on whether the query returns any rows or causes an error. However, since the query is executed synchronously, it is possible to trigger conditional time delays to infer information.
+
+The database contains a different table called users, with columns called username and password. You need to exploit the blind SQL injection vulnerability to find out the password of the administrator user.
+
+To solve the lab, log in as the administrator user.
+
+
+We need to know what SQL is running this on this website. After trial an error trying different sleep functions, we get this sleep function to work: pg_sleep(10). That means the website is running PostgreSQL. The SQL load that resulted in the dealy: '||pg_sleep(10)--.
+
+To confirm that we have a table called users with username administrator in it, we will use the CASE keyword: '|| (Select case when(username='administrator') then pg_sleep(10) else pg_sleep(-1) end from users) --
+
+Note: pg_sleep(-1) will not put the application to sleep.
+
+This query will check if there is a table called users with username called administrator. If so, the application will sleep for 10 seconds before responding back. It will respond immediately if not. 
+
+The application indeed takes more than 10 seconds to respond back. 
+
+Next, we need to know how long the password is for user administrator: '|| (Select case when(username='administrator' and length(password)>10) then pg_sleep(10) else pg_sleep(-1) end from users) --
+
+This query will put the application to sleep for 10 seconds if the administrator password is longer than 10 characters. The application will run immediately if not. 
+
+After trial and error, we conclude that the password is 20 characters. Now we are ready for a ClusterBomb attack. 
+
+We will craft this SQL query and send it to intruder:'||(select case when (username='administrator' and substring(password,§1§,1)='§a§') then pg_sleep(7) else pg_sleep(-1) end from users) -- 
+
+This is checking if the first character of the password is 'a' and upon it, it will put the application to sleep for 1 second. We put two payloads as it is shown. The first position will be Numbers from 1 to 20 and the second position will be Bruteforce. 
+
+Upon launching the attack, we can add another column to show us the response time. We are after attacks that took more than 7000 milliseconds. 
