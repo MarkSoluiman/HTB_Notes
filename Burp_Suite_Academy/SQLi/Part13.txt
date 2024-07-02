@@ -1,0 +1,26 @@
+Second-order SQL injection:
+
+Second-order SQL injection occurs when the application takes user input from an HTTP request and stores it for future use. This is usually done by placing the input into a database, but no vulnerability occurs at the point where the data is stored. Later, when handling a different HTTP request, the application retrieves the stored data and incorporates it into a SQL query in an unsafe way. For this reason, second-order SQL injection is also known as stored SQL injection.
+
+For example, a hacker will put this into username section upon creating a new account: xyz';update users set password='letmein' where username='administrator'--
+
+
+Later, the backend server will handle this as : select * from user_options where user='xyz';update user set password='letmein' where username='administrator'--
+
+This will change the password of administrator with the password that the attacker has set.   
+
+
+Second-order SQL injection often occurs in situations where developers are aware of SQL injection vulnerabilities, and so safely handle the initial placement of the input into the database. When the data is later processed, it is deemed to be safe, since it was previously placed into the database safely. At this point, the data is handled in an unsafe way, because the developer wrongly deems it to be trusted.
+
+How to prevent SQL injection:
+
+We can prevernt most cases of SQLi using parameterized queries instead of sting concatenation within the query. These parameterized queires are also known as "prepared statements".
+
+The following code is vulnerable to SQL injection because the user input is concatenated directly into the query: String query = "SELECT * FROM products WHERE category = '"+ input + "'";
+Statement statement = connection.createStatement();
+ResultSet resultSet = statement.executeQuery(query);
+
+We can rewrite this code in a way that prevents the user input from interfering with the query structure:
+PreparedStatement statement = connection.prepareStatement("SELECT * FROM products WHERE category = ?");
+statement.setString(1, input);
+ResultSet resultSet = statement.executeQuery();
