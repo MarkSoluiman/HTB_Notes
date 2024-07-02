@@ -1,0 +1,72 @@
+WebSockets:
+
+WebSockets are widely used in modern web applications. They are initiated over HTTP and provide long-lived connections with asynchronous communication in both directions. 
+
+They are used for many purposes, including handling end-users requests and interactions with the website.
+Basically, any vulnerability that affects HTTP can also affect WebSockets communications.
+
+Finding WebSockets security vulnerabilities generally involves manipulating them in ways that the application doesn't expect. We can do this using Burp Suite.
+
+We can use Burp Suite to:
+
+Intercept and modify WebSocket messages.
+Replay and generate new WebSocket messages.
+Manipulate WebSocket connections.
+
+----------------------------
+----------------------------
+
+Intercepting and modifying WebSocket messages:
+
+We can use Burp Proxy to intercept and modify WebSocket messages, as follows:
+
+Open Burp's browser.
+Browse to the application function that uses WebSockets. We can determine that WebSockets are being used by using the application and looking for entries appearing in the WebSockets history tab within Burp Proxy.
+
+In the Intercept tab of Burp Proxy, ensure that interception is turned on.
+
+When a WebSocket message is sent from the browser or server, it will be displayed in the Intercept tab for us to view or modify. Press the Forward button to forward the message.
+
+Note:
+We can configure whether client-to-server or server-to-client messages are intercepted in Burp Proxy. We do this in the Settings dialog, in the WebSocket interception rules settings.
+
+----------------------------
+----------------------------
+
+Replaying and generating new WebSocket messages:
+
+As well as intercepting and modifying WebSocket messages, we can also replay individual messages and generate new messages. We use Repeater for this purpose:
+
+We send a WebSocket message in the Proxy history and send it to Repeater. 
+
+In Repeater, we can edit the message that we selected, and send it repeatedly.
+
+We can enter a new message and send it to the client or the server.
+
+In the History panel in Repeater, we can view the history of messages that we edited or created and sent via the WebSocket connection.
+
+If we want to edit and resend any message in the history panel, we can do this by selecting the message and choosing "Edit and resend" from the context menu.
+
+----------------------------
+----------------------------
+
+Manipulating WebSocket connections:
+
+It is sometimes necessary to manipulate the WebSocket handshake that establishes the connection. 
+
+There are multiple situations where manipulating the handshakes might be necessary:
+
+It can enable us to reach more attack surfaces.
+
+Some attacks might cause our connection to drop, so we need to establish a new one.
+
+Tokens and other data in the original handshake request might be stale and need updating.
+
+We can do this using Repeater:
+
+Once we have a WebSocket message in Repeater, we click on the pencil icon next to the WebSocket URL. This will open a wizard that lets us attach to an existing connected WebSocket, clone a connected WebSocket, or reconnect to a disconnected one.
+
+If we choose to clone or to reconnect, then the wizard will show us full details of the WebSocket handshake request, which we can edit as required before the handshake is performed. 
+
+When we click "Connect", Burp will attempt to carry out the configured handshake and display the result. If a new WebSocket connection was successfully established, we can then use this to send new messages in Repeater. 
+
