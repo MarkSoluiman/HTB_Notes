@@ -1,0 +1,45 @@
+WebSockets security vulnerabilities:
+
+In principle, practically any web security vulnerability might arise in relation to WebSockets:
+
+User-supplied input transmitted to the server might be proceeded in unsafe ways, leading to vulnerabilities like SQLi or XML external entity injection.
+
+Some blind vulnerabilities reached via WebSockets might only be detectable using out-of-band (OAST) techniques.
+
+If attacker-controlled data is transmitted via WebSockets to other application users, then it might lead to XSS or other client-side vulnerabilities.
+
+The majority of input-based vulnerabilities affecting WebSockets can be found and exploited by tampering with the contents of WebSocket messages. 
+
+For example, we have a chat application that uses WebSockets to send chat messages between the browser and the server. When a user types a chat message, a WebSocket message like the following is sent to the server: {"message":"Hello Carlos"}
+
+The content of the message is transmitted via WebSocket to anther chat user, and rendered in the other user's browser as follows: <td>Hello Carlos</td>
+
+In this situation, provided no other input processing or defenses are in play, an attacker can perform a proof-of-concept XSS attack by submitting the following WebSocket message: {"message":"<img src=1 onerror='alert(1)'>"}
+
+------------------------------------------------------------------------------------------------------------------
+
+Lab: Manipulating WebSocket messages to exploit vulnerabilities
+
+This online shop has a live chat feature implemented using WebSockets.
+
+Chat messages that you submit are viewed by a support agent in real time.
+
+To solve the lab, use a WebSocket message to trigger an alert() popup in the support agent's browser.
+
+First, enable the foxy proxy, but without enabling Intercept. Then, we click on the Live chat in the website. 
+
+In the Proxy tab in BurpSuite, we will go to the WebSockets history tab. If we didnt see anything appearing there, we will refresh the Live chat page. We will start to see request going back an forth from the server to the end user in WebSockets history. In the chat we will write anything: sometext. We will go through the history and send the request that contains the text that we just wrote to the Repeater.
+
+The request will look something like this:{message:"sometext"}. Note: another request will be like this: {"user":"You","content":"sometext"}, we don't want to deal with this request.
+
+In Repeater, we will change the message to:"<img src=0 onerror=\"alert('sometext')\">", then we press send. This will give us the popup that we want with the text that we wrote. 
+
+We can also do that with the proxy on. We turn on the proxy, and send sometext, then we will notice that BurpSuite started to listen to request going from our end and back via WebSockets in a mode called Inspector.
+
+If we try to send the same JavaScript code, we will get this: &lt;img src=0 onerror=&#x5c;&quot;alert(&#39;sometext&#39;)&#x5c;&quot;&gt;
+
+This is HTML encoding, we can change it back to the original payload and we will forward the message. We will get the same popup.
+
+
+
+
