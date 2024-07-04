@@ -1,0 +1,38 @@
+Manipulating the WebSocket handshake to exploit vulnerabilities:
+
+Some WebSockets vulnerabilities can be exploited by manipulating the WebSocket handshake. These vulnerabilities exist due to desing flaws, such as: 
+
+Misplaced trust in HTTP headers to perform security decisions, such as the X-Forwarded-For header.
+
+Flaws in session handling mechanisms, since the session context in which WebSocket messages are processed is generally determined by the session context of the handshake message.
+
+Attack surface introduced by custom HTTP headers used by the application.
+
+------------------------------------------------------------------------------------------------------------------
+
+Lab: Manipulating the WebSocket handshake to exploit vulnerabilities
+
+This online shop has a live chat feature implemented using WebSockets.
+
+It has an aggressive but flawed XSS filter.
+
+To solve the lab, use a WebSocket message to trigger an alert() popup in the support agent's browser.
+
+
+For this lab, we will need to open a browser from BurpSuite to make our life easier. 
+
+We will do the exact same thing as with the previous lab. We will catch a message and send to the Repeater. 
+
+We will try the same payload as before: <img src=0 onerror=alert(1)> and then click send. This time however, we will lose connection and if we try to reconnect to the live chat page we will find that our IP address got black listed.
+
+To surpass this, we will do some changes in proxy settings. In proxy settings page, we go to match and replace rules, we will find a list of parts of requests and responses. We are going to change the one of them which has the comment of emulate IOS or emulate Android. We click on enabled and then click on edit. We will change the Replace text input with: any ip address we want, then we click ok.
+
+This will allow us to spoof our IP address to trick the server and to surpass the block.
+
+Now, we will connect again by refreshing the page of the live chat. We have to be careful this time to not send a message containing any black listed words such as onerror or alert. 
+
+We will try to encode the onerror=alert(1) part with the decoder to encode it as HTML and try again. This doesn't work
+
+We will only encode the alert(1) part and try again. We will get blocked again. It is alright as we can change our IP address the same way we did before. 
+
+Now, we know that the onerror word is causing us trouble. This is why we will try something like this: OnErrOr= then we will put the HTML encoded alert(1) next to it. This will give us a popup
