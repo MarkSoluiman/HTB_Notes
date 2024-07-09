@@ -1,0 +1,78 @@
+Using cross-site WebSockets to exploit vulnerabilities:
+
+Some WebSockets security vulnerabilities arise when an attacker makes a cross-domain WebSocket connection from a web site that the attacker controls. This is known as a cross-site WebSocket hijacking attack, and it involves exploiting a cross-site request forgery (CSRF) vulnerability on a WebSocket handshake. The attack often has a serious impact, allowing an attacker to perform privileged actions on behalf of the victim user or capture sensitive data to which the victim user has access.
+
+-----------------------
+-----------------------
+
+
+What is cross-site WebSocket hijacking?:
+
+Cross-site WebSocket hijacking (also known as cross-origin WebSocket hijacking) involves a cross-site request forgery (CSRF) vulnerability on a WebSocket handshake. It happens when the WebSocket handshake request only relies on HTTP cookies for session handling and doesn't contain any CSRF token or other unpredictable values.
+
+An attacker can create a malicious web page on their own domain which establishes a cross-site WebSocket connection to the targeted application. 
+
+The attacker's page can then send arbitrary messages to the server via the connection and read the contents of messages that are received back from the server. This means that, unlike regular CSRF, the attacker gains two-way interaction with the compromised application.  
+
+-----------------------
+-----------------------
+
+What is the impact of cross-site WebSocket hijacking?
+
+Upon a successful cross-site WebSocket hijacking, an attacker will often be able to: 
+
+Perform unauthorized actions masquerading as the victim user. As with regular CSRF, the attacker can send arbitrary messages to the server-side application. If the application uses client-generated WebSocket messages to perform any sensitive actions, then the attacker can generate suitable messages cross-domain and trigger those actions.
+
+Retrieve sensitive data that the user can access. Unlike with regular CSRF, cross-site WebSocket hijacking gives the attacker two-way interaction with the vulnerable application over the hijacked WebSocket. If the application uses server-generated WebSocket messages to return any sensitive data to the user, then the attacker can intercept those messages and capture the victim user's data.
+
+-----------------------
+-----------------------
+
+Performing a cross-site WebSocket hijacking attack:
+
+Since a cross-site WebSocket hijacking attack is essentially a CSRF vulnerability on a WebSocket handshake, the first step to performing an attack is to review the WebSocket handshakes that the application carries out and determine whether they are protected against CSRF.
+
+In terms of the normal conditions for CSRF attacks, we typically need to find a handshake message that relies solely on HTTP cookies for session handling and doesn't employ any tokens or other unpredictable values in request parameters.
+
+For example, the following WebSocket handshake request is probably vulnerable to CSRF, because the only session token is transmitted in a cookie:
+
+GET /chat HTTP/1.1
+Host: normal-website.com
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Key: wDqumtseNBJdhkihL6PW7w==
+Connection: keep-alive, Upgrade
+Cookie: session=KOsEJNuflw4Rd9BDNrVmvwBF9rEijeE2
+Upgrade: websocket
+
+Note:The Sec-WebSocket-Key header contains a random value to prevent errors from caching proxies, and is not used for authentication or session handling purposes.
+
+If the WebSocket handshake request is vulnerable to CSRF, then the attacker's web page can perform a cross-site request to open a WebSocket on the vulnerable site. What happens next in the attack relies entirely on the application's logic and how it is using WebSockets. The attack might involve: 
+
+Sending WebSocket messages to perform unauthorized actions on behalf of the victim user.
+
+Sending WebSocket messages to retrieve sensitive data.
+
+Sometimes, just waiting for incoming messages to arrive containing sensitive data.
+
+------------------------------------------------------------------------------------------------------------------
+
+Lab: Cross-site WebSocket hijacking
+
+This online shop has a live chat feature implemented using WebSockets.
+
+To solve the lab, use the exploit server to host an HTML/JavaScript payload that uses a cross-site WebSocket hijacking attack to exfiltrate the victim's chat history, then use this gain access to their account.
+
+The first thing we need to check if the GET request used in the live chat only uses cookie for handling the session. 
+
+To do this, we open a browser from BurpSuite Proxy and navigate to the live chat within the lab. We capture a GET /chat request and while chatting in the live chat. We can see that the handshake only contains the cookie value for session handling. Also, we can check if the  SameSite attribute of the cookie is set to None by going using cookie editor extension. 
+
+If this is the case, that means the cookie session value can be transferred to other domains and websites which is not secure at all.
+
+To solve this lab without BurpSuite Collaborator, we will create a payload in JS which will open a WebSocket with /chat. Then, it will send a Ready message to the WebSocket. Then, the server will reply with the chat history. Finally, the entire chat history will be sent to us.
+
+We will send the exploit to the end-user which they will open. Upon opening our exploit they open a connection to the WebSocket along with the session cookie. The victim will send a READY message to the WebSocekt, and finally the WebSocket will respond back with the entire history of the chat which we will be able to capture.
+
+We first craft our exploit (named part4exploit.js on this repository), then we go to exploit server from the live chat page. We put our exploit content between <script> </script> tags then we store it then we send it. 
+
+After few seconds, we go to the log, then we check for different IP addresses which start with 10.0. We copy its content then send them to the decoder in BurpSuite and decode it as Base64. This will reveal a conversation between the user and the live chat that contains the username and password of the user.
+
