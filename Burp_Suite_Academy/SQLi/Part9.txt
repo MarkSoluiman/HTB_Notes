@@ -66,3 +66,40 @@ In this case we will add this: xyz'||(select Case when(1=1) then to_char (1/0) e
 Now, we will check if the length of the administrator password is longer than 1: xyz'||(select Case when Length(password)>1 then to_char(1/0) else '' end from users where username='administrator')||' . As long as we are getting an error, we know that the our condition is true. We will trial and error until we find that the length of the password is 20 characters.
 
 Now we will exploit the content of the password as we did from the Blind based SQLi section: ||(select Case when substr(password,1,1)='a' then to_char(1/0) else '' end from users where username='administrator')||'. This will return an error if the substr condition is true. We know know what to do from the previous section, we will send this to Intruder to use ClusterBomb attack and to add two payloads:  substr(password,§1§,1)='§a§'. We will make the first payload as numerical from 1 to 20 which is the length of the password and the second payload is Brute force which will contain possible password characters. 
+------------------------------------------------------------------------------------------------------------------
+
+Extracting sensitive data via verbose SQL error messages:
+
+Misconfiguration of the database sometimes can lead to verbose in error messages. These messages can provide useful info to the attacker. For example, consider the following error message which happens after injecting a single quote into an id parameter: Unterminated string literal started at position 52 in SQL SELECT * FROM tracking WHERE id = '''. Expected char.
+
+This revealed to us the construction used in the SQL db in the backend. This will help us to construct valid queries with ease.
+
+Occasionally, we may be able to force the application to generate for us an error message that contains some the data that is returned by the query. This will make the response visible to us rather than being a blind SQL injection. 
+
+To achieve this, we can convert one data type to another by using CAST(). For example: CAST((SELECT example_column FROM example_table) AS int)
+
+Often, the data that we are trying to read is a string. By trying to convert it to incompatible data type such as int, it may cause an error like this: ERROR: invalid input syntax for type integer: "Example data"
+
+This type of query may also be useful if a character limit prevents us from triggering conditional responses.
+
+------------------------------------------------------------------------------------------------------------------
+
+Lab: Visible error-based SQL injection:
+
+This lab contains a SQL injection vulnerability. The application uses a tracking cookie for analytics, and performs a SQL query containing the value of the submitted cookie. The results of the SQL query are not returned.
+
+The database contains a different table called users, with columns called username and password. To solve the lab, find a way to leak the password for the administrator user, then log in to their account.
+
+We catch a GET request using Burp Suite. We will modify the trackingId section and observe what we get: xyz'. We will get an error saying that it expected char and the following query: SELECT * FROM tracking WHERE id = '''. Now, we know how the SQL query looks like, so in order to build a valid query, we will do this: xyz'--'. This time we don't get an error. 
+
+To check if we have a table called users which has a column called username: xyz'union select username from users--'. We don't receive and error either. We also have to make sure that we have a column called password: xyz'union select password from users--'. We also don't get an error. 
+
+To further exploit this, we will the CAST function like so: xyz' and cast((select 1) as int )--' this will give an error message saying that: argument of AND must be type boolean, not type integer. so we change the payload as so: xyz'and 1=cast((select 1) as int )--' . This will not return an error.
+
+We will try this next: xyz'and 1=cast((select username from users) as int )--'. We will get an error. We notice that not every thing we typed in the payload is returned back. We can conclude that there is a character limit. In order to avoid this error, we remove the trackingId to give us more characters.
+
+We also get another error saying that: more than one row returned by a subquery used as an expression. so we have to limit the returned results to only include the first row: 'and 1=cast((select username from users limit 1) as int )--'
+
+We get an error message saying that:  invalid input syntax for type integer: "administrator" . Now, we know that the first row contains the administrator's info. Now, we can read the password: 'and 1=cast((select password from users limit 1) as int )--'
+
+
