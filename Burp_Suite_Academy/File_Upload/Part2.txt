@@ -1,0 +1,50 @@
+Flawed file type validation:
+
+When submitting HTML forms, the browser typically sends the provided data in a POST request with the content type application/x-www-form-url-encoded. This is fine for sending simple text like your name or address. However, it isn't suitable for sending large amounts of binary data, such as an entire image file or a PDF document. In this case, the content type multipart/form-data is preferred.
+
+Consider a form containing fields for uploading an image, providing a description of it, and entering our username. Submitting such a form might result in a request that looks something like this:
+
+POST /images HTTP/1.1
+    Host: normal-website.com
+    Content-Length: 12345
+    Content-Type: multipart/form-data; boundary=---------------------------012345678901234567890123456
+
+    ---------------------------012345678901234567890123456
+    Content-Disposition: form-data; name="image"; filename="example.jpg"
+    Content-Type: image/jpeg
+
+    [...binary content of example.jpg...]
+
+    ---------------------------012345678901234567890123456
+    Content-Disposition: form-data; name="description"
+
+    This is an interesting description of my image.
+
+    ---------------------------012345678901234567890123456
+    Content-Disposition: form-data; name="username"
+
+    wiener
+    ---------------------------012345678901234567890123456--
+
+    As we can see, the message body is split into parts for each of the form's inputs. Each part contains a Content-Disposition header, which provides some basic info about the input field it relates to. These individual parts may also contain their own Content-Type header, which tells the server the MIME type of the data that was submitted using this input. 
+
+
+    One way the websites may try to validate the uploaded files is to check the file's specific Content-Type header matches an expected MIME type. If the server is only expecting image files, it may only allow types like image/jpeg and image/png. Problems can arise if the value of the header is totally trusted by the server. If no further validation is performed to check if the contents of the file actually matches the accepted MIME type, this defense method can be easily bypassed.
+
+
+    ----------------------------------------------------------------------------------------------------------
+
+ Lab: Web shell upload via Content-Type restriction bypass
+
+ This lab contains a vulnerable image upload function. It attempts to prevent users from uploading unexpected file types, but relies on checking user-controllable input to verify this.
+
+To solve the lab, upload a basic PHP web shell and use it to exfiltrate the contents of the file /home/carlos/secret. Submit this secret using the button provided in the lab banner.
+
+You can log in to your own account using the following credentials: wiener:peter
+
+We will do the exact same thing as with the previous lab, we will upload the php file that we created. However, this time we will not be able to so. The response that we get saying that the type of the file that we uploaded is not allowed. If we try again to upload the file but this time capturing the uploading POST request and send it to the Repeater, we will see this part of the request: ------WebKitFormBoundaryLEnLy01hPlJAPT99
+Content-Disposition: form-data; name="avatar"; filename="Part1.php"
+Content-Type: application/x-php 
+
+We will try to change the Content-Type to be image/jpeg and send the request again. We will find out that the file was uploaded successfully this time. We will access the secret the same way we did in the previous lab. 
+
