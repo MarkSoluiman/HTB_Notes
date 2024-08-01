@@ -1,0 +1,39 @@
+Preventing file execution in user-accessible directories:
+
+While it's clearly better to prevent dangerous file types being uploaded in the first place, the second line of defense is to stop the server from executing any scripts that do slip through the net.
+
+As a precaution, servers usually only run scrips whose MIME type they have been explicitly configured to execute. Otherwise, they may just return an error message or in some cases, return back the contents of the file in plain text: 
+
+GET /static/exploit.php?command=id HTTP/1.1
+    Host: normal-website.com
+
+
+    HTTP/1.1 200 OK
+    Content-Type: text/plain
+    Content-Length: 39
+
+    <?php echo system($_GET['command']); ?>
+
+
+This behavior is potentially interesting, as it may provide a way to leak source code, but it nullifies any attempt to create a web shell. 
+
+This kind of behavior often differs between directories. A directory to which a user-supplied files are uploaded will likely have much more stricter controls and configurations than other locations which are assumed to be out of reach of outside users. If we can find a way to upload a script to a different directory that's not supposed to contain user-supplied files, the server may execute our script. 
+
+Web servers often use the filename field in multipart/form-data requests to determine the name and location where the file should be saved.
+
+We should also note that even though we may send all of our requests to the same domain name, this often often points to a reverse proxy server of some kind, such as a load balancer. Our requests will often by handled by additional servers behind the scenes, which may also be configured differently.
+
+------------------------------------------------------------------------------------------------------------------
+
+Lab: Web shell upload via path traversal
+
+This lab contains a vulnerable image upload function. The server is configured to prevent execution of user-supplied files, but this restriction can be bypassed by exploiting a secondary vulnerability.
+
+To solve the lab, upload a basic PHP web shell and use it to exfiltrate the contents of the file /home/carlos/secret. Submit this secret using the button provided in the lab banner.
+
+You can log in to your own account using the following credentials: wiener:peter
+
+
+We will do the exact same thing as with the previous lab. We will try to upload our php payload file and capture the POST request. The file will be uploaded. However, if we check where the file was uploaded, what we get is the content of our payload. That means the directory that gets our file is not running the script. Our aim now is to upload the file to another directory. Since we know the path of the directory which gets our uploaded files: /files/avatars, we will try to upload our file to its parent direcory which is files. We can do this by changing the content of Content-Disposition sections. If we changed the filename to: "../payload.php" (by adding ../ before the name of the payload file), the file will be uploaded in the parent directory of avatars directory. If the server caught our mischievous try to change the Content-Disposition, we can encode ../ with URL encoder.
+
+Now, if we try to upload the file and went to its new place which is files (not avatars), we will get the secret. 
