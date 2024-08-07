@@ -41,3 +41,49 @@ After sending the request that we caught while trying to upload the PHP file to 
 First, we will have to change the name of the file to .htaccess. Next, we will change the Content-Type to text/plain (this is the MIME type for text files). Finally, we need to change the content of the file to: AddType application/x-httpd-php .shell . This will configure the Apache server to accept files that have PHP code in them as long as their extensions are .shell . We press send. We will get a message saying that our file got uploaded. That means we only need to change the extension of the php payload file from .php to .shell and we will be able to upload it. 
 
 Now, we can access the payload file and get the secret.
+
+------------------------------------------------------------
+------------------------------------------------------------
+Obfuscating file extensions:
+
+We can use Obfuscating techniques to bypass files blacklisting. For example, the validation code is case sensitive and fails to recognize that exploit.PhP is in fact a .php file. If the code that subsequently maps the file extension to a MIME type is not case sensitive, this conflict allows us to sneak malicious PHP files past validation that may eventually be executed by the server. 
+
+We can also achieve similar results using the following techniques:  
+
+1-Provide multiple extensions. Depending on the algorithm used to parse the filename, the following file may be interpreted as either a PHP file or JPG image: exploit.php.jpg
+
+2-Add trailing characters. Some components will strip or ignore trailing whitespaces, dots, and suchlike: exploit.php.
+
+3-Try using the URL encoding (or double URL encoding) for dots, forward slashes, and backward slashes. If the value isn't decoded when validating the file extension, but is later decoded server-side, this can also allow you to upload malicious files that would otherwise be blocked: exploit%2Ephp
+
+4-Add semicolons or URL-encoded null byte characters before the file extension. If validation is written in a high-level language like PHP or Java, but the server processes the file using lower-level functions in C/C++, for example, this can cause discrepancies in what is treated as the end of the filename: exploit.asp;.jpg or exploit.asp%00.jpg
+
+5-Try using multibyte unicode characters, which may be converted to null bytes and dots after unicode conversion or normalization. Sequences like xC0 x2E, xC4 xAE or xC0 xAE may be translated to x2E if the filename parsed as a UTF-8 string, but then converted to ASCII characters before being used in a path.
+
+
+Other defense mechanisms involve stripping or replacing dangerous extensions to prevent the file from being executed. If this operation is not repeated recursively, we can position the prohibited string in such a way that removing it still leaves a valid file extension. For example, consider this filename: exploit.p.phphp . The .php in the middle of the filename will be removed leaving: exploit.php behind which is a valid .php file.  
+
+------------------------------------------------------------
+------------------------------------------------------------
+
+Lab: Web shell upload via obfuscated file extension:
+
+
+This lab contains a vulnerable image upload function. Certain file extensions are blacklisted, but this defense can be bypassed using a classic obfuscation technique.
+
+To solve the lab, upload a basic PHP web shell, then use it to exfiltrate the contents of the file /home/carlos/secret. Submit this secret using the button provided in the lab banner.
+
+You can log in to your own account using the following credentials: wiener:peter
+
+
+If we try to upload the payload with .php extension, we will get a message telling us that only jpg and png files are allowed. After trying different techniques to bypass that, we find that we can solve this lab by null byte injection.
+
+ Null Byte Injection is an active exploitation technique used to bypass sanity checking filters in web infrastructure by adding URL-encoded null byte characters (i.e. %00, or 0x00 in hex) to the user-supplied data. This injection process can manipulate the intended logic and behavior of the application and allow malicious attackers to get unauthorized access to the system files.
+
+ In our case, our aim is to make the website to remove the .jpg extension at the end of the file name and upload it. We will change the filename to:payload.php%00.jpg . This will force the website to ignore anything after and including the URL null byte that we provided to it, in this case:%00.jpg, leaving the filename with payload.php . 
+
+ After uploading the file, we can access the secret.
+
+ 
+
+
