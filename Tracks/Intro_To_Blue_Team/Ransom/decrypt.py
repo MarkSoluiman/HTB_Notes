@@ -1,18 +1,17 @@
 from pwn import *
 
-key=list(b"SUPERSECURE")
-flag=[]
+key= list(b"SUPERSECURE") #b is for byte string
 
-encrypt=read("login.xlsx.enc")
-
-#print (encrypt)
+encrypted=read('login.xlsx.enc')
 
 count=0
 
-for byte in encrypt :
-	flag.append(byte-key[count%len(key)])
+decrypted=[]
+
+
+for byte in encrypted:
+	decrypted.append(byte- key[count %len(key)])
 	count+=1
 
-
-print(flag)
+print(decrypted)
 
