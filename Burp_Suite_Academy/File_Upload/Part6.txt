@@ -1,0 +1,46 @@
+Exploiting file upload race conditions:
+
+Modern web development frameworks are more robust and less prone to file upload vulnerability. They usually don't up files directly to their intended destination on the filesystem. Instead, they upload files to temporary directory as a more cautious procedure. Then, they do perform validation on the uploaded file to make sure it is safe and only then they transfer it to the intended destination.
+
+Some website, upload the file directly to the filesystem and remove it again if it doesn't pass validation. This kind of behavior is typical in websites that rely on anti-virus software to check for malware. The whole procedure may only take few milliseconds. However, this time might be enough to execute malicious code.
+
+-------------------------------
+
+Race conditions in URL-based file uploads:
+
+Similar race conditions can occur in websites that allow us to upload a file by providing a URL. In this case, the server has to fetch the file over the internet and create a local copy before it can perform any validation.
+
+As the file is loaded using HTTP, developers are unable to use their framework's built-in mechanisms for securely validating files. Instead, they may manually create their own processes for temporarily storing and validating the file, which may not be quite as secure.
+
+For example, if the file is loaded into a temporary directory with a randomized name, in theory, it should be impossible for an attacker to exploit any race conditions. If they don't know the name of the directory, they will not be able to access the file to trigger the execution. However, if the name randomizing is generated using pseudo-random functions like PHP's uniqid(), it can be brute-forced.
+
+To make attacks like this easier, we can try to extend the amount of time take to process uploaded files. Thus, giving us more time to brute-force the name. The obvious way to do so is to upload a big file. If it is processed in chunks, we can potentially take advantage of this by creating a malicious file with the payload at the start, followed by a large number of arbitrary padding bytes.
+
+----------------------
+
+Uploading malicious client-side scripts:
+
+Although we might not be able to execute scripts on the server, we may still be able to upload scripts for client-side attacks. For example, if we can upload HTML files or SVG images, we can use the <script> tag to upload malicious XSS payloads.
+
+If the uploaded file then appears on a page that is visited by another user, their browser will execute the script it tries to render the page. Note that due to same-origin policy restrictions, these kinds of attacks will only work if the uploaded file is served from the same origin to which we upload it.
+
+----------------------
+
+Exploiting vulnerabilities in the parsing of uploaded files:
+
+If the uploaded file seems to be both stored and served securely, the last resort is to try exploiting vulnerabilities specific to the parsing or processing of different file formats. For example, we know that the server parses XML-based files like Microsoft Office .doc or .xls files, this may be a potential opportunity for XXE injection attacks. 
+
+----------------------
+
+Uploading files using PUT:
+
+Some web server may be configured to support PUT requests. If the website is not secure enough, this can provide alternative ways of uploading malicious files, even if we don't have an upload function available for us:
+PUT /images/exploit.php HTTP/1.1
+Host: vulnerable-website.com
+Content-Type: application/x-httpd-php
+Content-Length: 49
+
+<?php echo file_get_contents('/path/to/file'); ?>
+
+
+

