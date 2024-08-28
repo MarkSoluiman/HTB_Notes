@@ -8,3 +8,5 @@
 *.bak
 *.dat
 *.prp
+*.grf
+*.lock
