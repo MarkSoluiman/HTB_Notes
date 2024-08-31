@@ -1,0 +1,21 @@
+We first download the provided Zip file and unzip it, we will get a .exe file. 
+
+For this particular challenge, we will need to install a tool called wine which will allow us to run .exe files on Linux.
+
+After installing the tool, we will take a look at the .exe file by: sudo wine EasyPass.exe
+
+This will prompt us with password entry. We need to know what the password is as it is our flag. If we typed anything we will get Wrong password message.
+
+Next, we will examine the .exe file with Ghirda. 
+
+After opening the file with Ghidra, we will check what type of functions are there. However, there are a lot of functions and their names are not formative at all, so we need another approach.
+
+We will use the String search fucntion in Ghidra, in the top task bar, we will click on Search and for String, we will search for the message that we got from the application: Wron password.
+
+This will point us at where we should search in the file for the password.
+
+If we scrolled up we will start to notice letters which form the string "fortran!" in gray color.
+
+This is our password.
+
+Flag: HTB{fortran!}
