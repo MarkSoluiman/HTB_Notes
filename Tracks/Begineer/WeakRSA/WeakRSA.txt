@@ -1,0 +1,14 @@
+Upon unzipping the Zip file we obtain, we will end up with two files: key.pub and flag.enc. It is obvious what we are suppose to do here. We will have to use the key.pub file as the public key to decrypt the encrypted file flag.enc. 
+
+Upon searching on the internet for a tool to help us with that, we will find a tool called RSActftool. We will clone it to our machine using git. 
+
+After cloning the repo of this tool, we can take a look on how we can use it from the repo page. 
+
+We can assign the public key that the tool going to use by the flag: --publickey and our encrypted file that we want to decrypt by flag: --decryptfile.
+
+Before we start using the tool, we will need to install a python library called gmpy2 which will make this tool faster. pip install gmpy2
+
+After installing gmpy2 library, now we can use the tool to decrypt the flag: ./RsaCtfTool.py --publickey key.pub --decryptfile flag.enc
+
+the flag is: HTB{s1mpl3_Wi3n3rs_4tt4ck}
+
