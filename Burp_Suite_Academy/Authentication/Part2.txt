@@ -1,0 +1,40 @@
+Flawed brute-force protection:
+
+Brute-force protection revolves around trying to make it as tricky as possible to automate a brute-force attack and slow down the rate of failed attempts. 
+
+The two most common ways of preventing brute-force attacks are:
+
+Locking the account that the remote user is trying to access if they make too many failed login attempts.
+
+Blocking the remote user's IP address if they make too many login attempts in quick succession.
+
+Neither of them is invulnerable, especially if implemented using flawed logic.
+
+For example, we might sometimes find that our IP is blocked if we fail to log in too many times. In some implementations, the counter for the number of failed attempts resets if the IP owner logs in successfully. That means an attacker can login using their own account every few login attempts to prevent this limit from being reached.
+
+ ---------------------
+ ---------------------
+
+Lab: Broken brute-force protection, IP block:
+
+This lab is vulnerable due to a logic flaw in its password brute-force protection. To solve the lab, brute-force the victim's password, then log in and access their account page.
+
+Your credentials: wiener:peter
+Victim's username: carlos
+Use Candidate passwords
+
+We will try to login with carlos and a random password. We will notice two things, the first thing the message that we get "invalid password" which is a vulnerability, and the second thing is that we are only allowed 3 invalid login attempts before we are blocked for 1 minute. 
+
+Due to the restrictions of the logging in attempts, we will have to use python to generate a list of usernames and passwords.
+
+As usual, we will login using our valid credentials and capture the POST request and send it to Intruder.
+
+We will use Pitchfork type of attack and will place two payload marks on the username and password. 
+
+In the first payload, we will copy the usernames list that our python code gave us and paste it. We will do the same with the password. 
+
+After a while we will get our right password.
+
+
+
+
