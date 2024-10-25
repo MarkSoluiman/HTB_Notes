@@ -1,0 +1,36 @@
+We will start by scanning the target IP with nmap: sudo nmap --min-rate=500 -sC -sV {target IP}.
+
+We will get 5 open ports, 21/ftp(with anon allowed), 80/http, 135/Microsoft Windows RPC,139/MS Win netbios-ssn, 445/MS Win server
+
+Since we have a port 80, we know that there is a website running on Windows server. 
+
+Upon going to this website, we will be faced with a login page of PRTG Network Monitor (NETMON).
+
+We will leave that for later. Now, since we know the ftp server allows for anonymous login, we can login to it without providing a password using the username anonymous: ftp {target IP}.
+
+We will be in the device that hosts the web server which is a Windows machine. 
+
+We can easily get the regular user flag in Users/Public/Desktop. the file is called user.txt and we can download it using the ftp command get {file name}.
+
+Now, we will try to get the username and password to that login page. We will try to search where the configuration files for PRTG are stored in a windows system. If we do some research, we will find out such files are stored in: C:\ProgramData\Paessler\PRTG Network Monitor. Note: some of the folder and files might be hidden if we simply typed "dir", instead we use "ls -la".
+
+The file that we are after is called: 'PRTG Configuration.old.bak'. We will download it to our machine and read it. However, the backup file is too big. In order to download it, we need to change the mode of ftp server to binary by typing "binary", only then we can download the file.
+
+Near the beginning of the file, we will find the password as: "PrTg@dmin2018" for username: "prtgadmin". If we try these credentials, we will fail to login. In fact, if we try to change the year in the password to 2019, the password will work. Now, we have administration access to the admin panel. 
+
+Now, we have the version of PRTG and we can search for a vulnerability on the internet that can grant us a reverse shell to the hosting machine as admin. We find the exploit:https://www.exploit-db.com/exploits/46527
+
+All what we have to do is to grab the cookie value using an extension or BurpSuite when accessing the the admin panel. 
+
+So, to run the exploit, we first need to copy the code to our local machine and run it: sh ./exloit.sh -u http://10.10.10.152 -c "_ga=GA1.4.491445541.1729818848;_gid=GA1.4.1082951570.1729818848;OCTOPUS1813713946=ezFFNkQzRjY4LTkzOTQtNDgyMS1BQjg4LUQ5M0VBMkM0QzVCQn0%3D;_gat=1" This will create a user:pentest and password:P3nT3st! 
+
+If the file is finishing fast and displays -e at the beginning of each line, that means the code didnt run correctly. Make sure to make the exploit file executable by: chmod +x {file name}. Also, if we got that error:zsh: ./exploit.sh: bad interpreter: /bin/bash^M: no such file or directory, that means the script was created or edited in a Windows environment, introducing carriage return characters (^M), so we need to change the script format: dos2unix {file name} 
+
+Since it is a windows machine, we can run Impacket library using psexec.py: python3 /pathto/psexec.py pentest@{target IP}. and we put the password P3nT3st!
+
+We are now Administrator
+
+
+
+
+
