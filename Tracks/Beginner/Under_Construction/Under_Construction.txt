@@ -1,0 +1,70 @@
+In this challenge, we have been given the source code of a website and its IP address. 
+
+First, we look at the files that we have. The first thing that will catch our eyes is the usage of vulnerable sql code using SQLite. The code in DBHelper.js under helpers directory doesn't use any input sanitation, that mean's there might be a sqli vulnerability in the login page. 
+
+If we went to the website, we will see a login page asking for username and password. We will try a basic sqli payloads to bypass auth. 
+
+Nothing works. 
+
+If we go back to the source code, we will see a file called JWTHelper.js under helpers, the code in this file uses a library called "jsonwebtoken". This library has a vulnerability that is related to json web token or JWT for short.
+
+In order to exploit this vulnerability, we need to capture the json web token when a valid user is signed in. We will create our own user 
+
+After registering a user, we will login using that user. However, we will need to capture the GET response that will be the result of us logging in. 
+
+We will send the request to Repeater.
+
+Now, in the GET request that we captured, we will see the jwt as a long string that also acts as a cookie. We find it next to Cookie:session.
+
+We will go to that website:jwt.io 
+
+This website will translate this jwt to a public key. We will modify the public key: when we see a '\n' we need to remove it and hit enter. The public key should look like this:
+
+-----BEGIN PUBLIC KEY-----
+sdafdasfdssdfdsfdsfdsfsdsadf
+sdafdasfdssdfdsfdsfdsfsdsadf
+sdafdasfdssdfdsfdsfdsfsdsadf
+sdafdasfdssdfdsfdsfdsfsdsadf
+afdsafdsaf
+-----END PUBLIC KEY-----
+
+We will save the public key that we have in a file with extension ".pem" 
+
+Now, we will use a tool to help us create our own token using the public key: https://github.com/ticarpi/jwt_tool
+
+We will clone it and use it as: python3 jwt_tool.py "{jwt}" -I -pc  username -pv "{payload}" -X k -pk {public key file}
+
+-I: inject new claims and update existing claims with new values
+
+-pc: Payload claim to tamper with
+
+username: is the name of the value we want to change
+
+-pv: the payload value
+
+-X: exploit mode 
+
+k: key confusion vulnerability
+
+-pk: public key
+
+
+In the payload, we will put a username that doesn't exist. This will give us a new jwt.
+
+We will copy this jwt and replace the jwt from the GET request that we have captured earlier with the new one and we will press send.
+
+We will get a message telling us that the username doesn't exist. This is where we are going to use the sqli vulnerability. We will be using the Union sqli specifically. 
+
+We will need to know how many columns are there first. In the payload next to the username that we provided, we will add: 'Union select 1 --
+
+We will get an error if we put the jwt that we got in the GET request and hit send. We will add more: 'Union all select 1,1 --. This will not work either. However, if we tried to another one, we will not get an error this time but we will get Welcome 1.
+
+
+Every database has a system tables. This tables has critical information about the users and databases in the sql server. If we searched for the sqlite system tables name, we will find out it is called sqlite_master.
+
+To get info from this table, we will use also use group_concat() function and we will pass sql to it which is a column name that stores the description of tables in the sqlite database. Our payload will be ' Union all select 1,group_concat(sql),1 from sqlite_master--
+
+This will reveal to us the table flag_storage which has a column called top_secret_flaag, so our next payload should be: ' Union all select 1,group_concat(top_secret_flaag),1 from flag_storage--
+
+we get the flag:HTB{d0n7_3xp053_y0ur_publ1ck3y}
+
