@@ -1,0 +1,32 @@
+We will start with our nmap scan: nmap -sC -sV {target IP}
+
+This will give us multiple ports open. However, we notice that smb server is running on this machine. 
+
+To list the shares on this machine: smbclient -L //{target IP}/. 
+
+We will have these shares  ADMIN$,C$ ,IPC$ ,Share, and Users. 
+
+To login to one of them: smbclient \\\\{target IP}\\{share name}
+
+The only two that we can login to without providing a password are Share and Users. However, Share is totally empty, so we login to Users. We go around in Users files and folders. However, we don't get anything useful. 
+
+Since we know the machine version of Windows and we it has an smb server running, we will search for any exploit that is related to both of these pieces of info. Eventually, we will find a vulnerability called EternalBlue 
+(MS17-010). We can only use this vulnerability using Metasploit. 
+
+We launch Metasploit: msfconsole. Then, we search for the exploit: search EternalBlue. 
+
+We will get multiple options, the one that we need is called: "windows/smb/ms17_010_eternalblue". To use it, we either type use  {exploit name}, or use {exploit index}. In my case the exploit has index 0, so I typed: use 0.
+
+Now, all we need to do is to set the right LHOST (our IP address), RHOST(the target IP address), and the listening ports on our machine and on the target machine. Then we type: run.
+
+This will give us a reverse shell as NT AUTHORITY\SYSTEM. We are Admin.
+
+We will get the regular users falg from: C:\Users\haris\Desktop\user.txt. To read it, we can use cat.
+
+We will get the root user flag from: C:\Users\Administrator\Desktop\root.txt.
+
+user flag:a0433b436c64d8d6ee0cfe382c5af86c
+
+root flag:28a95a60a0348abf1aa976c28723acbd
+
+   
