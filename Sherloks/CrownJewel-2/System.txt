@@ -1,0 +1,4448 @@
+<?xml version="1.1" encoding="utf-8" standalone="yes" ?>
+
+<Events>
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="EventLog"></Provider>
+<EventID Qualifiers="32768">6009</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x0080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.103449"></TimeCreated>
+<EventRecordID>2915</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="0" ThreadID="0"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data>&lt;string&gt;10.00.&lt;/string&gt;
+&lt;string&gt;20348&lt;/string&gt;
+&lt;string&gt;&lt;/string&gt;
+&lt;string&gt;Multiprocessor Free&lt;/string&gt;
+&lt;string&gt;0&lt;/string&gt;
+</Data>
+<Binary></Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="EventLog"></Provider>
+<EventID Qualifiers="32768">6005</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x0080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.103449"></TimeCreated>
+<EventRecordID>2916</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="0" ThreadID="0"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data></Data>
+<Binary>6AcFAAMADwAFACMAEgBnAAAAAAAAAAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="EventLog"></Provider>
+<EventID Qualifiers="32768">6013</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x0080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.103449"></TimeCreated>
+<EventRecordID>2917</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="0" ThreadID="0"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data>&lt;string&gt;11&lt;/string&gt;
+&lt;string&gt;&lt;/string&gt;
+&lt;string&gt;11&lt;/string&gt;
+&lt;string&gt;60&lt;/string&gt;
+&lt;string&gt;-300 Pakistan Standard Time&lt;/string&gt;
+</Data>
+<Binary>MQAuADEAAAAwAAAAVwBpAG4AZABvAHcAcwAgAFMAZQByAHYAZQByACAAMgAwADIAMgAgAFMAdABhAG4AZABhAHIAZAAgAEUAdgBhAGwAdQBhAHQAaQBvAG4AAAAxADAALgAwAC4AMgAwADMANAA4ACAAQgB1AGkAbABkACAAMgAwADMANAA4ACAAIAAAAE0AdQBsAHQAaQBwAHIAbwBjAGUAcwBzAG8AcgAgAEYAcgBlAGUAAAAyADAAMwA0ADgALgBmAGUAXwByAGUAbABlAGEAcwBlAC4AMgAxADAANQAwADcALQAxADUAMAAwAAAANgA0ADAANwA5ADQANgAxAAAATgBvAHQAIABBAHYAYQBpAGwAYQBiAGwAZQAAAE4AbwB0ACAAQQB2AGEAaQBsAGEAYgBsAGUAAAA5AAAAOAAAADYANgA1ADYAAAA0ADAAOQAAAEQAQwAwADEALgBmAG8AcgBlAGwAYQAuAGwAbwBjAGEAbAAAAAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">12</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>1</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000080</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:07.512012"></TimeCreated>
+<EventRecordID>2935</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="MajorVersion">10</Data>
+<Data Name="MinorVersion">0</Data>
+<Data Name="BuildVersion">20348</Data>
+<Data Name="QfeVersion">587</Data>
+<Data Name="ServiceVersion">0</Data>
+<Data Name="BootMode">0</Data>
+<Data Name="StartTime">2024-05-15 05:35:06.500000</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Boot" Guid="{15ca44ff-4d7a-4baa-bba5-0998955e531e}"></Provider>
+<EventID Qualifiers="">153</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>62</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:07.512135"></TimeCreated>
+<EventRecordID>2936</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="Status">0</Data>
+<Data Name="EnableDisableReason">0</Data>
+<Data Name="VsmPolicy">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Boot" Guid="{15ca44ff-4d7a-4baa-bba5-0998955e531e}"></Provider>
+<EventID Qualifiers="">20</EventID>
+<Version>1</Version>
+<Level>4</Level>
+<Task>31</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:07.512194"></TimeCreated>
+<EventRecordID>2937</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="LastShutdownGood">True</Data>
+<Data Name="LastBootGood">True</Data>
+<Data Name="LastBootId">9</Data>
+<Data Name="BootStatusPolicy">2</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Boot" Guid="{15ca44ff-4d7a-4baa-bba5-0998955e531e}"></Provider>
+<EventID Qualifiers="">238</EventID>
+<Version>1</Version>
+<Level>4</Level>
+<Task>101</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:07.512207"></TimeCreated>
+<EventRecordID>2938</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="EfiTimeZoneBias">2047</Data>
+<Data Name="EfiDaylightFlags">0</Data>
+<Data Name="EfiTime">2024-05-15 10:35:05</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Boot" Guid="{15ca44ff-4d7a-4baa-bba5-0998955e531e}"></Provider>
+<EventID Qualifiers="">25</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>32</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:07.512207"></TimeCreated>
+<EventRecordID>2939</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="BootMenuPolicy">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Boot" Guid="{15ca44ff-4d7a-4baa-bba5-0998955e531e}"></Provider>
+<EventID Qualifiers="">27</EventID>
+<Version>1</Version>
+<Level>4</Level>
+<Task>33</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:07.512207"></TimeCreated>
+<EventRecordID>2940</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="BootType">0</Data>
+<Data Name="LoadOptions"> NOEXECUTE=OPTOUT  FVEBOOT=2670592</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Boot" Guid="{15ca44ff-4d7a-4baa-bba5-0998955e531e}"></Provider>
+<EventID Qualifiers="">18</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>57</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:07.512234"></TimeCreated>
+<EventRecordID>2941</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="EntryCount">1</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Boot" Guid="{15ca44ff-4d7a-4baa-bba5-0998955e531e}"></Provider>
+<EventID Qualifiers="">32</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>58</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:07.512243"></TimeCreated>
+<EventRecordID>2942</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="BitlockerUserInputTime">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">20</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>6</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000010</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:07.515749"></TimeCreated>
+<EventRecordID>2943</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="UpdateReason">0</Data>
+<Data Name="EnabledNew">True</Data>
+<Data Name="CountNew">0</Data>
+<Data Name="CountOld">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-HAL" Guid="{63d1e632-95cc-4443-9312-af927761d52a}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:07.593369"></TimeCreated>
+<EventRecordID>2944</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="vmci"></Provider>
+<EventID Qualifiers="16392">3</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x0080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:09.363125"></TimeCreated>
+<EventRecordID>2945</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="32"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data>&lt;string&gt;VMCI: Using capabilities (0x1c).
+&lt;/string&gt;
+&lt;string&gt;&lt;/string&gt;
+</Data>
+<Binary>AAAAAAIAKAAAAAAAAwAIQAMACEAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:11.317923"></TimeCreated>
+<EventRecordID>2946</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">3</Data>
+<Data Name="DeviceName">Wof</Data>
+<Data Name="DeviceTime">2008-09-17 23:19:58</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:11.318407"></TimeCreated>
+<EventRecordID>2947</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">6</Data>
+<Data Name="DeviceName">DfsrRo</Data>
+<Data Name="DeviceTime">1999-03-21 06:16:31</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Ntfs" Guid="{3ff37a1c-a68d-4d6e-8c9b-f79e8b16c482}"></Provider>
+<EventID Qualifiers="">98</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000002</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:11.409491"></TimeCreated>
+<EventRecordID>2948</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="196"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="DriveName">C:</Data>
+<Data Name="DeviceName">\Device\HarddiskVolume3</Data>
+<Data Name="CorruptionActionState">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:11.512331"></TimeCreated>
+<EventRecordID>2949</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">9</Data>
+<Data Name="DeviceName">FileCrypt</Data>
+<Data Name="DeviceTime">2088-05-24 11:57:52</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:11.516108"></TimeCreated>
+<EventRecordID>2950</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">9</Data>
+<Data Name="DeviceName">DfsDriver</Data>
+<Data Name="DeviceTime">2053-07-29 14:36:42</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:11.697266"></TimeCreated>
+<EventRecordID>2951</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="8"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">9</Data>
+<Data Name="DeviceName">npsvctrig</Data>
+<Data Name="DeviceTime">2015-04-02 15:42:38</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Power" Guid="{331c3b3a-2005-44c2-ac5e-77220c37d6b4}"></Provider>
+<EventID Qualifiers="">172</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>203</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000404</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:11.737209"></TimeCreated>
+<EventRecordID>2952</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="376"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="State">2</Data>
+<Data Name="Reason">6</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Processor-Power" Guid="{0f67e49f-fe51-4e9f-b490-6f2948cc6027}"></Provider>
+<EventID Qualifiers="">55</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>47</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:13.851809"></TimeCreated>
+<EventRecordID>2953</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="Group">0</Data>
+<Data Name="Number">0</Data>
+<Data Name="IdleStateCount">1</Data>
+<Data Name="IdleImplementation">1</Data>
+<Data Name="NominalFrequency">3693</Data>
+<Data Name="MaximumPerformancePercent">100</Data>
+<Data Name="MinimumPerformancePercent">100</Data>
+<Data Name="MinimumThrottlePercent">100</Data>
+<Data Name="PerformanceImplementation">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Processor-Power" Guid="{0f67e49f-fe51-4e9f-b490-6f2948cc6027}"></Provider>
+<EventID Qualifiers="">55</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>47</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:13.852501"></TimeCreated>
+<EventRecordID>2954</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="Group">0</Data>
+<Data Name="Number">1</Data>
+<Data Name="IdleStateCount">1</Data>
+<Data Name="IdleImplementation">1</Data>
+<Data Name="NominalFrequency">3693</Data>
+<Data Name="MaximumPerformancePercent">100</Data>
+<Data Name="MinimumPerformancePercent">100</Data>
+<Data Name="MinimumThrottlePercent">100</Data>
+<Data Name="PerformanceImplementation">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Processor-Power" Guid="{0f67e49f-fe51-4e9f-b490-6f2948cc6027}"></Provider>
+<EventID Qualifiers="">55</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>47</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:13.853077"></TimeCreated>
+<EventRecordID>2955</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="Group">0</Data>
+<Data Name="Number">2</Data>
+<Data Name="IdleStateCount">1</Data>
+<Data Name="IdleImplementation">1</Data>
+<Data Name="NominalFrequency">3693</Data>
+<Data Name="MaximumPerformancePercent">100</Data>
+<Data Name="MinimumPerformancePercent">100</Data>
+<Data Name="MinimumThrottlePercent">100</Data>
+<Data Name="PerformanceImplementation">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Processor-Power" Guid="{0f67e49f-fe51-4e9f-b490-6f2948cc6027}"></Provider>
+<EventID Qualifiers="">55</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>47</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:13.853830"></TimeCreated>
+<EventRecordID>2956</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="Group">0</Data>
+<Data Name="Number">3</Data>
+<Data Name="IdleStateCount">1</Data>
+<Data Name="IdleImplementation">1</Data>
+<Data Name="NominalFrequency">3693</Data>
+<Data Name="MaximumPerformancePercent">100</Data>
+<Data Name="MinimumPerformancePercent">100</Data>
+<Data Name="MinimumThrottlePercent">100</Data>
+<Data Name="PerformanceImplementation">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Processor-Power" Guid="{0f67e49f-fe51-4e9f-b490-6f2948cc6027}"></Provider>
+<EventID Qualifiers="">55</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>47</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:13.854357"></TimeCreated>
+<EventRecordID>2957</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="Group">0</Data>
+<Data Name="Number">4</Data>
+<Data Name="IdleStateCount">1</Data>
+<Data Name="IdleImplementation">1</Data>
+<Data Name="NominalFrequency">3693</Data>
+<Data Name="MaximumPerformancePercent">100</Data>
+<Data Name="MinimumPerformancePercent">100</Data>
+<Data Name="MinimumThrottlePercent">100</Data>
+<Data Name="PerformanceImplementation">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Processor-Power" Guid="{0f67e49f-fe51-4e9f-b490-6f2948cc6027}"></Provider>
+<EventID Qualifiers="">55</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>47</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:13.854866"></TimeCreated>
+<EventRecordID>2958</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="Group">0</Data>
+<Data Name="Number">5</Data>
+<Data Name="IdleStateCount">1</Data>
+<Data Name="IdleImplementation">1</Data>
+<Data Name="NominalFrequency">3693</Data>
+<Data Name="MaximumPerformancePercent">100</Data>
+<Data Name="MinimumPerformancePercent">100</Data>
+<Data Name="MinimumThrottlePercent">100</Data>
+<Data Name="PerformanceImplementation">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Processor-Power" Guid="{0f67e49f-fe51-4e9f-b490-6f2948cc6027}"></Provider>
+<EventID Qualifiers="">55</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>47</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:13.855499"></TimeCreated>
+<EventRecordID>2959</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="Group">0</Data>
+<Data Name="Number">6</Data>
+<Data Name="IdleStateCount">1</Data>
+<Data Name="IdleImplementation">1</Data>
+<Data Name="NominalFrequency">3693</Data>
+<Data Name="MaximumPerformancePercent">100</Data>
+<Data Name="MinimumPerformancePercent">100</Data>
+<Data Name="MinimumThrottlePercent">100</Data>
+<Data Name="PerformanceImplementation">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-Processor-Power" Guid="{0f67e49f-fe51-4e9f-b490-6f2948cc6027}"></Provider>
+<EventID Qualifiers="">55</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>47</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:13.856052"></TimeCreated>
+<EventRecordID>2960</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="Group">0</Data>
+<Data Name="Number">7</Data>
+<Data Name="IdleStateCount">1</Data>
+<Data Name="IdleImplementation">1</Data>
+<Data Name="NominalFrequency">3693</Data>
+<Data Name="MaximumPerformancePercent">100</Data>
+<Data Name="MinimumPerformancePercent">100</Data>
+<Data Name="MinimumThrottlePercent">100</Data>
+<Data Name="PerformanceImplementation">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="e1i68x64"></Provider>
+<EventID Qualifiers="24580">32</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x0080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:14.115337"></TimeCreated>
+<EventRecordID>2961</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="176"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data>&lt;string&gt;Intel(R) 82574L Gigabit Network Connection&lt;/string&gt;
+&lt;string&gt;&lt;/string&gt;
+</Data>
+<Binary>AAAEAAIAMAAAAAAAIAAEYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAABGA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Ntfs" Guid="{3ff37a1c-a68d-4d6e-8c9b-f79e8b16c482}"></Provider>
+<EventID Qualifiers="">98</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000002</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:14.149723"></TimeCreated>
+<EventRecordID>2962</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="356"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="DriveName">\\?\Volume{c526ee1b-ba64-405c-a85b-a486eddd36cb}</Data>
+<Data Name="DeviceName">\Device\HarddiskVolume4</Data>
+<Data Name="CorruptionActionState">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">15</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>10</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:15.678307"></TimeCreated>
+<EventRecordID>2963</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="172" ThreadID="472"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">36</Data>
+<Data Name="HiveName">\SystemRoot\System32\Config\SOFTWARE</Data>
+<Data Name="OriginalSize">73838592</Data>
+<Data Name="NewSize">73797632</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">24</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>11</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000010</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:15.696047"></TimeCreated>
+<EventRecordID>2964</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="172" ThreadID="504"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="ExitReason">0</Data>
+<Data Name="CurrentBias">-300</Data>
+<Data Name="CurrentTimeZoneID">0</Data>
+<Data Name="TimeZoneInfoCacheUpdated">0</Data>
+<Data Name="FirstRefresh">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:15.865120"></TimeCreated>
+<EventRecordID>2965</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="172" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">35</Data>
+<Data Name="HiveName">\SystemRoot\System32\Config\DEFAULT</Data>
+<Data Name="KeysUpdated">185</Data>
+<Data Name="DirtyPages">20</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Wininit" Guid="{206f6dea-d3c5-4d10-bc72-989f03c8b84b}"></Provider>
+<EventID Qualifiers="">14</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x4000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:16.230738"></TimeCreated>
+<EventRecordID>2966</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="624" ThreadID="628"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="Config">0</Data>
+<Data Name="IsTestConfig">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:16.314047"></TimeCreated>
+<EventRecordID>2967</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="172" ThreadID="468"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">36</Data>
+<Data Name="HiveName">\SystemRoot\System32\Config\SECURITY</Data>
+<Data Name="KeysUpdated">120</Data>
+<Data Name="DirtyPages">5</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Directory-Services-SAM" Guid="{0d4fdc09-8c27-494a-bda0-505e4fd8adae}"></Provider>
+<EventID Qualifiers="">16962</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:16.490915"></TimeCreated>
+<EventRecordID>2968</EventRecordID>
+<Correlation ActivityID="{a54d06d3-a689-0001-f306-4da589a6da01}" RelatedActivityID=""></Correlation>
+<Execution ProcessID="764" ThreadID="768"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData Name="SAMMSG_RESTRICT_REMOTE_SAM_DEFAULT_SD"><Data Name="Default SD String:"></Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:16.494078"></TimeCreated>
+<EventRecordID>2969</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="172" ThreadID="484"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">31</Data>
+<Data Name="HiveName">\SystemRoot\System32\Config\SAM</Data>
+<Data Name="KeysUpdated">23</Data>
+<Data Name="DirtyPages">3</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Directory-Services-SAM" Guid="{0d4fdc09-8c27-494a-bda0-505e4fd8adae}"></Provider>
+<EventID Qualifiers="">16977</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.809124"></TimeCreated>
+<EventRecordID>2970</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="764" ThreadID="944"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData Name="SAMMSG_MINPWDLEN_SETTINGS_IN_EFFECT"><Data Name="MinimumPasswordLength">7</Data>
+<Data Name="RelaxMinimumPasswordLengthLimits">0</Data>
+<Data Name="MinimumPasswordLengthAudit">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Directory-Services-SAM" Guid="{0d4fdc09-8c27-494a-bda0-505e4fd8adae}"></Provider>
+<EventID Qualifiers="">16977</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.819862"></TimeCreated>
+<EventRecordID>2971</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="764" ThreadID="768"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData Name="SAMMSG_MINPWDLEN_SETTINGS_IN_EFFECT"><Data Name="MinimumPasswordLength">7</Data>
+<Data Name="RelaxMinimumPasswordLengthLimits">0</Data>
+<Data Name="MinimumPasswordLengthAudit">-1</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Directory-Services-SAM" Guid="{0d4fdc09-8c27-494a-bda0-505e4fd8adae}"></Provider>
+<EventID Qualifiers="">16983</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.819864"></TimeCreated>
+<EventRecordID>2972</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="764" ThreadID="768"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData Name="SAMMSG_AUDIT_LEGACY_PWD_RPC_METHODS_OFF"></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.837786"></TimeCreated>
+<EventRecordID>2973</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="852"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">PlugPlay</Data>
+<Data Name="param2">running</Data>
+<Binary>UABsAHUAZwBQAGwAYQB5AC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.853909"></TimeCreated>
+<EventRecordID>2974</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="852"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Power</Data>
+<Data Name="param2">running</Data>
+<Binary>UABvAHcAZQByAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.884903"></TimeCreated>
+<EventRecordID>2975</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">DcomLaunch</Data>
+<Data Name="param2">running</Data>
+<Binary>RABjAG8AbQBMAGEAdQBuAGMAaAAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.887592"></TimeCreated>
+<EventRecordID>2976</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="748"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">56</Data>
+<Data Name="HiveName">\??\C:\Windows\ServiceProfiles\NetworkService\NTUSER.DAT</Data>
+<Data Name="KeysUpdated">89</Data>
+<Data Name="DirtyPages">14</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.900553"></TimeCreated>
+<EventRecordID>2977</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">RpcEptMapper</Data>
+<Data Name="param2">running</Data>
+<Binary>UgBwAGMARQBwAHQATQBhAHAAcABlAHIALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.900553"></TimeCreated>
+<EventRecordID>2978</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">RpcSs</Data>
+<Data Name="param2">running</Data>
+<Binary>UgBwAGMAUwBzAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.962839"></TimeCreated>
+<EventRecordID>2979</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="852"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">LSM</Data>
+<Data Name="param2">running</Data>
+<Binary>TABTAE0ALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.978472"></TimeCreated>
+<EventRecordID>2980</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="852"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">BrokerInfrastructure</Data>
+<Data Name="param2">running</Data>
+<Binary>QgByAG8AawBlAHIASQBuAGYAcgBhAHMAdAByAHUAYwB0AHUAcgBlAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:17.994442"></TimeCreated>
+<EventRecordID>2981</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="852"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">SystemEventsBroker</Data>
+<Data Name="param2">running</Data>
+<Binary>UwB5AHMAdABlAG0ARQB2AGUAbgB0AHMAQgByAG8AawBlAHIALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.023027"></TimeCreated>
+<EventRecordID>2982</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="996" ThreadID="360"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">31</Data>
+<Data Name="HiveName">\SystemRoot\System32\Config\BBI</Data>
+<Data Name="KeysUpdated">21</Data>
+<Data Name="DirtyPages">5</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.024828"></TimeCreated>
+<EventRecordID>2983</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">54</Data>
+<Data Name="HiveName">\??\C:\Windows\ServiceProfiles\LocalService\NTUSER.DAT</Data>
+<Data Name="KeysUpdated">42</Data>
+<Data Name="DirtyPages">13</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.041002"></TimeCreated>
+<EventRecordID>2984</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">lmhosts</Data>
+<Data Name="param2">running</Data>
+<Binary>bABtAGgAbwBzAHQAcwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.041002"></TimeCreated>
+<EventRecordID>2985</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1064"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">nsi</Data>
+<Data Name="param2">running</Data>
+<Binary>bgBzAGkALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.056623"></TimeCreated>
+<EventRecordID>2986</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="972"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">TimeBrokerSvc</Data>
+<Data Name="param2">running</Data>
+<Binary>VABpAG0AZQBCAHIAbwBrAGUAcgBTAHYAYwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.056623"></TimeCreated>
+<EventRecordID>2987</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Dnscache</Data>
+<Data Name="param2">running</Data>
+<Binary>RABuAHMAYwBhAGMAaABlAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Dhcp-Client" Guid="{15a7a4f8-0072-4eab-abad-f98a4d666aed}"></Provider>
+<EventID Qualifiers="">50036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>4</Task>
+<Opcode>68</Opcode>
+<Keywords>0x2000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.075125"></TimeCreated>
+<EventRecordID>2988</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1272" ThreadID="1300"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-19"></Security>
+</System>
+<EventData></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Dhcp-Client" Guid="{15a7a4f8-0072-4eab-abad-f98a4d666aed}"></Provider>
+<EventID Qualifiers="">50103</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>4</Task>
+<Opcode>129</Opcode>
+<Keywords>0x2000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.075165"></TimeCreated>
+<EventRecordID>2989</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1272" ThreadID="1300"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-19"></Security>
+</System>
+<EventData></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Dhcp-Client" Guid="{15a7a4f8-0072-4eab-abad-f98a4d666aed}"></Provider>
+<EventID Qualifiers="">50036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>4</Task>
+<Opcode>68</Opcode>
+<Keywords>0x2000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.076040"></TimeCreated>
+<EventRecordID>2990</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1272" ThreadID="1300"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-19"></Security>
+</System>
+<EventData></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-DHCPv6-Client" Guid="{6a1f2b00-6a90-4c38-95a5-5cab3b056778}"></Provider>
+<EventID Qualifiers="">51046</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>4</Task>
+<Opcode>62</Opcode>
+<Keywords>0x2000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.084169"></TimeCreated>
+<EventRecordID>2991</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1272" ThreadID="1456"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-19"></Security>
+</System>
+<EventData></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.072277"></TimeCreated>
+<EventRecordID>2992</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Dhcp</Data>
+<Data Name="param2">running</Data>
+<Binary>RABoAGMAcAAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.089233"></TimeCreated>
+<EventRecordID>2993</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="32"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">5</Data>
+<Data Name="DeviceName">wcifs</Data>
+<Data Name="DeviceTime">2088-12-15 16:51:43</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.103449"></TimeCreated>
+<EventRecordID>2994</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">EventLog</Data>
+<Data Name="param2">running</Data>
+<Binary>RQB2AGUAbgB0AEwAbwBnAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.110594"></TimeCreated>
+<EventRecordID>2995</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="352"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">5</Data>
+<Data Name="DeviceName">luafv</Data>
+<Data Name="DeviceTime">2068-10-12 03:22:37</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.103449"></TimeCreated>
+<EventRecordID>2996</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">WPDBusEnum</Data>
+<Data Name="param2">running</Data>
+<Binary>VwBQAEQAQgB1AHMARQBuAHUAbQAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.123438"></TimeCreated>
+<EventRecordID>2997</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="352"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">6</Data>
+<Data Name="DeviceName">CldFlt</Data>
+<Data Name="DeviceTime">2074-11-09 20:03:12</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">1</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.123444"></TimeCreated>
+<EventRecordID>2998</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="352"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">6</Data>
+<Data Name="DeviceName">CldFlt</Data>
+<Data Name="DeviceTime">2074-11-09 20:03:12</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.123472"></TimeCreated>
+<EventRecordID>2999</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="352"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">6</Data>
+<Data Name="DeviceName">CldFlt</Data>
+<Data Name="DeviceTime">2074-11-09 20:03:12</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.127739"></TimeCreated>
+<EventRecordID>3000</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="352"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">10</Data>
+<Data Name="DeviceName">storqosflt</Data>
+<Data Name="DeviceTime">2051-09-21 17:40:20</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-FilterManager" Guid="{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}"></Provider>
+<EventID Qualifiers="">6</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.132219"></TimeCreated>
+<EventRecordID>3001</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="352"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="FinalStatus">0x00000000</Data>
+<Data Name="DeviceVersionMajor">10</Data>
+<Data Name="DeviceVersionMinor">0</Data>
+<Data Name="DeviceNameLength">7</Data>
+<Data Name="DeviceName">bindflt</Data>
+<Data Name="DeviceTime">2051-03-04 08:45:47</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.119167"></TimeCreated>
+<EventRecordID>3002</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">NTDS</Data>
+<Data Name="param2">running</Data>
+<Binary>TgBUAEQAUwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.135197"></TimeCreated>
+<EventRecordID>3003</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Themes</Data>
+<Data Name="param2">running</Data>
+<Binary>VABoAGUAbQBlAHMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.135197"></TimeCreated>
+<EventRecordID>3004</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1028"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">NlaSvc</Data>
+<Data Name="param2">running</Data>
+<Binary>TgBsAGEAUwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.150337"></TimeCreated>
+<EventRecordID>3005</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1028"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">EventSystem</Data>
+<Data Name="param2">running</Data>
+<Binary>RQB2AGUAbgB0AFMAeQBzAHQAZQBtAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.150337"></TimeCreated>
+<EventRecordID>3006</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1032"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">gpsvc</Data>
+<Data Name="param2">running</Data>
+<Binary>ZwBwAHMAdgBjAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-DNS-Client" Guid="{1c95126e-7eea-49a9-a3fe-a378b03ddb4d}"></Provider>
+<EventID Qualifiers="">1014</EventID>
+<Version>0</Version>
+<Level>3</Level>
+<Task>1014</Task>
+<Opcode>0</Opcode>
+<Keywords>0x4000000010000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.163088"></TimeCreated>
+<EventRecordID>3007</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1192" ThreadID="1348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-20"></Security>
+</System>
+<EventData><Data Name="QueryName">_ldap._tcp.dc._msdcs.forela.local.</Data>
+<Data Name="AddressLength">128</Data>
+<Data Name="Address">FwAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.150337"></TimeCreated>
+<EventRecordID>3008</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">SENS</Data>
+<Data Name="param2">running</Data>
+<Binary>UwBFAE4AUwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.165998"></TimeCreated>
+<EventRecordID>3009</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">netprofm</Data>
+<Data Name="param2">running</Data>
+<Binary>bgBlAHQAcAByAG8AZgBtAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.181549"></TimeCreated>
+<EventRecordID>3010</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">ProfSvc</Data>
+<Data Name="param2">running</Data>
+<Binary>UAByAG8AZgBTAHYAYwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.212948"></TimeCreated>
+<EventRecordID>3011</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">ShellHWDetection</Data>
+<Data Name="param2">running</Data>
+<Binary>UwBoAGUAbABsAEgAVwBEAGUAdABlAGMAdABpAG8AbgAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.212948"></TimeCreated>
+<EventRecordID>3012</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">FontCache</Data>
+<Data Name="param2">running</Data>
+<Binary>RgBvAG4AdABDAGEAYwBoAGUALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.228529"></TimeCreated>
+<EventRecordID>3013</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1028"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">DsmSvc</Data>
+<Data Name="param2">running</Data>
+<Binary>RABzAG0AUwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.228529"></TimeCreated>
+<EventRecordID>3014</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">BFE</Data>
+<Data Name="param2">running</Data>
+<Binary>QgBGAEUALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.244123"></TimeCreated>
+<EventRecordID>3015</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Schedule</Data>
+<Data Name="param2">running</Data>
+<Binary>UwBjAGgAZQBkAHUAbABlAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.244123"></TimeCreated>
+<EventRecordID>3016</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">NcbService</Data>
+<Data Name="param2">running</Data>
+<Binary>TgBjAGIAUwBlAHIAdgBpAGMAZQAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.244123"></TimeCreated>
+<EventRecordID>3017</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1032"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">WinHttpAutoProxySvc</Data>
+<Data Name="param2">running</Data>
+<Binary>VwBpAG4ASAB0AHQAcABBAHUAdABvAFAAcgBvAHgAeQBTAHYAYwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-DNS-Client" Guid="{1c95126e-7eea-49a9-a3fe-a378b03ddb4d}"></Provider>
+<EventID Qualifiers="">1014</EventID>
+<Version>0</Version>
+<Level>3</Level>
+<Task>1014</Task>
+<Opcode>0</Opcode>
+<Keywords>0x4000000010000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.257721"></TimeCreated>
+<EventRecordID>3018</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1192" ThreadID="1348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-20"></Security>
+</System>
+<EventData><Data Name="QueryName">wpad</Data>
+<Data Name="AddressLength">128</Data>
+<Data Name="Address">FwAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.259861"></TimeCreated>
+<EventRecordID>3019</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Wcmsvc</Data>
+<Data Name="param2">running</Data>
+<Binary>VwBjAG0AcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.259861"></TimeCreated>
+<EventRecordID>3020</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">LanmanWorkstation</Data>
+<Data Name="param2">running</Data>
+<Binary>TABhAG4AbQBhAG4AVwBvAHIAawBzAHQAYQB0AGkAbwBuAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.275499"></TimeCreated>
+<EventRecordID>3021</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1032"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Kdc</Data>
+<Data Name="param2">running</Data>
+<Binary>SwBkAGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-DNS-Client" Guid="{1c95126e-7eea-49a9-a3fe-a378b03ddb4d}"></Provider>
+<EventID Qualifiers="">1014</EventID>
+<Version>0</Version>
+<Level>3</Level>
+<Task>1014</Task>
+<Opcode>0</Opcode>
+<Keywords>0x4000000010000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.288338"></TimeCreated>
+<EventRecordID>3022</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1192" ThreadID="1348"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-20"></Security>
+</System>
+<EventData><Data Name="QueryName">_ldap._tcp.dc._msdcs.forela.local.</Data>
+<Data Name="AddressLength">128</Data>
+<Data Name="Address">FwAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.291016"></TimeCreated>
+<EventRecordID>3023</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">UserManager</Data>
+<Data Name="param2">running</Data>
+<Binary>VQBzAGUAcgBNAGEAbgBhAGcAZQByAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.306580"></TimeCreated>
+<EventRecordID>3024</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">iphlpsvc</Data>
+<Data Name="param2">running</Data>
+<Binary>aQBwAGgAbABwAHMAdgBjAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.322281"></TimeCreated>
+<EventRecordID>3025</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="832"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">NcaSvc</Data>
+<Data Name="param2">stopped</Data>
+<Binary>TgBjAGEAUwB2AGMALwAxAAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:18.353437"></TimeCreated>
+<EventRecordID>3026</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="832"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">mpssvc</Data>
+<Data Name="param2">running</Data>
+<Binary>bQBwAHMAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-DfsSvc" Guid="{7DA4FE0E-FD42-4708-9AA5-89B77A224885}" EventSourceName="DfsSvc"></Provider>
+<EventID Qualifiers="16384">14533</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x0080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.995941"></TimeCreated>
+<EventRecordID>3027</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="0" ThreadID="0"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData Name="DfsFinishBuildingNamespace"></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-DfsSvc" Guid="{7DA4FE0E-FD42-4708-9AA5-89B77A224885}" EventSourceName="DfsSvc"></Provider>
+<EventID Qualifiers="16384">14531</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x0080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.995941"></TimeCreated>
+<EventRecordID>3028</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="0" ThreadID="0"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData Name="DfsFinishInit"></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-WinRM" Guid="{A7975C8F-AC13-49F1-87DA-5A984A4AB417}" EventSourceName="WinRM"></Provider>
+<EventID Qualifiers="7">10148</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x0080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.074190"></TimeCreated>
+<EventRecordID>3029</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="0" ThreadID="0"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData Name="Started Listening"></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Virtual Disk Service"></Provider>
+<EventID Qualifiers="16896">3</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x0080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.277542"></TimeCreated>
+<EventRecordID>3030</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="0" ThreadID="0"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data>&lt;string&gt;@2010005&lt;/string&gt;
+</Data>
+<Binary></Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.808710"></TimeCreated>
+<EventRecordID>3031</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">SamSs</Data>
+<Data Name="param2">running</Data>
+<Binary>UwBhAG0AUwBzAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.871017"></TimeCreated>
+<EventRecordID>3032</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">LanmanServer</Data>
+<Data Name="param2">running</Data>
+<Binary>TABhAG4AbQBhAG4AUwBlAHIAdgBlAHIALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.933388"></TimeCreated>
+<EventRecordID>3033</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Spooler</Data>
+<Data Name="param2">running</Data>
+<Binary>UwBwAG8AbwBsAGUAcgAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.949276"></TimeCreated>
+<EventRecordID>3034</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1028"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">WLMS</Data>
+<Data Name="param2">running</Data>
+<Binary>VwBMAE0AUwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.964853"></TimeCreated>
+<EventRecordID>3035</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="832"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">RemoteRegistry</Data>
+<Data Name="param2">running</Data>
+<Binary>UgBlAG0AbwB0AGUAUgBlAGcAaQBzAHQAcgB5AC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.964853"></TimeCreated>
+<EventRecordID>3036</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">SysMain</Data>
+<Data Name="param2">running</Data>
+<Binary>UwB5AHMATQBhAGkAbgAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.964853"></TimeCreated>
+<EventRecordID>3037</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">CoreMessagingRegistrar</Data>
+<Data Name="param2">running</Data>
+<Binary>QwBvAHIAZQBNAGUAcwBzAGEAZwBpAG4AZwBSAGUAZwBpAHMAdAByAGEAcgAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.980301"></TimeCreated>
+<EventRecordID>3038</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1028"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">CryptSvc</Data>
+<Data Name="param2">running</Data>
+<Binary>QwByAHkAcAB0AFMAdgBjAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.980301"></TimeCreated>
+<EventRecordID>3039</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1032"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">IsmServ</Data>
+<Data Name="param2">running</Data>
+<Binary>SQBzAG0AUwBlAHIAdgAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.980301"></TimeCreated>
+<EventRecordID>3040</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="972"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">SstpSvc</Data>
+<Data Name="param2">running</Data>
+<Binary>UwBzAHQAcABTAHYAYwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.995941"></TimeCreated>
+<EventRecordID>3041</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="972"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Dfs</Data>
+<Data Name="param2">running</Data>
+<Binary>RABmAHMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:27.995941"></TimeCreated>
+<EventRecordID>3042</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="972"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">WpnService</Data>
+<Data Name="param2">running</Data>
+<Binary>VwBwAG4AUwBlAHIAdgBpAGMAZQAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.011553"></TimeCreated>
+<EventRecordID>3043</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Winmgmt</Data>
+<Data Name="param2">running</Data>
+<Binary>VwBpAG4AbQBnAG0AdAAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.011553"></TimeCreated>
+<EventRecordID>3044</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="972"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">DFSR</Data>
+<Data Name="param2">running</Data>
+<Binary>RABGAFMAUgAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.027201"></TimeCreated>
+<EventRecordID>3045</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">VGAuthService</Data>
+<Data Name="param2">running</Data>
+<Binary>VgBHAEEAdQB0AGgAUwBlAHIAdgBpAGMAZQAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.027201"></TimeCreated>
+<EventRecordID>3046</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">vm3dservice</Data>
+<Data Name="param2">running</Data>
+<Binary>dgBtADMAZABzAGUAcgB2AGkAYwBlAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.065887"></TimeCreated>
+<EventRecordID>3047</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="972"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">VMTools</Data>
+<Data Name="param2">running</Data>
+<Binary>VgBNAFQAbwBvAGwAcwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.093168"></TimeCreated>
+<EventRecordID>3048</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="972"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">WinRM</Data>
+<Data Name="param2">running</Data>
+<Binary>VwBpAG4AUgBNAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.120941"></TimeCreated>
+<EventRecordID>3049</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="832"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">sppsvc</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.214708"></TimeCreated>
+<EventRecordID>3050</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="832"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">StateRepository</Data>
+<Data Name="param2">running</Data>
+<Binary>UwB0AGEAdABlAFIAZQBwAG8AcwBpAHQAbwByAHkALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.261518"></TimeCreated>
+<EventRecordID>3051</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="832"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">RasMan</Data>
+<Data Name="param2">running</Data>
+<Binary>UgBhAHMATQBhAG4ALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.277542"></TimeCreated>
+<EventRecordID>3052</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="832"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">DiagTrack</Data>
+<Data Name="param2">running</Data>
+<Binary>RABpAGEAZwBUAHIAYQBjAGsALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.277542"></TimeCreated>
+<EventRecordID>3053</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">vds</Data>
+<Data Name="param2">running</Data>
+<Binary>dgBkAHMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.339628"></TimeCreated>
+<EventRecordID>3054</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">vmvss</Data>
+<Data Name="param2">running</Data>
+<Binary>dgBtAHYAcwBzAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.355654"></TimeCreated>
+<EventRecordID>3055</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">COMSysApp</Data>
+<Data Name="param2">running</Data>
+<Binary>QwBPAE0AUwB5AHMAQQBwAHAALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.542852"></TimeCreated>
+<EventRecordID>3056</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">MSDTC</Data>
+<Data Name="param2">running</Data>
+<Binary>TQBTAEQAVABDAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.599323"></TimeCreated>
+<EventRecordID>3057</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="2920" ThreadID="3908"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">45</Data>
+<Data Name="HiveName">\??\C:\Windows\AppCompat\Programs\Amcache.hve</Data>
+<Data Name="KeysUpdated">72</Data>
+<Data Name="DirtyPages">21</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="49152">7026</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.667891"></TimeCreated>
+<EventRecordID>3058</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="748"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">
+dam</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.667891"></TimeCreated>
+<EventRecordID>3059</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="480"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">ADWS</Data>
+<Data Name="param2">running</Data>
+<Binary>QQBEAFcAUwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.777172"></TimeCreated>
+<EventRecordID>3060</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Windows License Manager Service</Data>
+<Data Name="param2">running</Data>
+<Binary>TABpAGMAZQBuAHMAZQBNAGEAbgBhAGcAZQByAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:28.839655"></TimeCreated>
+<EventRecordID>3061</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Client License Service (ClipSVC)</Data>
+<Data Name="param2">running</Data>
+<Binary>QwBsAGkAcABTAFYAQwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:29.636707"></TimeCreated>
+<EventRecordID>3062</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Volume Shadow Copy</Data>
+<Data Name="param2">running</Data>
+<Binary>VgBTAFMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:29.683792"></TimeCreated>
+<EventRecordID>3063</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="856"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Microsoft Account Sign-in Assistant</Data>
+<Data Name="param2">running</Data>
+<Binary>dwBsAGkAZABzAHYAYwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:30.996080"></TimeCreated>
+<EventRecordID>3064</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Windows Update</Data>
+<Data Name="param2">running</Data>
+<Binary>dwB1AGEAdQBzAGUAcgB2AC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-WinRM" Guid="{A7975C8F-AC13-49F1-87DA-5A984A4AB417}" EventSourceName="WinRM"></Provider>
+<EventID Qualifiers="7">10154</EventID>
+<Version>0</Version>
+<Level>3</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x0080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:40.093187"></TimeCreated>
+<EventRecordID>3065</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="0" ThreadID="0"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="spn1">WSMAN/DC01.forela.local</Data>
+<Data Name="spn2">WSMAN/DC01</Data>
+<Data Name="error">1355</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:46.141394"></TimeCreated>
+<EventRecordID>3066</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Netlogon</Data>
+<Data Name="param2">running</Data>
+<Binary>TgBlAHQAbABvAGcAbwBuAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:46.500521"></TimeCreated>
+<EventRecordID>3067</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Display Policy Service</Data>
+<Data Name="param2">running</Data>
+<Binary>RABpAHMAcABCAHIAbwBrAGUAcgBEAGUAcwBrAHQAbwBwAFMAdgBjAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Time-Service" Guid="{06edcfeb-0fd0-4e53-acca-a6f8bbf81bcb}"></Provider>
+<EventID Qualifiers="">139</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:48.079912"></TimeCreated>
+<EventRecordID>3068</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1088" ThreadID="4168"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-19"></Security>
+</System>
+<EventData Name="TMP_EVENT_START_ADVERTISING"></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Time-Service" Guid="{06edcfeb-0fd0-4e53-acca-a6f8bbf81bcb}"></Provider>
+<EventID Qualifiers="">143</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:48.079912"></TimeCreated>
+<EventRecordID>3069</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1088" ThreadID="4168"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-19"></Security>
+</System>
+<EventData Name="TMP_EVENT_START_ADVERTISING_GT"></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Time-Service" Guid="{06edcfeb-0fd0-4e53-acca-a6f8bbf81bcb}"></Provider>
+<EventID Qualifiers="">12</EventID>
+<Version>0</Version>
+<Level>3</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:48.083220"></TimeCreated>
+<EventRecordID>3070</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1088" ThreadID="1284"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-19"></Security>
+</System>
+<EventData Name="TMP_EVENT_DOMAIN_HIERARCHY_ROOT"></EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:48.078600"></TimeCreated>
+<EventRecordID>3071</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">W32Time</Data>
+<Data Name="param2">running</Data>
+<Binary>VwAzADIAVABpAG0AZQAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7040</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:48.531761"></TimeCreated>
+<EventRecordID>3072</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="param1">Background Intelligent Transfer Service</Data>
+<Data Name="param2">demand start</Data>
+<Data Name="param3">auto start</Data>
+<Data Name="param4">BITS</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:48.594389"></TimeCreated>
+<EventRecordID>3073</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Background Intelligent Transfer Service</Data>
+<Data Name="param2">running</Data>
+<Binary>QgBJAFQAUwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:48.797432"></TimeCreated>
+<EventRecordID>3074</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">WMI Performance Adapter</Data>
+<Data Name="param2">running</Data>
+<Binary>dwBtAGkAQQBwAFMAcgB2AC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:35:57.828611"></TimeCreated>
+<EventRecordID>3075</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="820"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">DNS</Data>
+<Data Name="param2">running</Data>
+<Binary>RABOAFMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:13.266132"></TimeCreated>
+<EventRecordID>3076</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">sppsvc</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:18.734964"></TimeCreated>
+<EventRecordID>3077</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Network Connectivity Assistant</Data>
+<Data Name="param2">stopped</Data>
+<Binary>TgBjAGEAUwB2AGMALwAxAAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:18.781561"></TimeCreated>
+<EventRecordID>3078</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Windows Update Medic Service</Data>
+<Data Name="param2">running</Data>
+<Binary>VwBhAGEAUwBNAGUAZABpAGMAUwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:18.781561"></TimeCreated>
+<EventRecordID>3079</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Delivery Optimization</Data>
+<Data Name="param2">running</Data>
+<Binary>RABvAFMAdgBjAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:18.860125"></TimeCreated>
+<EventRecordID>3080</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Storage Service</Data>
+<Data Name="param2">running</Data>
+<Binary>UwB0AG8AcgBTAHYAYwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:18.922483"></TimeCreated>
+<EventRecordID>3081</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1064"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Delivery Optimization</Data>
+<Data Name="param2">stopped</Data>
+<Binary>RABvAFMAdgBjAC8AMQAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:18.969416"></TimeCreated>
+<EventRecordID>3082</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">AppX Deployment Service (AppXSVC)</Data>
+<Data Name="param2">running</Data>
+<Binary>QQBwAHAAWABTAHYAYwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Winlogon" Guid="{dbe9b383-7cf3-4331-91cc-a3cb16a3b538}"></Provider>
+<EventID Qualifiers="">7001</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>1101</Task>
+<Opcode>0</Opcode>
+<Keywords>0x2000200000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.269682"></TimeCreated>
+<EventRecordID>3083</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="672" ThreadID="788"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="TSId">1</Data>
+<Data Name="UserSid">S-1-5-21-3239415629-1862073780-2394361899-500</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.284716"></TimeCreated>
+<EventRecordID>3084</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1604" ThreadID="1884"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">37</Data>
+<Data Name="HiveName">\??\C:\Users\Administrator\ntuser.dat</Data>
+<Data Name="KeysUpdated">1022</Data>
+<Data Name="DirtyPages">108</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.303852"></TimeCreated>
+<EventRecordID>3085</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="1604" ThreadID="1884"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">71</Data>
+<Data Name="HiveName">\??\C:\Users\Administrator\AppData\Local\Microsoft\Windows\UsrClass.dat</Data>
+<Data Name="KeysUpdated">537</Data>
+<Data Name="DirtyPages">111</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.484690"></TimeCreated>
+<EventRecordID>3086</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Windows Push Notifications User Service_8f1a3</Data>
+<Data Name="param2">running</Data>
+<Binary>VwBwAG4AVQBzAGUAcgBTAGUAcgB2AGkAYwBlAF8AOABmADEAYQAzAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.500319"></TimeCreated>
+<EventRecordID>3087</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Connected Devices Platform User Service_8f1a3</Data>
+<Data Name="param2">running</Data>
+<Binary>QwBEAFAAVQBzAGUAcgBTAHYAYwBfADgAZgAxAGEAMwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.500319"></TimeCreated>
+<EventRecordID>3088</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Touch Keyboard and Handwriting Panel Service</Data>
+<Data Name="param2">running</Data>
+<Binary>VABhAGIAbABlAHQASQBuAHAAdQB0AFMAZQByAHYAaQBjAGUALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.531763"></TimeCreated>
+<EventRecordID>3089</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Web Account Manager</Data>
+<Data Name="param2">running</Data>
+<Binary>VABvAGsAZQBuAEIAcgBvAGsAZQByAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.641216"></TimeCreated>
+<EventRecordID>3090</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">CNG Key Isolation</Data>
+<Data Name="param2">running</Data>
+<Binary>SwBlAHkASQBzAG8ALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.641216"></TimeCreated>
+<EventRecordID>3091</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Capability Access Manager Service</Data>
+<Data Name="param2">running</Data>
+<Binary>YwBhAG0AcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.703585"></TimeCreated>
+<EventRecordID>3092</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Connected Devices Platform Service</Data>
+<Data Name="param2">running</Data>
+<Binary>QwBEAFAAUwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-DistributedCOM" Guid="{1B562E86-B7AA-4131-BADC-B6F3A001407E}" EventSourceName="DCOM"></Provider>
+<EventID Qualifiers="0">10016</EventID>
+<Version>0</Version>
+<Level>3</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:31.734755"></TimeCreated>
+<EventRecordID>3093</EventRecordID>
+<Correlation ActivityID="{758f8ef3-f13c-435f-adf4-8d519dbc887a}" RelatedActivityID=""></Correlation>
+<Execution ProcessID="488" ThreadID="524"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-21-3239415629-1862073780-2394361899-500"></Security>
+</System>
+<EventData><Data Name="param1">application-specific</Data>
+<Data Name="param2">Local</Data>
+<Data Name="param3">Launch</Data>
+<Data Name="param4">{21B896BF-008D-4D01-A27B-26061B960DD7}</Data>
+<Data Name="param5">{03E09F3B-DCE4-44FE-A9CF-82D050827E1C}</Data>
+<Data Name="param6">FORELA</Data>
+<Data Name="param7">Administrator</Data>
+<Data Name="param8">S-1-5-21-3239415629-1862073780-2394361899-500</Data>
+<Data Name="param9">LocalHost (Using LRPC)</Data>
+<Data Name="param10">Unavailable</Data>
+<Data Name="param11">Unavailable</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:35.688047"></TimeCreated>
+<EventRecordID>3094</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Windows Modules Installer</Data>
+<Data Name="param2">running</Data>
+<Binary>VAByAHUAcwB0AGUAZABJAG4AcwB0AGEAbABsAGUAcgAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:35.984972"></TimeCreated>
+<EventRecordID>3095</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Network Setup Service</Data>
+<Data Name="param2">running</Data>
+<Binary>TgBlAHQAUwBlAHQAdQBwAFMAdgBjAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:49.137512"></TimeCreated>
+<EventRecordID>3096</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Application Information</Data>
+<Data Name="param2">running</Data>
+<Binary>QQBwAHAAaQBuAGYAbwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:49.215715"></TimeCreated>
+<EventRecordID>3097</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2916"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Function Discovery Provider Host</Data>
+<Data Name="param2">running</Data>
+<Binary>ZgBkAFAASABvAHMAdAAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:49.450214"></TimeCreated>
+<EventRecordID>3098</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1064"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Function Discovery Resource Publication</Data>
+<Data Name="param2">running</Data>
+<Binary>RgBEAFIAZQBzAFAAdQBiAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:54.622274"></TimeCreated>
+<EventRecordID>3099</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2916"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Update Orchestrator Service</Data>
+<Data Name="param2">running</Data>
+<Binary>VQBzAG8AUwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:36:54.918676"></TimeCreated>
+<EventRecordID>3100</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2916"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Network Connections</Data>
+<Data Name="param2">running</Data>
+<Binary>TgBlAHQAbQBhAG4ALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:18.788408"></TimeCreated>
+<EventRecordID>3101</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2916"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Windows Update Medic Service</Data>
+<Data Name="param2">stopped</Data>
+<Binary>VwBhAGEAUwBNAGUAZABpAGMAUwB2AGMALwAxAAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:28.663448"></TimeCreated>
+<EventRecordID>3102</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Diagnostic Policy Service</Data>
+<Data Name="param2">running</Data>
+<Binary>RABQAFMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:28.820040"></TimeCreated>
+<EventRecordID>3103</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Microsoft Edge Update Service (edgeupdate)</Data>
+<Data Name="param2">running</Data>
+<Binary>ZQBkAGcAZQB1AHAAZABhAHQAZQAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:28.820040"></TimeCreated>
+<EventRecordID>3104</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Microsoft Edge Update Service (edgeupdate)</Data>
+<Data Name="param2">stopped</Data>
+<Binary>ZQBkAGcAZQB1AHAAZABhAHQAZQAvADEAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:28.991760"></TimeCreated>
+<EventRecordID>3105</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Program Compatibility Assistant Service</Data>
+<Data Name="param2">running</Data>
+<Binary>UABjAGEAUwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:31.381958"></TimeCreated>
+<EventRecordID>3106</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">User Access Logging Service</Data>
+<Data Name="param2">running</Data>
+<Binary>VQBBAEwAUwBWAEMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:31.491314"></TimeCreated>
+<EventRecordID>3107</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Clipboard User Service_8f1a3</Data>
+<Data Name="param2">running</Data>
+<Binary>YwBiAGQAaABzAHYAYwBfADgAZgAxAGEAMwAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:38.100813"></TimeCreated>
+<EventRecordID>3108</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1064"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Software Protection</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:49.116510"></TimeCreated>
+<EventRecordID>3109</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1064"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">WMI Performance Adapter</Data>
+<Data Name="param2">stopped</Data>
+<Binary>dwBtAGkAQQBwAFMAcgB2AC8AMQAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:58.939720"></TimeCreated>
+<EventRecordID>3110</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Windows Update Medic Service</Data>
+<Data Name="param2">running</Data>
+<Binary>VwBhAGEAUwBNAGUAZABpAGMAUwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:37:58.939720"></TimeCreated>
+<EventRecordID>3111</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Delivery Optimization</Data>
+<Data Name="param2">running</Data>
+<Binary>RABvAFMAdgBjAC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-WindowsUpdateClient" Guid="{945a8954-c147-4acd-923f-40c45405a658}"></Provider>
+<EventID Qualifiers="">44</EventID>
+<Version>1</Version>
+<Level>4</Level>
+<Task>1</Task>
+<Opcode>12</Opcode>
+<Keywords>0x8000000000002004</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:38:12.467722"></TimeCreated>
+<EventRecordID>3112</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4528" ThreadID="4852"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="updateTitle">Windows Malicious Software Removal Tool x64 - v5.124 (KB890830)</Data>
+<Data Name="updateGuid">{31019f7c-2645-4f7a-8fa5-e1f3db4c4b9c}</Data>
+<Data Name="updateRevisionNumber">200</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-WindowsUpdateClient" Guid="{945a8954-c147-4acd-923f-40c45405a658}"></Provider>
+<EventID Qualifiers="">44</EventID>
+<Version>1</Version>
+<Level>4</Level>
+<Task>1</Task>
+<Opcode>12</Opcode>
+<Keywords>0x8000000000002004</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:38:12.467722"></TimeCreated>
+<EventRecordID>3113</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4528" ThreadID="4852"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="updateTitle">2024-05 Cumulative Update for .NET Framework 3.5, 4.8 and 4.8.1 for Microsoft server operating system version 21H2 for x64 (KB5038282)</Data>
+<Data Name="updateGuid">{b9c6a7ec-27ec-4938-b472-210255dab739}</Data>
+<Data Name="updateRevisionNumber">200</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-WindowsUpdateClient" Guid="{945a8954-c147-4acd-923f-40c45405a658}"></Provider>
+<EventID Qualifiers="">44</EventID>
+<Version>1</Version>
+<Level>4</Level>
+<Task>1</Task>
+<Opcode>12</Opcode>
+<Keywords>0x8000000000002004</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:38:12.467722"></TimeCreated>
+<EventRecordID>3114</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4528" ThreadID="4852"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="updateTitle">2024-05 Cumulative Update for Microsoft server operating system version 21H2 for x64-based Systems (KB5037782)</Data>
+<Data Name="updateGuid">{b1da1a22-1866-4d05-9346-a68d6788962e}</Data>
+<Data Name="updateRevisionNumber">1</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:38:29.658657"></TimeCreated>
+<EventRecordID>3115</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">VMware Snapshot Provider</Data>
+<Data Name="param2">stopped</Data>
+<Binary>dgBtAHYAcwBzAC8AMQAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:38:29.720856"></TimeCreated>
+<EventRecordID>3116</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Volume Shadow Copy</Data>
+<Data Name="param2">stopped</Data>
+<Binary>VgBTAFMALwAxAAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:38:31.377462"></TimeCreated>
+<EventRecordID>3117</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Portable Device Enumerator Service</Data>
+<Data Name="param2">stopped</Data>
+<Binary>VwBQAEQAQgB1AHMARQBuAHUAbQAvADEAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:38:35.674379"></TimeCreated>
+<EventRecordID>3118</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1064"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Software Protection</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:38:58.955425"></TimeCreated>
+<EventRecordID>3119</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="1064"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Windows Update Medic Service</Data>
+<Data Name="param2">stopped</Data>
+<Binary>VwBhAGEAUwBNAGUAZABpAGMAUwB2AGMALwAxAAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:38:59.517843"></TimeCreated>
+<EventRecordID>3120</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Microsoft Edge Update Service (edgeupdate)</Data>
+<Data Name="param2">running</Data>
+<Binary>ZQBkAGcAZQB1AHAAZABhAHQAZQAvADQAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:05.080509"></TimeCreated>
+<EventRecordID>3121</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Microsoft Edge Update Service (edgeupdate)</Data>
+<Data Name="param2">stopped</Data>
+<Binary>ZQBkAGcAZQB1AHAAZABhAHQAZQAvADEAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7040</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:08.986696"></TimeCreated>
+<EventRecordID>3122</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="param1">Windows Modules Installer</Data>
+<Data Name="param2">demand start</Data>
+<Data Name="param3">auto start</Data>
+<Data Name="param4">TrustedInstaller</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Kernel-General" Guid="{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}"></Provider>
+<EventID Qualifiers="">16</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:09.302851"></TimeCreated>
+<EventRecordID>3123</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="6028" ThreadID="2216"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="HiveNameLength">52</Data>
+<Data Name="HiveName">\??\C:\Windows\System32\SMI\Store\Machine\SCHEMA.DAT</Data>
+<Data Name="KeysUpdated">14652</Data>
+<Data Name="DirtyPages">2483</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7040</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:09.314613"></TimeCreated>
+<EventRecordID>3124</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="param1">Windows Modules Installer</Data>
+<Data Name="param2">auto start</Data>
+<Data Name="param3">demand start</Data>
+<Data Name="param4">TrustedInstaller</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:18.048983"></TimeCreated>
+<EventRecordID>3125</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Software Protection</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:48.049389"></TimeCreated>
+<EventRecordID>3126</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Software Protection</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7040</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:49.017893"></TimeCreated>
+<EventRecordID>3127</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="param1">Background Intelligent Transfer Service</Data>
+<Data Name="param2">auto start</Data>
+<Data Name="param3">demand start</Data>
+<Data Name="param4">BITS</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:49.033478"></TimeCreated>
+<EventRecordID>3128</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Background Intelligent Transfer Service</Data>
+<Data Name="param2">stopped</Data>
+<Binary>QgBJAFQAUwAvADEAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:55.580379"></TimeCreated>
+<EventRecordID>3129</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Volume Shadow Copy</Data>
+<Data Name="param2">running</Data>
+<Binary>VgBTAFMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:55.705225"></TimeCreated>
+<EventRecordID>3130</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Microsoft Software Shadow Copy Provider</Data>
+<Data Name="param2">running</Data>
+<Binary>cwB3AHAAcgB2AC8ANAAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Ntfs" Guid="{3ff37a1c-a68d-4d6e-8c9b-f79e8b16c482}"></Provider>
+<EventID Qualifiers="">98</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8000000000000002</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:39:56.131807"></TimeCreated>
+<EventRecordID>3131</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="4" ThreadID="184"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID="S-1-5-18"></Security>
+</System>
+<EventData><Data Name="DriveName">??</Data>
+<Data Name="DeviceName">\Device\HarddiskVolumeShadowCopy1</Data>
+<Data Name="CorruptionActionState">0</Data>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:40:18.064735"></TimeCreated>
+<EventRecordID>3132</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Software Protection</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:40:31.689884"></TimeCreated>
+<EventRecordID>3133</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2664"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Network Setup Service</Data>
+<Data Name="param2">stopped</Data>
+<Binary>TgBlAHQAUwBlAHQAdQBwAFMAdgBjAC8AMQAAAA==</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:40:48.065147"></TimeCreated>
+<EventRecordID>3134</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Software Protection</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:41:10.674639"></TimeCreated>
+<EventRecordID>3135</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Windows Modules Installer</Data>
+<Data Name="param2">stopped</Data>
+<Binary>VAByAHUAcwB0AGUAZABJAG4AcwB0AGEAbABsAGUAcgAvADEAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:41:18.080507"></TimeCreated>
+<EventRecordID>3136</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Software Protection</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:41:38.643074"></TimeCreated>
+<EventRecordID>3137</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Client License Service (ClipSVC)</Data>
+<Data Name="param2">stopped</Data>
+<Binary>QwBsAGkAcABTAFYAQwAvADEAAAA=</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:41:48.080856"></TimeCreated>
+<EventRecordID>3138</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Software Protection</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Service Control Manager" Guid="{555908d1-a6d7-4695-8e1e-26931d2012f4}" EventSourceName="Service Control Manager"></Provider>
+<EventID Qualifiers="16384">7036</EventID>
+<Version>0</Version>
+<Level>4</Level>
+<Task>0</Task>
+<Opcode>0</Opcode>
+<Keywords>0x8080000000000000</Keywords>
+<TimeCreated SystemTime="2024-05-15 05:42:18.080906"></TimeCreated>
+<EventRecordID>3139</EventRecordID>
+<Correlation ActivityID="" RelatedActivityID=""></Correlation>
+<Execution ProcessID="744" ThreadID="2668"></Execution>
+<Channel>System</Channel>
+<Computer>DC01.forela.local</Computer>
+<Security UserID=""></Security>
+</System>
+<EventData><Data Name="param1">Software Protection</Data>
+<Data Name="param2">running</Data>
+<Binary>cwBwAHAAcwB2AGMALwA0AAAA</Binary>
+</EventData>
+</Event>
+
+</Events>

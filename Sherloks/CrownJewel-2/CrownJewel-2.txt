@@ -1,0 +1,72 @@
+Situation:Forela's Domain environment is pure chaos. Just got another alert from the Domain controller of NTDS.dit database being exfiltrated. Just one day prior you responded to an alert on the same domain controller where an attacker dumped NTDS.dit via vssadmin utility. However, you managed to delete the dumped files kick the attacker out of the DC, and restore a clean snapshot. Now they again managed to access DC with a domain admin account with their persistent access in the environment. This time they are abusing ntdsutil to dump the database. Help Forela in these chaotic times!!
+-------------------------------------------------
+
+Situation explained: The NTDS.dit database is critical because it stores Active Directory data, including user credentials and sensitive information related to domain accounts, groups, and policies.
+
+Attackers are targeting this database because gaining access to it provides them with a treasure trove of valuable data, including potential domain administrator (DA) credentials.
+
+Just the day before, an attacker exfiltrated the NTDS.dit database using the vssadmin tool, which is commonly used to manipulate Volume Shadow Copies (VSS).
+
+Volume Shadow Copies are backups of the file system that can be created automatically or manually. Attackers sometimes leverage this tool to dump sensitive data from backups if they have sufficient privileges.
+
+The immediate response to this attack involved removing the dumped NTDS.dit file and kicking the attacker out of the Domain Controller (DC). A clean snapshot of the system was restored, likely returning the domain controller to a secure, pre-compromise state.
+
+The attacker has managed to establish persistence within the environment, meaning that they have found a way to regain access even after the previous compromise was mitigated.
+
+The fact that they're using a domain admin account suggests they have elevated privileges or have managed to escalate their privileges. This could be through various methods like exploiting weak credentials, exploiting vulnerabilities, or leveraging tools like Kerberos ticket forging or pass-the-hash techniques.
+
+-------------------------------------------------
+
+The files that we downloaded are .evtx files which are Windows Event Viewer files. In order to read these files We will use evtx_dump from Github: https://github.com/williballenthin/python-evtx/blob/master/scripts/evtx_dump.py .
+
+We will first need to create a Python environment to install some of the modules used in this file: python3 -m venv ~/myenv . To activate it: source myenv/bin/activate . We make sure that the environment has the permission to install modules: sudo chmod -R u+rw path/to/myenv. 
+
+To install the required Module: pip install python-evtx
+
+We can now use the Python code as such: python3 ./evtx_dump.py filename.evtx > filename.txt , and now we can read the .txt file.
+
+The key to solve this machine and answer its questions is to find the right Event ID that represents certain events. 
+
+Q1- When utilizing ntdsutil.exe to dump NTDS on disk, it simultaneously employs the Microsoft Shadow Copy Service. What is the most recent timestamp at which this service entered the running state, signifying the possible initiation of the NTDS dumping process?
+
+A1- To answer this question, we will need to search for an event id related to service starting/stopping in the system file. If we searched on Google on event Id service stop/start, we will find that the id is 7040 or 7036. 7036 is our event ID that we want, so we need to search for when this event ID appears with the EventData name of Microsoft Software Shadow Copy Provider also appears. This happens at 2024-05-15 05:39:55.
+
+
+Q2-Identify the full path of the dumped NTDS file.
+
+A2- Since we know the name of the file, we will search for it:ntds.dit. We see a path that has the word dump in it: C:\Windows\Temp\dump_tmp\Active Directory\ntds.dit .
+
+Q3-When was the database dump created on the disk?
+
+A3- This is the same time as the last event : 2024-05-15 05:39:56
+
+Q4- When was the newly dumped database considered complete and ready for use?
+
+A4- The last event was just a scheduling event, the actual dumping of data happened 2 seconds after: 2024-05-15 05:39:58
+
+Q5- Event logs use event sources to track events coming from different sources. Which event source provides database status data like creation and detachment?
+
+A5- In Application log, there is an attribute called Provider with the name of the event source. If we looked at what is the provider for the previous event, its name is ESENT.
+
+Q6- When ntdsutil.exe is used to dump the database, it enumerates certain user groups to validate the privileges of the account being used. Which two groups are enumerated by the ntdsutil.exe process?
+
+A6- If we search on Google, user group enumeration event ID, we will find that the event id is 4799. We will search in Security log for this event Id. We find multiple occurrences of this event Id. To find the user group name, we will look at the TargetUserName attribute. We find two groups associated with this event Id: Administrators, Backup Operators.
+
+Q7-Now you are tasked to find the Login Time for the malicious Session. Using the Logon ID, find the Time when the user logon session started.
+
+Since this is domain environment, we will need ot use Kerberos events to find the time stamp of the login. If we searched for Kerberos login event id, we will find out that the event id is 4768. We will find few results in Security log for this event. The right time stamp is: 2024-05-15 05:36:31 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

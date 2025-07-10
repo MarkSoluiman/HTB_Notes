@@ -1,0 +1,29 @@
+Scenario:In this very easy Sherlock, you will familiarize yourself with Unix auth.log and wtmp logs. We'll explore a scenario where a Confluence server was brute-forced via its SSH service. After gaining access to the server, the attacker performed additional activities, which we can track using auth.log. Although auth.log is primarily used for brute-force analysis, we will delve into the full potential of this artifact in our investigation, including aspects of privilege escalation, persistence, and even some visibility into command execution.
+
+------------------------------------
+
+After unzipping the zip file, we will get two files: wtmp and auth.log. wtmp is a file in the Linux system that keeps track of historical data of every log-in and logout activity. Although it is in binary, but we can read it in a command prompt if we simply typed: who wtmp. This will give us a list of users who accesses the machine remotely using ssh session with the number of the session and time stamp. 
+
+We can read the auth.log file using any text editor. auth.log has every login attempt.
+
+------------------------------------
+
+Q1- Analyzing the auth.log, can you identify the IP address used by the attacker to carry out a brute force attack?
+
+A1- Since it is a brute force attack, we can expect to see authentication failure, if we searched for authentication failure, we will see that multiple attempts to login from IP:65.2.161.68 .
+
+Q2- The brute force attempts were successful, and the attacker gained access to an account on the server. What is the username of this account?
+
+A2- If we followed the brute force attempts, we will see that the IP address that we identified earlier has established a successful connection with username root.
+
+Q3- Can you identify the timestamp when the attacker manually logged in to the server to carry out their objectives?
+
+A3- The earliest Accepted password for user root happens at: 06:31:40 . However, this is not the right answer because the first attempt was automated and the session ended at the exact same second. After the attacker got the correct credentials, they manually logged in again, so the second successful login happened at: 06:32:44 . However, this is also not the right answer. Maybe the process of actually logging in took longer, so we will try to add another second: 06:32:45.
+
+Q4- SSH login sessions are tracked and assigned a session number upon login. What is the session number assigned to the attacker's session for the user account from Question 2?
+
+A4- The session is 37
+
+Q5- The attacker added a new user as part of their persistence strategy on the server and gave this new user account higher privileges. What is the name of this account?
+
+A5- From the wtmp file, we can see another user called cyberjunkie.
