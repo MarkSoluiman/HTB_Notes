@@ -1,0 +1,190 @@
+{
+  "main": {
+    "id": "b27e0195adbe8186",
+    "type": "split",
+    "children": [
+      {
+        "id": "2dadc7c74f30f80e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "801872a945fcd8b7",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "BurpSuite_Academy/File_Upload/download.jpeg"
+              },
+              "icon": "lucide-image",
+              "title": "download"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "97402ac09953dfb9",
+    "type": "split",
+    "children": [
+      {
+        "id": "42b687d50804372b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "db70c1a8a525175f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "8e5b16930dbe2d9f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "85221c76503228cf",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "62acd3083c2b36c7",
+    "type": "split",
+    "children": [
+      {
+        "id": "460ce4a97d31e992",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e86b295ddd571a29",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "BurpSuite_Academy/Clickjacking (UI redressing)/Part 1.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Part 1"
+            }
+          },
+          {
+            "id": "90581831e40cb375",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "BurpSuite_Academy/Clickjacking (UI redressing)/Part 1.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Part 1"
+            }
+          },
+          {
+            "id": "5763cc130c416df1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "157fb3a30fc228b7",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "BurpSuite_Academy/Clickjacking (UI redressing)/Part 1.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Part 1"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "801872a945fcd8b7",
+  "lastOpenFiles": [
+    "BurpSuite_Academy/Authentication/Part 9.md",
+    "BurpSuite_Academy/Authentication/Part 8.md",
+    "BurpSuite_Academy/Authentication/Part 7.md",
+    "BurpSuite_Academy/Authentication/Part 5.md",
+    "BurpSuite_Academy/Authentication/Part 4.md",
+    "BurpSuite_Academy/Authentication/Part 3.md",
+    "BurpSuite_Academy/Authentication/Part 2.md",
+    "BurpSuite_Academy/Authentication/Part 1.md",
+    "BurpSuite_Academy/API Testing/Part 1.md",
+    "BurpSuite_Academy/API Testing/Part 5.md",
+    "clickjacking-infographic.svg",
+    "BurpSuite_Academy/API Testing/Part 4.md",
+    "BurpSuite_Academy/API Testing/Part 3.md",
+    "BurpSuite_Academy/API Testing/Part 2.md",
+    "BurpSuite_Academy/API Testing",
+    "BurpSuite_Academy/Clickjacking (UI redressing)/Part 1.md",
+    "BurpSuite_Academy/File_Upload/download.jpeg",
+    "BurpSuite_Academy/Clickjacking (UI redressing)"
+  ]
+}
