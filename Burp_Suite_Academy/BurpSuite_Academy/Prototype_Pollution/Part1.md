@@ -318,6 +318,30 @@ For automated solution:https://www.youtube.com/watch?v=EBFYj91C4Pw&t=268s
 
 You can solve this lab manually in your browser, or use DOM Invader to help you.
 
+First, we will try to pollute prototypes of objects by adding this to the end of the URL: `/?__proto__[payload]=evil`. We will create a new object using the console tab in Inspect as we did in the previous lab. After we call the object, we can see that the prototype was not polluted. 
+We will try this instead: `/?__proto__.payload=evil`. This will pollute the prototype.
+
+Since we found that this website is vulnerable to prototype pollution, we need to find a gadget that calls our polluted prototype. We will find this gadget in this JS file that we can access in Resources: searchLoggerAlternative.js . The vulnerable code will in line 18 where the function eval is used to call manager.sequence. 
+
+The use of eval is considered dangerous because it runs string as JS code. For example, this code: `eval("console.log(2 + 3)");` will result in output of 5.
+
+We will try to pollute the prototype sequence: `/?__proto__.sequence=evil`
+
+We can also put a debugger breakpoint on line 18. If we hovered with our mouse on manager.sequence, we will get this: evil1. We will try to call the alert function: `/?__proto__.sequence=alert()`
+
+This will not give us the alert because of this part of the code:
+```js
+ let a = manager.sequence || 1;
+    manager.sequence = a + 1;
+```
+
+This part declares variable a and gives it the value of manager.sequence or give it the value of 1 if manager.sequence is not declared. Then, it makes manager.sequence equal to variable a and adds 1 to it. 
+
+Since that we declare manager.sequence to be alert(), the value of is going to be the same: alert().
+The second line concatenate the 1 to alert() as a string:`alert()1`, which is not a valid syntax
+
+To get the alert function to execute, we need to add one of these operations at the end of our URL:`-,*,/` This will result in a valid syntax when executing the code and the alert pop up to show up.
+
 
 
 
